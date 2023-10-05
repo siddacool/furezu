@@ -11,15 +11,13 @@
   <title>Settings</title>
 </svelte:head>
 
-<Box>
-  <Title>Settings</Title>
+<Title>Settings</Title>
 
-  <Stack>
-    <Checkbox checked={darkTheme} on:change={() => (darkTheme = !darkTheme)} id="DarkTheme">
-      Dark theme
-    </Checkbox>
-  </Stack>
-</Box>
+<Stack>
+  <Checkbox checked={darkTheme} on:change={() => (darkTheme = !darkTheme)} id="DarkTheme">
+    Dark theme
+  </Checkbox>
+</Stack>
 
 <style lang="scss">
 </style>

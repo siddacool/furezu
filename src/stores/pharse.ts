@@ -66,3 +66,19 @@ export async function editPharse(pharseId: string, config: EditPharse) {
     return Promise.reject(error);
   }
 }
+
+export async function removePharse(pharseId: string) {
+  try {
+    const phraseData = await getPharse(pharseId);
+
+    if (!phraseData?.id) {
+      throw Error('removePharse: phraseData missing');
+    }
+
+    await db.phrases.delete(phraseData.id);
+
+    return Promise.resolve();
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}

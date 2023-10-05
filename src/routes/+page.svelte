@@ -3,7 +3,6 @@
   import { liveQuery } from 'dexie';
   import AnchorButton from '~/components/AnchorButton.svelte';
   import Book from '~/components/Book.svelte';
-  import Box from '~/components/Box.svelte';
   import Stack from '~/components/Stack.svelte';
   import { db } from '~/stores/db';
 
@@ -16,29 +15,27 @@
   <title>Phrasebook</title>
 </svelte:head>
 
-<Box>
-  {#if $books}
-    <div class="books">
-      {#each $books as book (book._id)}
-        <Book href={`books/${book._id}`}>
-          {book.name}
-        </Book>
-      {/each}
-    </div>
-  {/if}
-  <Stack>
-    <div class="buttonHolder">
-      <AnchorButton href="create-book" variant="solid" margin>
-        <Icon icon="material-symbols:add" slot="before" />
-        Create new book
-      </AnchorButton>
-      <AnchorButton href="settings">
-        <Icon icon="material-symbols:settings" slot="before" />
-        Settings
-      </AnchorButton>
-    </div>
-  </Stack>
-</Box>
+{#if $books}
+  <div class="books">
+    {#each $books as book (book._id)}
+      <Book href={`books/${book._id}`}>
+        {book.name}
+      </Book>
+    {/each}
+  </div>
+{/if}
+<Stack>
+  <div class="buttonHolder">
+    <AnchorButton href="create-book" variant="solid" margin>
+      <Icon icon="material-symbols:add" slot="before" />
+      Create new book
+    </AnchorButton>
+    <AnchorButton href="settings">
+      <Icon icon="material-symbols:settings" slot="before" />
+      Settings
+    </AnchorButton>
+  </div>
+</Stack>
 
 <style style="scss">
   .page {

@@ -3,7 +3,6 @@
   import { page } from '$app/stores';
   import { liveQuery } from 'dexie';
   import AnchorButton from '~/components/AnchorButton.svelte';
-  import Box from '~/components/Box.svelte';
   import Button from '~/components/Button.svelte';
   import Stack from '~/components/Stack.svelte';
   import TextArea from '~/components/TextArea.svelte';
@@ -62,63 +61,61 @@
   <title>Add pharse</title>
 </svelte:head>
 
-<Box>
-  <form on:submit|preventDefault={addPharse}>
-    <Title>Add pharse: {$book?.name || ''}</Title>
-    <Stack>
-      <TextInput
-        name="PhraseMeaning"
-        label="Phrase Meaning"
-        bind:value={meaning}
-        on:input={onMeaningChange}
-      />
-    </Stack>
-    <Stack>
-      <TextInput name="Phrase" label="Phrase" bind:value={phrase} on:input={onPhraseChange} />
-    </Stack>
+<form on:submit|preventDefault={addPharse}>
+  <Title>Add pharse: {$book?.name || ''}</Title>
+  <Stack>
+    <TextInput
+      name="PhraseMeaning"
+      label="Phrase Meaning"
+      bind:value={meaning}
+      on:input={onMeaningChange}
+    />
+  </Stack>
+  <Stack>
+    <TextInput name="Phrase" label="Phrase" bind:value={phrase} on:input={onPhraseChange} />
+  </Stack>
 
-    <Stack>
-      <TextInput
-        name="Pronounciation"
-        label="Pronounciation"
-        bind:value={pronounciation}
-        on:input={onPronounciationChange}
-      />
-    </Stack>
+  <Stack>
+    <TextInput
+      name="Pronounciation"
+      label="Pronounciation"
+      bind:value={pronounciation}
+      on:input={onPronounciationChange}
+    />
+  </Stack>
 
-    <Stack>
-      <TextInput
-        name="Translation"
-        label="Translation"
-        bind:value={translation}
-        on:input={onTranslationChange}
-      />
-    </Stack>
+  <Stack>
+    <TextInput
+      name="Translation"
+      label="Translation"
+      bind:value={translation}
+      on:input={onTranslationChange}
+    />
+  </Stack>
 
-    <Stack>
-      <TextArea
-        name="Description"
-        label="Description"
-        bind:value={description}
-        on:input={onDescriptionChange}
-      />
-    </Stack>
+  <Stack>
+    <TextArea
+      name="Description"
+      label="Description"
+      bind:value={description}
+      on:input={onDescriptionChange}
+    />
+  </Stack>
 
-    <Stack>
-      <div class="buttonHolder">
-        <Button
-          type="submit"
-          variant="solid"
-          margin
-          disabled={!meaning.trim() || !phrase.trim() || loading}
-        >
-          Save
-        </Button>
-        <AnchorButton href={`/books/${bookId}`} disabled={loading}>Cancel</AnchorButton>
-      </div>
-    </Stack>
-  </form>
-</Box>
+  <Stack>
+    <div class="buttonHolder">
+      <Button
+        type="submit"
+        variant="solid"
+        margin
+        disabled={!meaning.trim() || !phrase.trim() || loading}
+      >
+        Save
+      </Button>
+      <AnchorButton href={`/books/${bookId}`} disabled={loading}>Cancel</AnchorButton>
+    </div>
+  </Stack>
+</form>
 
 <style lang="scss">
   .buttonHolder {

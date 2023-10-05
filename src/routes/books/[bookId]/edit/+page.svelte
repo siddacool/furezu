@@ -4,12 +4,11 @@
   import { liveQuery } from 'dexie';
   import { onMount } from 'svelte';
   import AnchorButton from '~/components/AnchorButton.svelte';
-  import Box from '~/components/Box.svelte';
   import Button from '~/components/Button.svelte';
   import Stack from '~/components/Stack.svelte';
   import TextInput from '~/components/TextInput.svelte';
   import Title from '~/components/Title.svelte';
-  import { editBook, getBook } from '~/stores/book';
+  import { editBook, getBook, removeBook } from '~/stores/book';
   import { db } from '~/stores/db';
 
   const bookId = $page.params.bookId;
@@ -52,6 +51,19 @@
       loading = false;
     }
   }
+
+  async function remove() {
+    try {
+      loading = true;
+      await removeBook(bookId);
+
+      goto(`/`);
+    } catch (error) {
+      console.dir(`Failed to remove Book : ${error}`);
+    } finally {
+      loading = false;
+    }
+  }
 </script>
 
 <svelte:head>
@@ -60,27 +72,26 @@
 
 <Title>Edit: {$book?.name || ''}</Title>
 
-<Box>
-  <form on:submit|preventDefault={edit}>
-    <Stack>
-      <TextInput
-        name="Book name"
-        label="Book name"
-        bind:value={bookName}
-        on:input={onBookNameChange}
-      />
-    </Stack>
+<form on:submit|preventDefault={edit}>
+  <Stack>
+    <TextInput
+      name="Book name"
+      label="Book name"
+      bind:value={bookName}
+      on:input={onBookNameChange}
+    />
+  </Stack>
 
-    <Stack>
-      <div class="buttonHolder">
-        <Button type="submit" variant="solid" margin disabled={!bookName.trim() || loading}>
-          Save
-        </Button>
-        <AnchorButton href={`/books/${bookId}`} disabled={loading}>Cancel</AnchorButton>
-      </div>
-    </Stack>
-  </form>
-</Box>
+  <Stack>
+    <div class="buttonHolder">
+      <Button type="submit" variant="solid" margin disabled={!bookName.trim() || loading}>
+        Save
+      </Button>
+      <AnchorButton href={`/books/${bookId}`} disabled={loading} margin>Cancel</AnchorButton>
+      <Button disabled={loading} name="delete" on:click={remove}>Delete</Button>
+    </div>
+  </Stack>
+</form>
 
 <style lang="scss">
   .buttonHolder {

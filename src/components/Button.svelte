@@ -7,7 +7,7 @@
   export let margin: boolean = false;
 </script>
 
-<button class={`Button variant--${variant}`} class:margin {type} {name} {id} {disabled}>
+<button class={`Button variant--${variant}`} class:margin {type} {name} {id} {disabled} on:click>
   <div class="before">
     <slot name="before" />
   </div>

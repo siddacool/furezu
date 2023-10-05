@@ -44,3 +44,19 @@ export async function editBook(bookId: string, bookName: string) {
     return Promise.reject(error);
   }
 }
+
+export async function removeBook(bookId: string) {
+  try {
+    const bookData = await getBook(bookId);
+
+    if (!bookData?.id) {
+      throw Error('removeBook: bookData missing');
+    }
+
+    await db.books.delete(bookData.id);
+
+    return Promise.resolve();
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}

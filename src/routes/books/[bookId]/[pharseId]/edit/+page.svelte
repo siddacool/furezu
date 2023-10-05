@@ -3,16 +3,14 @@
   import { page } from '$app/stores';
   import { liveQuery } from 'dexie';
   import { onMount } from 'svelte';
-  import { get } from 'svelte/store';
   import AnchorButton from '~/components/AnchorButton.svelte';
-  import Box from '~/components/Box.svelte';
   import Button from '~/components/Button.svelte';
   import Stack from '~/components/Stack.svelte';
   import TextArea from '~/components/TextArea.svelte';
   import TextInput from '~/components/TextInput.svelte';
   import Title from '~/components/Title.svelte';
   import { db } from '~/stores/db';
-  import { editPharse, getPharse } from '~/stores/pharse';
+  import { editPharse, getPharse, removePharse } from '~/stores/pharse';
 
   const bookId = $page.params.bookId;
   const pharseId = $page.params.pharseId;
@@ -79,6 +77,19 @@
       loading = false;
     }
   }
+
+  async function remove() {
+    try {
+      loading = true;
+      await removePharse(pharseId);
+
+      goto(`/books/${bookId}`);
+    } catch (error) {
+      console.dir(`Failed to remove Pharse : ${error}`);
+    } finally {
+      loading = false;
+    }
+  }
 </script>
 
 <svelte:head>
@@ -86,62 +97,64 @@
 </svelte:head>
 
 {#if $phraseBase?._id && mounted}
-  <Box>
-    <form on:submit|preventDefault={edit}>
-      <Title>Edit pharse: {$phraseBase?.meaning}</Title>
-      <Stack>
-        <TextInput
-          name="PhraseMeaning"
-          label="Phrase Meaning"
-          bind:value={meaning}
-          on:input={onMeaningChange}
-        />
-      </Stack>
-      <Stack>
-        <TextInput name="Phrase" label="Phrase" bind:value={phrase} on:input={onPhraseChange} />
-      </Stack>
+  <form on:submit|preventDefault={edit}>
+    <Title>Edit pharse: {$phraseBase?.meaning}</Title>
+    <Stack>
+      <TextInput
+        name="PhraseMeaning"
+        label="Phrase Meaning"
+        bind:value={meaning}
+        on:input={onMeaningChange}
+      />
+    </Stack>
+    <Stack>
+      <TextInput name="Phrase" label="Phrase" bind:value={phrase} on:input={onPhraseChange} />
+    </Stack>
 
-      <Stack>
-        <TextInput
-          name="Pronounciation"
-          label="Pronounciation"
-          bind:value={pronounciation}
-          on:input={onPronounciationChange}
-        />
-      </Stack>
+    <Stack>
+      <TextInput
+        name="Pronounciation"
+        label="Pronounciation"
+        bind:value={pronounciation}
+        on:input={onPronounciationChange}
+      />
+    </Stack>
 
-      <Stack>
-        <TextInput
-          name="Translation"
-          label="Translation"
-          bind:value={translation}
-          on:input={onTranslationChange}
-        />
-      </Stack>
+    <Stack>
+      <TextInput
+        name="Translation"
+        label="Translation"
+        bind:value={translation}
+        on:input={onTranslationChange}
+      />
+    </Stack>
 
-      <Stack>
-        <TextArea
-          name="Description"
-          label="Description"
-          bind:value={description}
-          on:input={onDescriptionChange}
-        />
-      </Stack>
-      <Stack>
-        <div class="buttonHolder">
-          <Button
-            type="submit"
-            variant="solid"
-            margin
-            disabled={!meaning.trim() || !phrase.trim() || loading}
-          >
-            Save
-          </Button>
-          <AnchorButton href={`/books/${bookId}/${pharseId}`}>Cancel</AnchorButton>
-        </div>
-      </Stack>
-    </form>
-  </Box>
+    <Stack>
+      <TextArea
+        name="Description"
+        label="Description"
+        bind:value={description}
+        on:input={onDescriptionChange}
+      />
+    </Stack>
+    <Stack>
+      <div class="buttonHolder">
+        <Button
+          type="submit"
+          variant="solid"
+          name="save"
+          margin
+          disabled={!meaning.trim() || !phrase.trim() || loading}
+        >
+          Save
+        </Button>
+        <AnchorButton href={`/books/${bookId}/${pharseId}`} margin disabled={loading}>
+          Cancel
+        </AnchorButton>
+        <Button disabled={loading} name="delete" on:click={remove}>Delete</Button>
+      </div>
+    </Stack>
+  </form>
 {/if}
 
 <style lang="scss">
