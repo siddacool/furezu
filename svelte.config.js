@@ -17,7 +17,7 @@ const config = {
       fallback: 'index.html',
     }),
     paths: {
-      base: dev ? '' : '/phrasebook',
+      base: dev ? '' : 'phrasebook',
     },
     alias: {
       '~/*': 'src/*',
