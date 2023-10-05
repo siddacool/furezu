@@ -12,7 +12,7 @@
 <div class="page" />
 
 <svelte:head>
-  <title>Phrasebook</title>
+  <title>Furezu</title>
 </svelte:head>
 
 {#if $books}

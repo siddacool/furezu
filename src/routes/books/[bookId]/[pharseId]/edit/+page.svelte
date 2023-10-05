@@ -104,13 +104,20 @@
     <Stack>
       <TextInput
         name="PhraseMeaning"
-        label="Phrase Meaning"
+        label="Phrase Meaning (Required)"
         bind:value={meaning}
         on:input={onMeaningChange}
+        placeholder="Hello"
       />
     </Stack>
     <Stack>
-      <TextInput name="Phrase" label="Phrase" bind:value={phrase} on:input={onPhraseChange} />
+      <TextInput
+        name="Phrase"
+        label="Phrase (Required)"
+        bind:value={phrase}
+        on:input={onPhraseChange}
+        placeholder="konnichiwa"
+      />
     </Stack>
 
     <Stack>
@@ -119,6 +126,7 @@
         label="Pronounciation"
         bind:value={pronounciation}
         on:input={onPronounciationChange}
+        placeholder="koni chiwa"
       />
     </Stack>
 
@@ -128,6 +136,7 @@
         label="Translation"
         bind:value={translation}
         on:input={onTranslationChange}
+        placeholder="こんにちは"
       />
     </Stack>
 

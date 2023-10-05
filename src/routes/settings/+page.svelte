@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-  <title>Settings</title>
+  <title>Furezu: Settings</title>
 </svelte:head>
 
 <Title>Settings</Title>

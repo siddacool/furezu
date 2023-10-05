@@ -80,6 +80,7 @@
       label="Book name"
       bind:value={bookName}
       on:input={onBookNameChange}
+      placeholder="Japanese phrases for travel"
     />
   </Stack>
 
