@@ -1,4 +1,4 @@
-# Phrasebook
+# Furezu - Phrasebook
 
 ## Developing
 
