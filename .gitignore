@@ -4,6 +4,7 @@ node_modules
 /.svelte-kit
 /package
 /functions
+.netlify
 .env
 .env.*
 !.env.example
