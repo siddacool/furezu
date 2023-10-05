@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Box from '~/components/Box.svelte';
   import Checkbox from '~/components/Checkbox.svelte';
   import Stack from '~/components/Stack.svelte';
   import Title from '~/components/Title.svelte';
