@@ -13,8 +13,8 @@ export default defineConfig({
         background_color: '#fff',
         display: 'standalone',
         orientation: 'portrait',
-        scope: '/',
-        start_url: '/',
+        scope: '/.',
+        start_url: '/.',
         icons: [
           {
             src: 'assets/icon-72x72.png',
