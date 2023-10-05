@@ -17,7 +17,7 @@
   <title>{$book?.name || ''}</title>
 </svelte:head>
 
-<p>{$book?.name || ''}</p>
+<p><a href={`/books/${bookId}`}>{$book?.name || ''}</a></p>
 
 {#if $phrase?._id}
   <Stack>

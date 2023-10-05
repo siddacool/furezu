@@ -23,7 +23,7 @@
     overflow: hidden;
     height: 40px;
     padding: 0 7px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     outline: none;

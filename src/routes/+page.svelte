@@ -26,10 +26,12 @@
 {/if}
 <Stack>
   <div class="buttonHolder">
-    <AnchorButton href="create-book" variant="solid" margin>
+    <AnchorButton href="create-book" variant="solid">
       <Icon icon="material-symbols:add" slot="before" />
-      Create new book
+      Create book
     </AnchorButton>
+    <br />
+    <br />
     <AnchorButton href="settings">
       <Icon icon="material-symbols:settings" slot="before" />
       Settings
@@ -44,7 +46,6 @@
   }
 
   .buttonHolder {
-    display: flex;
     padding-top: 16px;
   }
 

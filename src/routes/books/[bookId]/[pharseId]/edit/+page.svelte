@@ -1,10 +1,12 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
+  import Icon from '@iconify/svelte';
   import { liveQuery } from 'dexie';
   import { onMount } from 'svelte';
   import AnchorButton from '~/components/AnchorButton.svelte';
   import Button from '~/components/Button.svelte';
+  import DeleteIcon from '~/components/DeleteIcon.svelte';
   import Stack from '~/components/Stack.svelte';
   import TextArea from '~/components/TextArea.svelte';
   import TextInput from '~/components/TextInput.svelte';
@@ -151,7 +153,10 @@
         <AnchorButton href={`/books/${bookId}/${pharseId}`} margin disabled={loading}>
           Cancel
         </AnchorButton>
-        <Button disabled={loading} name="delete" on:click={remove}>Delete</Button>
+        <Button disabled={loading} name="delete" on:click={remove}>
+          <DeleteIcon slot="before" />
+          Delete
+        </Button>
       </div>
     </Stack>
   </form>

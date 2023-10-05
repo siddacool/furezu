@@ -31,7 +31,9 @@
 </svelte:head>
 
 <main>
-  <slot />
+  <div class="box">
+    <slot />
+  </div>
 </main>
 
 <style lang="scss">
@@ -43,6 +45,8 @@
     --color-grey-100: #e9e9e9;
     --color-grey-700: #2f2f2f;
     --color-grey-900: #080808;
+
+    --color-red-400: #ff1010;
 
     --shadow-color: 0deg 0% 72%;
     --shadow-elevation-low: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.18),
@@ -79,5 +83,10 @@
     height: 100%;
     overflow-y: auto;
     padding: 24px;
+  }
+
+  .box {
+    max-width: 800px;
+    margin: 0 auto;
   }
 </style>

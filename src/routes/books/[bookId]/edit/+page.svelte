@@ -5,6 +5,7 @@
   import { onMount } from 'svelte';
   import AnchorButton from '~/components/AnchorButton.svelte';
   import Button from '~/components/Button.svelte';
+  import DeleteIcon from '~/components/DeleteIcon.svelte';
   import Stack from '~/components/Stack.svelte';
   import TextInput from '~/components/TextInput.svelte';
   import Title from '~/components/Title.svelte';
@@ -88,7 +89,9 @@
         Save
       </Button>
       <AnchorButton href={`/books/${bookId}`} disabled={loading} margin>Cancel</AnchorButton>
-      <Button disabled={loading} name="delete" on:click={remove}>Delete</Button>
+      <Button disabled={loading} name="delete" on:click={remove}>
+        <DeleteIcon slot="before" /> Delete
+      </Button>
     </div>
   </Stack>
 </form>
