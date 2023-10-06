@@ -9,6 +9,7 @@
   import Stack from '~/components/Stack.svelte';
   import TextInput from '~/components/TextInput.svelte';
   import Title from '~/components/Title.svelte';
+  import VoiceSelect from '~/components/VoiceSelect.svelte';
   import { editBook, getBook, removeBook } from '~/stores/book';
   import { db } from '~/stores/db';
 
@@ -20,11 +21,14 @@
   let mounted = false;
   let bookName = '';
 
+  let voice = '';
+
   async function populateBookValues() {
     try {
       const bookData = await getBook(bookId);
 
       bookName = bookData?.name || '';
+      voice = bookData?.voice || '';
     } catch (error) {
       console.dir(`Failed to populate Book : ${error}`);
     } finally {
@@ -40,10 +44,14 @@
     bookName = (event.target as HTMLInputElement).value;
   };
 
+  const onVoiceChange = (event: Event) => {
+    voice = (event.target as HTMLInputElement).value;
+  };
+
   async function edit() {
     try {
       loading = true;
-      await editBook(bookId, bookName);
+      await editBook(bookId, bookName, voice);
 
       goto(`/books/${bookId}`);
     } catch (error) {
@@ -77,11 +85,17 @@
   <Stack>
     <TextInput
       name="Book name"
-      label="Book name"
+      label="Book name (Required)"
       bind:value={bookName}
       on:input={onBookNameChange}
       placeholder="Japanese phrases for travel"
     />
+  </Stack>
+
+  <Stack>
+    <Stack>
+      <VoiceSelect bind:value={voice} on:change={onVoiceChange} />
+    </Stack>
   </Stack>
 
   <Stack>

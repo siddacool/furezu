@@ -1,11 +1,12 @@
 import { db } from './db';
 import { nanoid } from 'nanoid';
 
-export async function createBook(bookName: string) {
+export async function createBook(bookName: string, voice?: string | undefined) {
   try {
     await db.books.add({
       _id: nanoid(),
       name: bookName,
+      voice,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -26,7 +27,7 @@ export async function getBook(bookId: string) {
   }
 }
 
-export async function editBook(bookId: string, bookName: string) {
+export async function editBook(bookId: string, bookName: string, voice?: string | undefined) {
   try {
     const bookData = await getBook(bookId);
 
@@ -36,6 +37,7 @@ export async function editBook(bookId: string, bookName: string) {
 
     await db.books.update(bookData.id, {
       name: bookName,
+      voice,
       updatedAt: new Date(),
     });
 
