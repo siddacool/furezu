@@ -4,9 +4,7 @@
   import { liveQuery } from 'dexie';
   import AnchorButton from '~/components/AnchorButton.svelte';
   import Paper from '~/components/Paper.svelte';
-  import PhraseCount from '~/components/PhraseCount.svelte';
   import Speak from '~/components/Speak.svelte';
-  import Title from '~/components/Title.svelte';
   import { db } from '~/stores/db';
 
   const bookId = $page.params.bookId;
@@ -19,8 +17,6 @@
 <svelte:head>
   <title>{$book?.name || ''}</title>
 </svelte:head>
-
-<Title>{$book?.name || ''} <PhraseCount {bookId} /></Title>
 
 {#if $phrases?.length}
   <div class="pharses">

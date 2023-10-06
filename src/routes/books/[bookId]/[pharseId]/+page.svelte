@@ -3,6 +3,7 @@
   import Icon from '@iconify/svelte';
   import { liveQuery } from 'dexie';
   import AnchorButton from '~/components/AnchorButton.svelte';
+  import BookTitle from '~/components/BookTitle.svelte';
   import Speak from '~/components/Speak.svelte';
   import Stack from '~/components/Stack.svelte';
   import Title from '~/components/Title.svelte';
@@ -19,10 +20,6 @@
   <title>{$book?.name || ''}</title>
 </svelte:head>
 
-<p class="get-back-link">
-  <a href={`/books/${bookId}`}><Icon icon="ep:back" /> {$book?.name || ''}</a>
-</p>
-
 {#if $phrase?._id}
   <Stack>
     <Title>{$phrase.meaning}</Title>
@@ -30,13 +27,11 @@
     <h3 class="pronounciation">{$phrase?.pronounciation}</h3>
     <p class="Translation">{$phrase?.translation}</p>
     <p class="description">{$phrase?.description}</p>
+    <Speak voice={$book?.voice} translation={$phrase?.translation} />
   </Stack>
 
   <Stack>
     <div class="buttonHolder">
-      <Speak voice={$book?.voice} translation={$phrase?.translation} />
-      <br />
-      <br />
       <AnchorButton href={`${pharseId}/edit`}>Edit</AnchorButton>
     </div>
   </Stack>
