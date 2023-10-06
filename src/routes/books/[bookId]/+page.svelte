@@ -73,7 +73,7 @@
       font-size: 1.05rem;
 
       &.description {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
       }
 
       &:empty {
