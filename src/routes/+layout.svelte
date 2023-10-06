@@ -1,3 +1,12 @@
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { voiceList } from '~/stores/voices';
+
+  onMount(() => {
+    voiceList.mount();
+  });
+</script>
+
 <main>
   <div class="box">
     <slot />

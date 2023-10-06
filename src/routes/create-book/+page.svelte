@@ -3,23 +3,15 @@
   import { onMount } from 'svelte';
   import AnchorButton from '~/components/AnchorButton.svelte';
   import Button from '~/components/Button.svelte';
-  import Select from '~/components/Select.svelte';
   import Stack from '~/components/Stack.svelte';
   import TextInput from '~/components/TextInput.svelte';
   import Title from '~/components/Title.svelte';
+  import VoiceSelect from '~/components/VoiceSelect.svelte';
   import { createBook } from '~/stores/book';
-  import { getVoices } from '~/stores/voices';
-  import type { Option } from '~/types';
 
   let bookName = '';
-  let voice: string | undefined = undefined;
+  let voice = '';
 
-  let voices: Option[] = [
-    {
-      label: 'None',
-      value: undefined,
-    },
-  ];
   let loading = false;
 
   const onBookNameChange = (event: Event) => {
@@ -42,28 +34,6 @@
       loading = false;
     }
   }
-
-  onMount(async () => {
-    const voiceList = await getVoices();
-
-    if (voiceList) {
-      const voiceOptions: Option[] = [
-        {
-          label: 'None',
-          value: undefined,
-        },
-      ];
-
-      voiceList.forEach((v) => {
-        voiceOptions.push({
-          label: v.name,
-          value: v.name,
-        });
-      });
-
-      voices = [...voiceOptions];
-    }
-  });
 </script>
 
 <svelte:head>
@@ -84,13 +54,7 @@
   </Stack>
 
   <Stack>
-    <Select
-      name="Voice"
-      label="Voice (for text-to-speech)"
-      options={voices}
-      bind:value={voice}
-      on:change={onVoiceChange}
-    />
+    <VoiceSelect bind:value={voice} on:change={onVoiceChange} />
   </Stack>
 
   <Stack>
