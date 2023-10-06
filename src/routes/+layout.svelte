@@ -16,6 +16,7 @@
   </div>
   <footer>
     <a href="/"><Icon icon="ic:baseline-home" /> Home</a>
+    <a href="/sync">Sync</a>
     <a href="/settings"><Icon icon="material-symbols:settings" /> Settings</a>
   </footer>
 </main>
