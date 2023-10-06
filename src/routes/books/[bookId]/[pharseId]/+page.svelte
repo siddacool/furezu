@@ -3,7 +3,6 @@
   import Icon from '@iconify/svelte';
   import { liveQuery } from 'dexie';
   import AnchorButton from '~/components/AnchorButton.svelte';
-  import Button from '~/components/Button.svelte';
   import Speak from '~/components/Speak.svelte';
   import Stack from '~/components/Stack.svelte';
   import Title from '~/components/Title.svelte';
@@ -20,7 +19,9 @@
   <title>{$book?.name || ''}</title>
 </svelte:head>
 
-<p><a href={`/books/${bookId}`}>{$book?.name || ''}</a></p>
+<p class="get-back-link">
+  <a href={`/books/${bookId}`}><Icon icon="ep:back" /> {$book?.name || ''}</a>
+</p>
 
 {#if $phrase?._id}
   <Stack>
@@ -50,6 +51,17 @@
   h3 {
     &:empty {
       display: none;
+    }
+  }
+
+  .get-back-link {
+    font-size: 1.2rem;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      color: inherit;
+      text-decoration: none;
     }
   }
 
