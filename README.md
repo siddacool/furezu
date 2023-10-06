@@ -8,6 +8,12 @@ Once you've created a project and installed dependencies with `npm install` (or 
 pnpm dev
 ```
 
+for remote development (Android phone or any other device connected on same network)
+
+```bash
+pnpm dev:remote
+```
+
 ## Building
 
 To create a production version of your app:

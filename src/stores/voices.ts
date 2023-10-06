@@ -7,14 +7,29 @@ export type VoiceList = {
   model: SpeechSynthesisVoice;
 };
 
-const voicesPromise = (): Promise<SpeechSynthesisVoice[]> => {
+const voicesPromise = (): Promise<SpeechSynthesisVoice[] | undefined> => {
   return new Promise((resolve) => {
-    speechSynthesis.addEventListener('voiceschanged', () => {
+    const maxTrials = 20;
+    let trial = 0;
+
+    const interval = setInterval(() => {
       const synth = window.speechSynthesis;
       const voices = synth.getVoices();
 
-      resolve(voices);
-    });
+      trial += 1;
+
+      if (trial > maxTrials) {
+        clearInterval(interval);
+
+        resolve(undefined);
+      }
+
+      if (voices.length) {
+        clearInterval(interval);
+
+        resolve(voices);
+      }
+    }, 50);
   });
 };
 
@@ -55,6 +70,8 @@ function createVoiceList() {
           model: voice,
         });
       });
+
+      console.log(voiceList);
 
       update(() => voiceList);
     },

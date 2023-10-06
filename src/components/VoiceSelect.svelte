@@ -11,7 +11,7 @@
     <div class="Paper">
       <select name="voice-select" id="voice-select" on:change on:focus on:blur>
         <option value="" selected={value === ''}> None </option>
-        {#each $voiceList as voice (voice.name)}
+        {#each $voiceList as voice}
           <option value={voice.name} selected={value === voice.name}>
             {voice.language}
             {voice.name}
