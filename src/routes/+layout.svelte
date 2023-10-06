@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Icon from '@iconify/svelte';
   import { onMount } from 'svelte';
   import ThemeListener from '~/components/ThemeListener.svelte';
   import { voiceList } from '~/stores/voices';
@@ -13,6 +14,9 @@
   <div class="box">
     <slot />
   </div>
+  <footer>
+    <a href="/"><Icon icon="ic:baseline-home" /> Home</a>
+  </footer>
 </main>
 
 <style lang="scss">
@@ -101,10 +105,43 @@
     height: 100%;
     overflow-y: auto;
     padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  footer {
+    font-family: var(--font-family-main);
+    padding-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-self: center;
+    justify-content: flex-start;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+
+    a {
+      color: inherit;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      font-size: 1rem;
+
+      &:hover {
+        color: var(--color-accent-600);
+      }
+
+      :global(svg) {
+        margin-right: 4px;
+        font-size: 1.2rem;
+      }
+    }
   }
 
   .box {
     max-width: 800px;
     margin: 0 auto;
+    width: 100%;
   }
 </style>
