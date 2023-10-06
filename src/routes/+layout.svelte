@@ -16,6 +16,7 @@
   </div>
   <footer>
     <a href="/"><Icon icon="ic:baseline-home" /> Home</a>
+    <a href="/settings"><Icon icon="material-symbols:settings" /> Settings</a>
   </footer>
 </main>
 
@@ -112,7 +113,7 @@
 
   footer {
     font-family: var(--font-family-main);
-    padding-top: 16px;
+    padding-top: 32px;
     display: flex;
     flex-wrap: wrap;
     align-self: center;
@@ -127,6 +128,7 @@
       align-items: center;
       text-decoration: none;
       font-size: 1rem;
+      margin-right: 24px;
 
       &:hover {
         color: var(--color-accent-600);

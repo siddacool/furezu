@@ -21,5 +21,6 @@
     max-width: 175px;
     color: inherit;
     font-size: 1.2rem;
+    flex-direction: column;
   }
 </style>

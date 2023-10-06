@@ -3,6 +3,7 @@
   import { liveQuery } from 'dexie';
   import AnchorButton from '~/components/AnchorButton.svelte';
   import Book from '~/components/Book.svelte';
+  import PhraseCount from '~/components/PhraseCount.svelte';
   import Stack from '~/components/Stack.svelte';
   import { db } from '~/stores/db';
 
@@ -19,7 +20,10 @@
   <div class="books">
     {#each $books as book (book._id)}
       <Book href={`books/${book._id}`}>
-        {book.name}
+        <div class="bookName">
+          {book.name}
+        </div>
+        <PhraseCount bookId={book._id} />
       </Book>
     {/each}
   </div>
@@ -29,12 +33,6 @@
     <AnchorButton href="create-book" variant="solid">
       <Icon icon="material-symbols:add" slot="before" />
       Create book
-    </AnchorButton>
-    <br />
-    <br />
-    <AnchorButton href="settings">
-      <Icon icon="material-symbols:settings" slot="before" />
-      Settings
     </AnchorButton>
   </div>
 </Stack>
@@ -53,5 +51,9 @@
     display: flex;
     flex-wrap: wrap;
     margin: -8px;
+  }
+
+  .bookName {
+    margin-bottom: 8px;
   }
 </style>
