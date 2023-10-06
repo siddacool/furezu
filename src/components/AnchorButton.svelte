@@ -43,16 +43,36 @@
 
     &.variant {
       &--hollow {
-        background-color: transparent;
-        color: inherit;
-        border: 1px solid var(--color-grey-700);
+        background-color: var(--color-accent-100);
+        color: var(--color-accent-600);
+        border: 1px solid var(--color-accent-400);
+        transition: all 100ms;
+
+        &:hover {
+          background-color: var(--color-accent-alt-100);
+        }
+
+        &:active {
+          background-color: var(--color-accent-alt-200);
+        }
       }
 
       &--solid {
-        border: 1px solid var(--color-grey-700);
-        background-color: var(--color-grey-700);
-        color: var(--color-white);
+        border: 1px solid var(--color-accent-400);
+        background-color: var(--color-accent-400);
+        color: #fff;
         box-shadow: var(--shadow-elevation-medium);
+        transition: all 100ms;
+
+        &:hover {
+          background-color: var(--color-accent-300);
+          border-color: var(--color-accent-300);
+        }
+
+        &:active {
+          background-color: var(--color-accent-200);
+          border-color: var(--color-accent-200);
+        }
       }
     }
 

@@ -35,6 +35,8 @@
     border-radius: 4px;
     min-height: 80px;
     overflow: auto;
+    background-color: transparent;
+    color: var(--color-grey-900);
   }
 
   label {

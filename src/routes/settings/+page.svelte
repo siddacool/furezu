@@ -2,8 +2,7 @@
   import Checkbox from '~/components/Checkbox.svelte';
   import Stack from '~/components/Stack.svelte';
   import Title from '~/components/Title.svelte';
-
-  let darkTheme = false;
+  import { Theme, theme } from '~/stores/theme';
 </script>
 
 <svelte:head>
@@ -13,7 +12,7 @@
 <Title>Settings</Title>
 
 <Stack>
-  <Checkbox checked={darkTheme} on:change={() => (darkTheme = !darkTheme)} id="DarkTheme">
+  <Checkbox checked={$theme === Theme.DARK} on:change={theme.toggle} id="DarkTheme">
     Dark theme
   </Checkbox>
 </Stack>

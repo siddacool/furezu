@@ -38,6 +38,13 @@
     border: 0;
     font-size: 1rem;
     outline: none;
+    color: var(--color-grey-900);
+    background-color: transparent;
+  }
+
+  option {
+    background-color: var(--color-white);
+    color: var(--color-grey-900);
   }
 
   label {
