@@ -17,7 +17,7 @@
     if (isdarkTheme) {
       themeColor?.setAttribute('content', '#000');
     } else {
-      themeColor?.setAttribute('content', '#e9e9e9');
+      themeColor?.setAttribute('content', '#18223f');
     }
   });
 
