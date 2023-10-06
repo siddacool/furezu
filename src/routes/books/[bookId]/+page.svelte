@@ -4,6 +4,7 @@
   import { liveQuery } from 'dexie';
   import AnchorButton from '~/components/AnchorButton.svelte';
   import Paper from '~/components/Paper.svelte';
+  import Speak from '~/components/Speak.svelte';
   import Title from '~/components/Title.svelte';
   import { db } from '~/stores/db';
 
@@ -30,6 +31,9 @@
             <h3 class="phrase">{phrase.phrase}</h3>
             <h3 class="pronounciation">{phrase.pronounciation}</h3>
             <p class="translation">{phrase.translation}</p>
+            <div class="speak-section">
+              <Speak translation={phrase.translation} voice={$book?.voice} />
+            </div>
           </section>
         </Paper>
       </a>
@@ -75,5 +79,13 @@
 
   .buttonHolder {
     padding-top: 16px;
+  }
+
+  .speak-section {
+    &:empty {
+      display: none;
+    }
+
+    padding-bottom: 16px;
   }
 </style>

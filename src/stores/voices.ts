@@ -24,6 +24,10 @@ export async function getVoices() {
       throw Error('Not browser');
     }
 
+    if (!('speechSynthesis' in window)) {
+      throw Error(`Sorry, your browser doesn't support text to speech!`);
+    }
+
     const voices = await voicesPromise();
 
     return Promise.resolve(voices);

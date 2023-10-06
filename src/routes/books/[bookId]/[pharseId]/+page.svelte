@@ -1,7 +1,10 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  import Icon from '@iconify/svelte';
   import { liveQuery } from 'dexie';
   import AnchorButton from '~/components/AnchorButton.svelte';
+  import Button from '~/components/Button.svelte';
+  import Speak from '~/components/Speak.svelte';
   import Stack from '~/components/Stack.svelte';
   import Title from '~/components/Title.svelte';
   import { db } from '~/stores/db';
@@ -30,6 +33,9 @@
 
   <Stack>
     <div class="buttonHolder">
+      <Speak voice={$book?.voice} translation={$phrase?.translation} />
+      <br />
+      <br />
       <AnchorButton href={`${pharseId}/edit`}>Edit</AnchorButton>
     </div>
   </Stack>
@@ -37,7 +43,7 @@
 
 <style lang="scss">
   .buttonHolder {
-    display: flex;
+    display: block;
     padding-top: 16px;
   }
 
