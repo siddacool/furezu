@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
 import { writable } from 'svelte/store';
+import { isoLanguages } from '~/data/iso-languages';
 
 export type VoiceList = {
   name: string;
@@ -64,14 +65,15 @@ function createVoiceList() {
       const voiceList: VoiceList[] = [];
 
       voices?.forEach((voice) => {
+        const langCode = voice.lang.split('-')[0] || '';
+        const language = isoLanguages[langCode];
+
         voiceList.push({
           name: voice.name,
-          language: voice.lang,
+          language: language || langCode,
           model: voice,
         });
       });
-
-      console.log(voiceList);
 
       update(() => voiceList);
     },

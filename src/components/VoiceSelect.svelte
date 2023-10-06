@@ -13,7 +13,7 @@
         <option value="" selected={value === ''}> None </option>
         {#each $voiceList as voice}
           <option value={voice.name} selected={value === voice.name}>
-            {voice.language}
+            {voice.language} -
             {voice.name}
           </option>
         {/each}
