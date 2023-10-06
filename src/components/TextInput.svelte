@@ -44,6 +44,8 @@
     border: 0;
     font-size: 1rem;
     outline: none;
+    background-color: transparent;
+    color: var(--color-grey-900);
   }
 
   label {
