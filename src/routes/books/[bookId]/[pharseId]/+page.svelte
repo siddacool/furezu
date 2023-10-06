@@ -4,6 +4,7 @@
   import { liveQuery } from 'dexie';
   import AnchorButton from '~/components/AnchorButton.svelte';
   import BookTitle from '~/components/BookTitle.svelte';
+  import Paper from '~/components/Paper.svelte';
   import Speak from '~/components/Speak.svelte';
   import Stack from '~/components/Stack.svelte';
   import Title from '~/components/Title.svelte';
@@ -22,12 +23,16 @@
 
 {#if $phrase?._id}
   <Stack>
-    <Title>{$phrase.meaning}</Title>
-    <h3 class="phrase">{$phrase.phrase}</h3>
-    <h3 class="pronounciation">{$phrase?.pronounciation}</h3>
-    <p class="Translation">{$phrase?.translation}</p>
-    <p class="description">{$phrase?.description}</p>
-    <Speak voice={$book?.voice} translation={$phrase?.translation} />
+    <Paper>
+      <section>
+        <Title>{$phrase.meaning}</Title>
+        <h3 class="phrase">{$phrase.phrase}</h3>
+        <h3 class="pronounciation">{$phrase?.pronounciation}</h3>
+        <p class="Translation">{$phrase?.translation}</p>
+        <p class="description">{$phrase?.description}</p>
+        <Speak voice={$book?.voice} translation={$phrase?.translation} />
+      </section>
+    </Paper>
   </Stack>
 
   <Stack>
@@ -44,20 +49,15 @@
   }
 
   h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
     &:empty {
       display: none;
     }
   }
 
-  .get-back-link {
-    font-size: 1.2rem;
-
-    a {
-      display: inline-flex;
-      align-items: center;
-      color: inherit;
-      text-decoration: none;
-    }
+  section {
+    padding: 16px;
   }
 
   p {

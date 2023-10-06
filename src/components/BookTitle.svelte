@@ -1,6 +1,5 @@
 <script lang="ts">
   import PhraseCount from './PhraseCount.svelte';
-  import Title from './Title.svelte';
 
   export let bookName: string | undefined;
   export let bookId: string;
@@ -17,6 +16,7 @@
   h2 {
     margin-top: 0;
     font-size: 1.45rem;
+    font-weight: 600;
   }
 
   a {
