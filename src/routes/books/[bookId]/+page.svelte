@@ -25,8 +25,7 @@
         <Paper>
           <section>
             <h3 class="meaning">{phrase.meaning}</h3>
-            <p class="phrase">{phrase.phrase}</p>
-            <p class="pronounciation">{phrase?.pronounciation}</p>
+            <p class="phrase">{phrase?.pronounciation || phrase.phrase}</p>
             <p class="translation">{phrase?.translation}</p>
             <p class="description">{phrase?.description}</p>
             <div class="speak-section">
@@ -64,11 +63,14 @@
 
     h3 {
       font-size: 1.05rem;
+      margin-bottom: 8px;
     }
 
     p {
       font-size: 1.05rem;
       font-weight: 400;
+      margin-top: 0;
+      margin-bottom: 8px;
 
       &.description {
         font-size: 0.88rem;
@@ -89,6 +91,7 @@
       display: none;
     }
 
+    padding-top: 8px;
     padding-bottom: 16px;
   }
 </style>

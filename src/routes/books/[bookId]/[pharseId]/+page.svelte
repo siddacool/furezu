@@ -25,7 +25,7 @@
   <Stack>
     <Paper>
       <section>
-        <Title>{$phrase.meaning}</Title>
+        <h2 class="phrase">{$phrase.meaning}</h2>
         <h3 class="phrase">{$phrase.phrase}</h3>
         <h3 class="pronounciation">{$phrase?.pronounciation}</h3>
         <p class="Translation">{$phrase?.translation}</p>
@@ -46,6 +46,10 @@
   .buttonHolder {
     display: block;
     padding-top: 16px;
+  }
+
+  h2 {
+    margin-top: 0;
   }
 
   h3 {

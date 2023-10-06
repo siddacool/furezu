@@ -79,8 +79,6 @@
   <title>Edit: {$book?.name || ''}</title>
 </svelte:head>
 
-<Title>Edit: {$book?.name || ''}</Title>
-
 <form on:submit|preventDefault={edit}>
   <Stack>
     <TextInput
