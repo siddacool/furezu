@@ -57,6 +57,11 @@ export async function removeBook(bookId: string) {
 
     await db.books.delete(bookData.id);
 
+    const relatedPharses = await db.phrases?.where({ bookId }).toArray();
+    const relatedPharsesKeys = relatedPharses.map((pharse) => pharse.id);
+
+    await db.phrases.bulkDelete(relatedPharsesKeys);
+
     return Promise.resolve();
   } catch (error) {
     return Promise.reject(error);
