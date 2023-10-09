@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Icon from '@iconify/svelte';
   import Button from '~/components/Button.svelte';
   import Stack from '~/components/Stack.svelte';
   import Title from '~/components/Title.svelte';
@@ -7,11 +8,14 @@
   import { timeout } from '~/utils/time';
 
   let loading = false;
+  let importing = false;
+  let exporting = false;
   let files: FileList | undefined;
   let fileUploadElement: HTMLInputElement | undefined = undefined;
 
   async function downloadBooks() {
     try {
+      exporting = true;
       loading = true;
 
       const rawData = await exportBooks();
@@ -27,6 +31,7 @@
     } catch (e) {
       console.log(e);
     } finally {
+      exporting = false;
       loading = false;
     }
   }
@@ -64,6 +69,7 @@
 
   async function uploadBooks() {
     try {
+      importing = true;
       loading = true;
 
       const uploadedFiles = files;
@@ -84,6 +90,7 @@
     } catch (e) {
       console.log(e);
     } finally {
+      importing = false;
       loading = false;
     }
   }
@@ -100,10 +107,25 @@
 <Title>Sync</Title>
 
 <Stack>
-  <Button variant="solid" on:click={downloadBooks} disabled={loading}>Download books</Button>
+  <p>Download/backup books</p>
+  <Button variant="solid" on:click={downloadBooks} disabled={loading}>
+    <div slot="before">
+      {#if exporting}
+        <Icon icon="svg-spinners:3-dots-fade" />
+      {:else}
+        <Icon icon="material-symbols:sim-card-download-outline" />
+      {/if}
+    </div>
+    Download books
+  </Button>
 </Stack>
 
+<br />
+<hr />
+<br />
+
 <Stack>
+  <p>Import books from other devices.</p>
   <input
     accept="application/JSON"
     bind:files
@@ -115,7 +137,16 @@
     disabled={loading}
     class="file-upload"
   />
-  <Button variant="solid" on:click={triggerFileUpload} disabled={loading}>Import books</Button>
+  <Button variant="solid" on:click={triggerFileUpload} disabled={loading}>
+    <div slot="before">
+      {#if importing}
+        <Icon icon="svg-spinners:3-dots-fade" />
+      {:else}
+        <Icon icon="material-symbols:upload-rounded" />
+      {/if}
+    </div>
+    Import books
+  </Button>
 </Stack>
 
 <style lang="scss">
@@ -123,5 +154,9 @@
     opacity: 0;
     position: absolute;
     z-index: -100;
+  }
+
+  p {
+    font-family: var(--font-family-main);
   }
 </style>

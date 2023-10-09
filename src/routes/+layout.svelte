@@ -14,12 +14,14 @@
   <div class="box">
     <slot />
   </div>
-  <footer>
-    <a href="/"><Icon icon="ic:baseline-home" /> Home</a>
-    <a href="/sync">Sync</a>
-    <a href="/settings"><Icon icon="material-symbols:settings" /> Settings</a>
-  </footer>
 </main>
+<footer>
+  <div class="box">
+    <a href="/"><Icon icon="ic:baseline-home" /> Home</a>
+    <a href="/sync"><Icon icon="material-symbols:sync" /> Sync</a>
+    <a href="/settings"><Icon icon="material-symbols:settings" /> Settings</a>
+  </div>
+</footer>
 
 <style lang="scss">
   :global(:root) {
@@ -104,7 +106,7 @@
 
   main {
     background-color: var(--color-grey-100);
-    height: 100%;
+    height: calc(100% - 50px);
     overflow-y: auto;
     padding: 24px;
     display: flex;
@@ -113,15 +115,15 @@
   }
 
   footer {
+    padding: 0 24px;
+    background-color: var(--color-grey-100);
     font-family: var(--font-family-main);
-    padding-top: 32px;
     display: flex;
     flex-wrap: wrap;
     align-self: center;
     justify-content: flex-start;
-    max-width: 800px;
-    margin: 0 auto;
     width: 100%;
+    height: 50px;
 
     a {
       color: inherit;
