@@ -6,4 +6,8 @@
 <h1>Welcome to SvelteKit 🇹🇭🇹🇭🇹🇭🇹🇭</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 
-<Button color="default">Yo</Button>
+<Button color="default">Active</Button>
+<Button color="primary">Active</Button>
+<Button color="danger">Active</Button>
+<Button color="warning">Active</Button>
+<Button color="safe">Active</Button>
