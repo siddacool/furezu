@@ -5,6 +5,7 @@
 
 <GlobalStyles>
   <Button>Default</Button>
+  <Button disabled>Disabled</Button>
   <Button variant="primary">Primary</Button>
   <Button variant="danger">Danger</Button>
 </GlobalStyles>

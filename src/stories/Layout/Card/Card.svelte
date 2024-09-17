@@ -4,5 +4,8 @@
 </script>
 
 <GlobalStyles>
-  <Card>Hello, hello, helllo how low</Card>
+  <Card>
+    <p>Hello, hello, helllo how low</p>
+    <h2>yo</h2>
+  </Card>
 </GlobalStyles>

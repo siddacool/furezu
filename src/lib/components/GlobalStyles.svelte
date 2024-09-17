@@ -11,6 +11,16 @@
     --color-white-const: #fff;
     --color-black-const: #000;
 
+    --color-grey-font-100: #f7f7f7; /* lightest grey */
+    --color-grey-font-200: #e1e1e1;
+    --color-grey-font-300: #cfcfcf;
+    --color-grey-font-400: #b1b1b1;
+    --color-grey-font-500: #9e9e9e; /* neutral grey */
+    --color-grey-font-600: #7e7e7e;
+    --color-grey-font-700: #626262;
+    --color-grey-font-800: #515151;
+    --color-grey-font-900: #3b3b3b; /* darkest grey */
+
     --color-primary-const-100: #e8e8ff;
     --color-primary-const-200: #d1d1ff;
     --color-primary-const-300: #b9b9ff;
@@ -77,6 +87,16 @@
 
     --color-white: #000;
     --color-black: #ffffff;
+
+    --color-grey-font-100: #3b3b3b; /* lightest grey in dark mode */
+    --color-grey-font-200: #515151;
+    --color-grey-font-300: #626262;
+    --color-grey-font-400: #7e7e7e;
+    --color-grey-font-500: #9e9e9e; /* neutral grey */
+    --color-grey-font-600: #b1b1b1;
+    --color-grey-font-700: #cfcfcf;
+    --color-grey-font-800: #e1e1e1;
+    --color-grey-font-900: #f7f7f7; /* darkest grey in dark mode */
 
     /* Primary: Indigo tints */
     --color-primary-100: #3c366b;
@@ -150,6 +170,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    color: var(--color-black);
+    color: var(--color-grey-font-900);
   }
 </style>
