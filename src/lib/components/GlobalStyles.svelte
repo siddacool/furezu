@@ -1,3 +1,9 @@
+<script lang="ts">
+  import { polyfillCountryFlagEmojis } from 'country-flag-emoji-polyfill';
+
+  polyfillCountryFlagEmojis();
+</script>
+
 <slot />
 
 <style lang="scss">
