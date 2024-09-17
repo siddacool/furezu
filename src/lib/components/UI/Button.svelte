@@ -7,12 +7,13 @@
 
   interface ButtonProps extends SvelteComponentProps {
     variant?: ButtonVariant;
+    compact?: boolean;
   }
 
-  const { variant = 'default', children }: ButtonProps = $props();
+  const { variant = 'default', compact = false, children }: ButtonProps = $props();
 </script>
 
-<button class="Button variant variant--{variant}">
+<button class="Button variant variant--{variant}" class:compact>
   {#if children}
     {@render children()}
   {/if}
@@ -34,6 +35,15 @@
     height: 44px;
     transition: all 100ms;
     letter-spacing: 0.3px;
+
+    :global(svg) {
+      font-size: 1.6rem;
+    }
+
+    &.compact {
+      min-width: 65px;
+      padding: 0;
+    }
 
     &.variant {
       &--default {

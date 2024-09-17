@@ -4,7 +4,7 @@
 </script>
 
 <GlobalStyles>
-  <Button>Active</Button>
-  <Button variant="primary">Active</Button>
-  <Button variant="danger">Active</Button>
+  <Button>Default</Button>
+  <Button variant="primary">Primary</Button>
+  <Button variant="danger">Danger</Button>
 </GlobalStyles>
