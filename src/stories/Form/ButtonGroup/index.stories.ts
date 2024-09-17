@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
-import SelectButtons from './SelectButtons.svelte';
+import ButtonGroup from './ButtonGroup.svelte';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'SelectButton',
-  component: SelectButtons,
+  component: ButtonGroup,
   tags: ['autodocs'],
   argTypes: {},
-} satisfies Meta<SelectButtons>;
+} satisfies Meta<ButtonGroup>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

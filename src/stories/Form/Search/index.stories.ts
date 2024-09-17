@@ -3,7 +3,6 @@ import SearchNormal from './SearchNormal.svelte';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Search',
   component: SearchNormal,
   tags: ['autodocs'],
 } satisfies Meta<SearchNormal>;

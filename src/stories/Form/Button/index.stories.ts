@@ -3,7 +3,6 @@ import DefaultButton from './Buttons.svelte';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Button',
   component: DefaultButton,
   tags: ['autodocs'],
   argTypes: {},

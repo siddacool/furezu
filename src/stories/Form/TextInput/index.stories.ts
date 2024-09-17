@@ -3,7 +3,6 @@ import TextInputNormal from './TextInputNormal.svelte';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'TextInput',
   component: TextInputNormal,
   tags: ['autodocs'],
 } satisfies Meta<TextInputNormal>;
