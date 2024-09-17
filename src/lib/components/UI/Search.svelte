@@ -42,9 +42,12 @@
 </script>
 
 <div class="Search" class:active class:disabled>
-  <span class="search-icon" class:active class:disabled>
-    <Icon icon="material-symbols:search" />
-  </span>
+  {#if !active}
+    <span class="search-icon" class:disabled>
+      <Icon icon="material-symbols:search" />
+    </span>
+  {/if}
+
   <input
     type="text"
     {name}
@@ -72,10 +75,11 @@
     transition: all 100ms;
     border: 2px solid;
     border-color: var(--color-grey-500);
-    height: 44px;
-    border-radius: 10px;
+    height: 60px;
+    border-radius: 30px;
     overflow: hidden;
     position: relative;
+    transition: all 100ms;
 
     &:not(.disabled) {
       &.active {
@@ -91,7 +95,7 @@
   }
 
   input {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 400;
     outline: none;
     border: 0;
@@ -102,19 +106,24 @@
     flex: 1;
     position: relative;
     z-index: 1;
-    padding-left: 44px;
+    padding-left: 60px;
+    transition: all 100ms;
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button {
       appearance: none;
     }
+
+    &:focus {
+      padding-left: 24px;
+    }
   }
 
   .search-icon {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     display: inline-flex;
     height: 100%;
-    width: 44px;
+    width: 60px;
     align-items: center;
     justify-content: center;
     position: absolute;
@@ -123,28 +132,22 @@
     z-index: 0;
 
     &:not(.disabled) {
-      &.active {
-        color: var(--color-primary-700);
-      }
-    }
-
-    &:not(.disabled) {
       color: var(--color-grey-font-600);
     }
   }
 
   .close-icon {
-    font-size: 1.34rem;
+    font-size: 1.7rem;
     display: inline-flex;
     height: 100%;
-    width: 44px;
+    width: 60px;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 100ms;
     background-color: transparent;
     border: 0;
-    border-radius: 20px;
+    border-radius: 30px;
     color: var(--color-grey-font-600);
 
     &:hover {
