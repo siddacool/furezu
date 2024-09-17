@@ -19,10 +19,11 @@
       sans-serif;
 
     --color-white: #fff;
-    --color-black: #000;
+    --color-black: #090933;
+    --color-backdrop: #fafafa;
 
-    --color-white-const: #fff;
-    --color-black-const: #000;
+    --color-white-const: #fafbff;
+    --color-black-const: #090933;
 
     --color-grey-font-100: #f7f7f7; /* lightest grey */
     --color-grey-font-200: #e1e1e1;
@@ -98,8 +99,10 @@
   :global(.THEME_IS_DARK) {
     color-scheme: dark;
 
-    --color-white: #090933;
+    --color-white: #0b0b43;
     --color-black: #f7f6ff;
+
+    --color-backdrop: #090933;
 
     --color-grey-font-100: #3b3b3b; /* lightest grey in dark mode */
     --color-grey-font-200: #515151;

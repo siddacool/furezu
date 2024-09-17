@@ -16,6 +16,8 @@ code {
 }
 
 :root {
+  --color-backdrop: #fafafa;
+
   --color-grey-font-100: #f7f7f7; /* lightest grey */
   --color-grey-font-200: #e1e1e1;
   --color-grey-font-300: #cfcfcf;
@@ -28,6 +30,8 @@ code {
 }
 
 .THEME_IS_DARK {
+  --color-backdrop: #090933;
+
   --color-grey-font-100: #3b3b3b; /* lightest grey in dark mode */
   --color-grey-font-200: #515151;
   --color-grey-font-300: #626262;
@@ -37,9 +41,9 @@ code {
   --color-grey-font-700: #cfcfcf;
   --color-grey-font-800: #e1e1e1;
   --color-grey-font-900: #f7f7f7; /* darkest grey in dark mode */
+}
 
-  .sbdocs-preview {
-    background-color: #292c2e !important;
-    color: var(--color-grey-font-900);
-  }
+.sbdocs-preview {
+  background-color: var(--color-backdrop) !important;
+  color: var(--color-grey-font-900);
 }

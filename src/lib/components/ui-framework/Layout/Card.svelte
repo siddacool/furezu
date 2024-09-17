@@ -14,7 +14,7 @@
 
 <style lang="scss">
   div {
-    background-color: transparent;
+    background-color: var(--color-white);
     padding: 24px;
     border-radius: 24px;
     display: flex;
