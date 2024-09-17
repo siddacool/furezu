@@ -1,10 +1,17 @@
 <script lang="ts">
+  import type { SvelteComponentProps } from '$lib/types/svelte-component';
   import { polyfillCountryFlagEmojis } from 'country-flag-emoji-polyfill';
 
   polyfillCountryFlagEmojis();
+
+  type GlobalStylesProps = SvelteComponentProps;
+
+  const { children }: GlobalStylesProps = $props();
 </script>
 
-<slot />
+{#if children}
+  {@render children()}
+{/if}
 
 <style lang="scss">
   :global(:root) {
