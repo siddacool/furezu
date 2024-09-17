@@ -98,8 +98,8 @@
   :global(.THEME_IS_DARK) {
     color-scheme: dark;
 
-    --color-white: #000;
-    --color-black: #ffffff;
+    --color-white: #090933;
+    --color-black: #f7f6ff;
 
     --color-grey-font-100: #3b3b3b; /* lightest grey in dark mode */
     --color-grey-font-200: #515151;
