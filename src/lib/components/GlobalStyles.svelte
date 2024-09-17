@@ -6,6 +6,20 @@
       sans-serif;
 
     --color-white: #fff;
+    --color-black: #000;
+
+    --color-white-const: #fff;
+    --color-black-const: #000;
+
+    --color-primary-const-100: #e8e8ff;
+    --color-primary-const-200: #d1d1ff;
+    --color-primary-const-300: #b9b9ff;
+    --color-primary-const-400: #a1a1ff;
+    --color-primary-const-500: #8989ff;
+    --color-primary-const-600: #7171ff;
+    --color-primary-const-700: #5959ff;
+    --color-primary-const-800: #4141ff;
+    --color-primary-const-900: #2929ff;
 
     --color-primary-100: #e8e8ff;
     --color-primary-200: #d1d1ff;
@@ -58,10 +72,11 @@
     --color-warning-900: #d17300;
   }
 
-  :global([data-theme='DARK']) {
+  :global(.THEME_IS_DARK) {
     color-scheme: dark;
 
     --color-white: #000;
+    --color-black: #ffffff;
 
     /* Primary: Indigo tints */
     --color-primary-100: #3c366b;

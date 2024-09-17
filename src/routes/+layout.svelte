@@ -1,12 +1,12 @@
 <script lang="ts">
-  import LayoutRoot from '$lib/components/LayoutRoot.svelte';
+  import GlobalStyles from '$lib/components/GlobalStyles.svelte';
   import { polyfillCountryFlagEmojis } from 'country-flag-emoji-polyfill';
 
   polyfillCountryFlagEmojis();
 </script>
 
-<LayoutRoot>
+<GlobalStyles>
   <main>
     <slot />
   </main>
-</LayoutRoot>
+</GlobalStyles>

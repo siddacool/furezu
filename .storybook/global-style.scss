@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Twemoji Country Flags', 'Montserrat', 'Roboto', 'Segoe UI', 'San Francisco',
+    sans-serif;
+  font-size: 16px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.THEME_IS_DARK {
+  .sbdocs-preview {
+    background-color: #292c2e !important;
+  }
+}
