@@ -13,7 +13,8 @@
 
 <GlobalStyles>
   <div>
-    <TextInput {value} disabled {oninput} name="normal" />
+    <TextInput {value} {oninput} name="normal" />
+    <TextInput {value} disabled {oninput} label="Disabled" />
     <TextInput {value} label="With label" {oninput} placeholder="This is a placeholder" />
     <TextInput {value} label="Disabled" {oninput} />
     <TextInput {value} label="With Error" error="This is error message" {oninput} />
@@ -25,7 +26,7 @@
     display: flex;
     flex-direction: column;
 
-    :global(.TextInput) {
+    :global(input) {
       margin-bottom: 20px;
     }
   }

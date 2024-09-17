@@ -60,7 +60,7 @@
   label {
     font-size: 0.95rem;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-weight: 500;
     padding-left: 8px;
 
@@ -114,7 +114,7 @@
   }
 
   .ErrorMessage {
-    margin-top: 8px;
+    margin-top: 6px;
     padding-left: 8px;
     color: var(--color-danger-800);
     font-size: 1rem;
