@@ -9,6 +9,8 @@
     variant?: ButtonVariant;
     compact?: boolean;
     disabled?: boolean;
+    onclick?: (e: MouseEvent) => void;
+    name?: string;
   }
 
   const {
@@ -16,10 +18,12 @@
     compact = false,
     disabled = false,
     children,
+    onclick,
+    name,
   }: ButtonProps = $props();
 </script>
 
-<button class="Button variant variant--{variant}" class:compact {disabled}>
+<button class="Button variant variant--{variant}" class:compact {disabled} {onclick} {name}>
   {#if children}
     {@render children()}
   {/if}
@@ -28,7 +32,7 @@
 <style lang="scss">
   button {
     margin: 0;
-    padding: 0 6px;
+    padding: 0 14px;
     border: 1px solid;
     font-size: 1.12rem;
     font-weight: 500;
