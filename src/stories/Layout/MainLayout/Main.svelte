@@ -1,7 +1,7 @@
 <script>
   import GlobalStyles from '$lib/components/GlobalStyles.svelte';
-  import Button from '$lib/components/ui/Button.svelte';
-  import MainLayout from '$lib/components/ui/MainLayout.svelte';
+  import Button from '$lib/components/ui-framework/Form/Button.svelte';
+  import MainLayout from '$lib/components/ui-framework/Layout/MainLayout.svelte';
 </script>
 
 <GlobalStyles>

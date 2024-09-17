@@ -1,6 +1,6 @@
 <script>
   import GlobalStyles from '$lib/components/GlobalStyles.svelte';
-  import Button from '$lib/components/ui/Button.svelte';
+  import Button from '$lib/components/ui-framework/Form/Button.svelte';
 </script>
 
 <GlobalStyles>

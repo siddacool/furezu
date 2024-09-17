@@ -1,6 +1,6 @@
 <script lang="ts">
   import GlobalStyles from '$lib/components/GlobalStyles.svelte';
-  import TextInput from '$lib/components/ui/TextInput.svelte';
+  import TextInput from '$lib/components/ui-framework/Form/TextInput.svelte';
 
   let value = $state('Type Something');
 

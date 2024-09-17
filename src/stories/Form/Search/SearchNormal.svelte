@@ -1,6 +1,6 @@
 <script lang="ts">
   import GlobalStyles from '$lib/components/GlobalStyles.svelte';
-  import Search from '$lib/components/ui/Search.svelte';
+  import Search from '$lib/components/ui-framework/Form/Search.svelte';
 
   let value = $state('');
   let searchAt = $state('');

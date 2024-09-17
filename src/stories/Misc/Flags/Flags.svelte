@@ -1,6 +1,6 @@
 <script>
   import GlobalStyles from '$lib/components/GlobalStyles.svelte';
-  import Card from '$lib/components/ui/Card.svelte';
+  import Card from '$lib/components/ui-framework/Layout/Card.svelte';
 </script>
 
 <GlobalStyles>

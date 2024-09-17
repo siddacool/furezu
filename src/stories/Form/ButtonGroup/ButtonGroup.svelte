@@ -1,7 +1,7 @@
 <script lang="ts">
   import GlobalStyles from '$lib/components/GlobalStyles.svelte';
-  import Button from '$lib/components/ui/Button.svelte';
-  import ButtonGroup from '$lib/components/ui/ButtonGroup.svelte';
+  import Button from '$lib/components/ui-framework/Form/Button.svelte';
+  import ButtonGroup from '$lib/components/ui-framework/Form/ButtonGroup.svelte';
 
   let value = $state('one');
 
