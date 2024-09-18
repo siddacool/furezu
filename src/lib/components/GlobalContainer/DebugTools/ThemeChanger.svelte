@@ -13,5 +13,4 @@
 
 <Button compact class="ThemeButton" title="Change theme" onclick={switchTheme}>
   <Icon icon="mdi:theme" />
-  {useThemeStore.theme}
 </Button>

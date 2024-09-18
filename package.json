@@ -54,7 +54,8 @@
     "@storybook/types": "^8.3.1",
     "@sveltejs/adapter-netlify": "^4.3.3",
     "country-flag-emoji-polyfill": "^0.1.8",
-    "dexie": "^4.0.8"
+    "dexie": "^4.0.8",
+    "nanoid": "^5.0.7"
   },
   "volta": {
     "node": "20.17.0",

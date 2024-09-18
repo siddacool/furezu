@@ -89,6 +89,7 @@
     background-color: transparent;
     transition: all 100ms;
     letter-spacing: 0.3px;
+    font-family: inherit;
 
     &:not(.error):not([disabled]) {
       &:focus {

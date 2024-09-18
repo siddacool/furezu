@@ -18,5 +18,6 @@
     padding: 16px;
     overflow-y: auto;
     overflow-x: hidden;
+    height: 100vh;
   }
 </style>

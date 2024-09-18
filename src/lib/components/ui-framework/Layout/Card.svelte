@@ -17,8 +17,7 @@
     background-color: var(--color-white);
     padding: 24px;
     border-radius: 24px;
-    display: flex;
-    flex-direction: column;
+    display: block;
     border: 1px solid;
     border-color: var(--color-grey-400);
     min-height: 100px;

@@ -13,6 +13,7 @@
     name?: string;
     title?: string;
     class?: string;
+    type?: 'button' | 'submit';
   }
 
   const {
@@ -24,17 +25,18 @@
     name,
     title,
     class: className = '',
+    type,
   }: ButtonProps = $props();
 </script>
 
 <button
-  class="Button variant variant--{variant}"
-  class:className
+  class={`Button variant variant--${variant} ${className}`}
   class:compact
   {disabled}
   {onclick}
   {name}
   {title}
+  {type}
 >
   {#if children}
     {@render children()}
@@ -57,6 +59,7 @@
     height: 44px;
     transition: all 100ms;
     letter-spacing: 0.3px;
+    font-family: inherit;
 
     :global(svg) {
       font-size: 1.6rem;

@@ -5,7 +5,9 @@
 
 {#if env.isDebugMode}
   <div>
-    <ThemeChanger />
+    <section>
+      <ThemeChanger />
+    </section>
   </div>
 {/if}
 
@@ -15,5 +17,9 @@
 
     top: 8px;
     right: 8px;
+  }
+
+  section {
+    position: relative;
   }
 </style>
