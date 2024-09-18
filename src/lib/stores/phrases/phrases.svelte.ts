@@ -15,13 +15,25 @@ export async function getPharse(idToFind: string) {
 function createPhrasesStore() {
   let phrases: Phrase[] = $state([]);
   let fetching: boolean = $state(false);
+  let mounted: boolean = $state(false);
+  let curruntlyEditing: string | undefined = $state(undefined);
+  let createMode: boolean = $state(false);
 
   return {
-    get data() {
-      return {
-        phrases,
-        fetching,
-      };
+    get phrases() {
+      return phrases;
+    },
+    get fetching() {
+      return fetching;
+    },
+    get mounted() {
+      return mounted;
+    },
+    get curruntlyEditing() {
+      return curruntlyEditing;
+    },
+    get createMode() {
+      return createMode;
     },
     async init() {
       try {
@@ -36,7 +48,18 @@ function createPhrasesStore() {
         return Promise.reject(e);
       } finally {
         fetching = false;
+        mounted = true;
       }
+    },
+    startCreateMode() {
+      createMode = true;
+    },
+    startEditing(id: string) {
+      curruntlyEditing = id;
+    },
+    clearEditing() {
+      curruntlyEditing = undefined;
+      createMode = false;
     },
     async add(bookId: string, data: CreatePhrase) {
       try {
