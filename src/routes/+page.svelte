@@ -1,7 +1,7 @@
 <script lang="ts">
-  import AddBook from '$lib/components/AddBook.svelte';
-  import BookCard from '$lib/components/BookCard.svelte';
-  import BookCardEdit from '$lib/components/BookCardEdit';
+  import AddBook from '$lib/components/Books/AddBook.svelte';
+  import BookCard from '$lib/components/Books/BookCard.svelte';
+  import BookCardEdit from '$lib/components/Books/BookCardEdit';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
 
   $effect(() => {

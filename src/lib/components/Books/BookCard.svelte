@@ -1,8 +1,8 @@
 <script lang="ts">
   import type { Book } from '$lib/stores/books/types';
   import Icon from '@iconify/svelte';
-  import Button from './ui-framework/Form/Button.svelte';
-  import Card from './ui-framework/Layout/Card.svelte';
+  import Button from '$lib/components/ui-framework/Form/Button.svelte';
+  import Card from '$lib/components/ui-framework/Layout/Card.svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
 
   interface BookCardProps {

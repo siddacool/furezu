@@ -1,8 +1,8 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
-  import Button from '../ui-framework/Form/Button.svelte';
-  import { StackItem } from '../ui-framework/Layout/Stack';
+  import Button from '$lib/components/ui-framework/Form/Button.svelte';
+  import { StackItem } from '$lib/components/ui-framework/Layout/Stack';
 
   interface ControlsProps {
     id?: string;

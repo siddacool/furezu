@@ -1,8 +1,8 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
-  import Button from './ui-framework/Form/Button.svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import BookCardEdit from './BookCardEdit';
+  import Button from '$lib/components/ui-framework/Form/Button.svelte';
 </script>
 
 {#if useBooksStore.createMode || !useBooksStore.books.length}

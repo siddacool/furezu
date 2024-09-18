@@ -1,9 +1,9 @@
 <script lang="ts">
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import type { Book } from '$lib/stores/books/types';
-  import TextInput from '../ui-framework/Form/TextInput.svelte';
-  import Card from '../ui-framework/Layout/Card.svelte';
-  import { Stack, StackItem } from '../ui-framework/Layout/Stack';
+  import TextInput from '$lib/components/ui-framework/Form/TextInput.svelte';
+  import Card from '$lib/components/ui-framework/Layout/Card.svelte';
+  import { Stack, StackItem } from '$lib/components/ui-framework/Layout/Stack';
   import Controls from './Controls.svelte';
 
   interface BookCardFormProps {
