@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/svelte';
 import { themes } from '@storybook/theming';
 
+import '../src/lib/components/GobalStyles/styles/index.scss';
 import './global-style.scss';
 
 const preview: Preview = {

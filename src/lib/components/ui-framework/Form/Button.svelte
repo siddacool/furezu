@@ -11,6 +11,8 @@
     disabled?: boolean;
     onclick?: (e: MouseEvent) => void;
     name?: string;
+    title?: string;
+    class?: string;
   }
 
   const {
@@ -20,10 +22,20 @@
     children,
     onclick,
     name,
+    title,
+    class: className = '',
   }: ButtonProps = $props();
 </script>
 
-<button class="Button variant variant--{variant}" class:compact {disabled} {onclick} {name}>
+<button
+  class="Button variant variant--{variant}"
+  class:className
+  class:compact
+  {disabled}
+  {onclick}
+  {name}
+  {title}
+>
   {#if children}
     {@render children()}
   {/if}

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import GlobalStyles from '$lib/components/GlobalStyles.svelte';
   import TextInput from '$lib/components/ui-framework/Form/TextInput.svelte';
 
   let value = $state('Type Something');
@@ -11,15 +10,13 @@
   }
 </script>
 
-<GlobalStyles>
-  <div>
-    <TextInput {value} {oninput} name="normal" />
-    <TextInput {value} disabled {oninput} label="Disabled" />
-    <TextInput {value} label="With label" {oninput} placeholder="This is a placeholder" />
-    <TextInput {value} label="Disabled" {oninput} />
-    <TextInput {value} label="With Error" error="This is error message" {oninput} />
-  </div>
-</GlobalStyles>
+<div>
+  <TextInput {value} {oninput} name="normal" />
+  <TextInput {value} disabled {oninput} label="Disabled" />
+  <TextInput {value} label="With label" {oninput} placeholder="This is a placeholder" />
+  <TextInput {value} label="Disabled" {oninput} />
+  <TextInput {value} label="With Error" error="This is error message" {oninput} />
+</div>
 
 <style lang="scss">
   div {

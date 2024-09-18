@@ -1,5 +1,4 @@
 <script lang="ts">
-  import GlobalStyles from '$lib/components/GlobalStyles.svelte';
   import Search from '$lib/components/ui-framework/Form/Search.svelte';
 
   let value = $state('');
@@ -22,13 +21,11 @@
   }
 </script>
 
-<GlobalStyles>
-  <div>
-    <Search {value} {oninput} name="normal" placeholder="Search" {onclear} {onsearch} />
-    <Search {value} disabled {oninput} name="normal" placeholder="Search" />
-    <div>searchAt: {searchAt}</div>
-  </div>
-</GlobalStyles>
+<div>
+  <Search {value} {oninput} name="normal" placeholder="Search" {onclear} {onsearch} />
+  <Search {value} disabled {oninput} name="normal" placeholder="Search" />
+  <div>searchAt: {searchAt}</div>
+</div>
 
 <style lang="scss">
   div {

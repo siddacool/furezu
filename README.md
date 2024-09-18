@@ -1,38 +1,31 @@
-# create-svelte
+# Furezu
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+A simple Phrasebook for travel. Checkout [Web app](https://furezu.netlify.app/).
 
-## Creating a project
+---
 
-If you're seeing this, you've probably already done this step. Congrats!
+Links:
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+- [Web app](https://furezu.netlify.app/)
+- [Github](https://github.com/siddacool/furezu)
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Development
 
-## Developing
+Make sure you are on suitable `node` and `pnpm` versions. I would recommend using [volta](https://volta.sh/).
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+1. Install all dependancies with `pnpm install`
+2. Use `pnpm dev` or `npm run dev` to run the project
 
-```bash
-npm run dev
+### Enable debug mode (Optional)
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+1. copy `.env.example` as `.env`
+2. set `VITE_APP_DEBUG_MODE` to `yes`
 
-## Building
+### Check code
 
-To create a production version of your app:
+use `pnpm check` or `npm run check` to check code for issues.
 
-```bash
-npm run build
-```
+### Storybook
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Components can be previewed, tested, and modified in isolation with storybook.
+use `pnpm storybook` or `npm run storybook` to do so.
