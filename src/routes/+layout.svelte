@@ -1,9 +1,8 @@
 <script lang="ts">
-  import GlobalStyles from '$lib/components/GobalStyles/GlobalStyles.svelte';
+  import GlobalContainer from '$lib/components/GlobalContainer';
 </script>
 
-<GlobalStyles>
-  <main>
-    <slot />
-  </main>
-</GlobalStyles>
+<GlobalContainer />
+<main>
+  <slot />
+</main>

@@ -3,16 +3,10 @@
   import { polyfillCountryFlagEmojis } from 'country-flag-emoji-polyfill';
   import './styles/index.scss';
   import DebugTools from './DebugTools';
+  import ThemeSetter from './ThemeSetter.svelte';
 
   polyfillCountryFlagEmojis();
-
-  type GlobalStylesProps = SvelteComponentProps;
-
-  const { children }: GlobalStylesProps = $props();
 </script>
 
-{#if children}
-  {@render children()}
-{/if}
-
 <DebugTools />
+<ThemeSetter />
