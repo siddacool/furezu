@@ -19,15 +19,3 @@
     </Button>
   </div>
 {/if}
-
-<style lang="scss">
-  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
-
-  div {
-    margin-right: 8px;
-
-    @include mediaLg {
-      margin-right: 24px;
-    }
-  }
-</style>

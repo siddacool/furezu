@@ -63,6 +63,7 @@
     margin-bottom: 24px;
     margin-left: auto;
     margin-right: auto;
+    max-width: 450px;
 
     @include mediaLg {
       padding-top: 24px;

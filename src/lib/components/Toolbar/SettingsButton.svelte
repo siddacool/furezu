@@ -25,10 +25,13 @@
       }
     }
 
+    margin-left: 8px;
+
     @include mediaLg {
       position: fixed;
       right: 40px;
       top: 40px;
+      margin-left: 0;
     }
   }
 </style>

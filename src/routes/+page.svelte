@@ -27,9 +27,15 @@
 
 {#if useBooksStore.mounted}
   <BooksPlaceholder />
-  <BooksList />
-  <CreateABook />
+  <div>
+    <BooksList />
+    <CreateABook />
+  </div>
 {/if}
 
 <style lang="scss">
+  div {
+    max-width: 540px;
+    margin: 0 auto;
+  }
 </style>

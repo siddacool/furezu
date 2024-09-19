@@ -1,6 +1,7 @@
 <script lang="ts">
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import type { Book } from '$lib/stores/books/types';
+  import ThickPlaceholderText from '../ThickPlaceholderText.svelte';
   import BookCard from './BookCard.svelte';
   import BookCardEdit from './BookCardEdit/BookCardEdit.svelte';
 
@@ -15,15 +16,21 @@
   });
 </script>
 
-<div>
-  {#each filteredBooks as book}
-    {#if useBooksStore.curruntlyEditing === book._id}
-      <BookCardEdit {book} />
-    {:else}
-      <BookCard {book} />
+{#if useBooksStore.books.length}
+  <div>
+    {#each filteredBooks as book}
+      {#if useBooksStore.curruntlyEditing === book._id}
+        <BookCardEdit {book} />
+      {:else}
+        <BookCard {book} />
+      {/if}
+    {/each}
+
+    {#if !filteredBooks.length}
+      <ThickPlaceholderText>No results found</ThickPlaceholderText>
     {/if}
-  {/each}
-</div>
+  </div>
+{/if}
 
 <style lang="scss">
   @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
