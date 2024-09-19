@@ -18,11 +18,15 @@
   .ToolbarSettingsButton {
     display: inline-flex;
 
+    @include mediaLg {
+      align-self: flex-start;
+    }
+
     &.isSearchActive {
       display: none;
 
       @include mediaLg {
-        align-self: flex-start;
+        display: inline-flex;
       }
     }
   }

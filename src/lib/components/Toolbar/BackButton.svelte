@@ -10,7 +10,7 @@
   const { backTo = null }: BackButtonProps = $props();
 </script>
 
-{#if !useToolbarContextStore.isSearchActive && backTo}
+{#if backTo}
   <div class={`ToolbarBackButton ${useToolbarContextStore.isSearchActive ? 'isSearchActive' : ''}`}>
     <AnchorButton compact href="/" title="back">
       <Icon icon="material-symbols:arrow-back-rounded" />
@@ -24,16 +24,16 @@
   .ToolbarBackButton {
     display: inline-flex;
 
+    @include mediaLg {
+      align-self: flex-start;
+    }
+
     &.isSearchActive {
       display: none;
 
       @include mediaLg {
         display: inline-flex;
       }
-    }
-
-    @include mediaLg {
-      align-self: flex-start;
     }
   }
 </style>

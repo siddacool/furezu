@@ -14,7 +14,7 @@
   @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
 
   h2 {
-    margin-top: 20px;
+    margin-top: 40px;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
