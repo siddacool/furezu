@@ -41,16 +41,20 @@
 
 <div class={`Toolbar ${className}`}>
   <BackButton {backTo} />
-  <Searchbar
-    onchange={onSearchChange}
-    onsearch={onSearch}
-    oninput={onSearchInput}
-    onclear={onSearchClear}
-    value={searchValue}
-    {placeholder}
-    {disabled}
-  />
-  <AddButton {onAdd} {disabled} {label} />
+
+  <div class="manager">
+    <Searchbar
+      onchange={onSearchChange}
+      onsearch={onSearch}
+      oninput={onSearchInput}
+      onclear={onSearchClear}
+      value={searchValue}
+      {placeholder}
+      {disabled}
+    />
+    <AddButton {onAdd} {disabled} {label} />
+  </div>
+
   <SettingsButton />
 </div>
 
@@ -63,11 +67,24 @@
     margin-bottom: 24px;
     margin-left: auto;
     margin-right: auto;
-    max-width: 450px;
+    justify-content: center;
 
     @include mediaLg {
       padding-top: 24px;
       margin-bottom: 40px;
+    }
+  }
+
+  .manager {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    margin: 0 8px;
+    max-width: 450px;
+
+    @include mediaLg {
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 </style>

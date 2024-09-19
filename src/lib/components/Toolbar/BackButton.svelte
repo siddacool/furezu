@@ -11,7 +11,7 @@
 </script>
 
 {#if !useToolbarContextStore.isSearchActive && backTo}
-  <div>
+  <div class={`ToolbarBackButton ${useToolbarContextStore.isSearchActive ? 'isSearchActive' : ''}`}>
     <AnchorButton compact href="/" title="back">
       <Icon icon="material-symbols:arrow-back-rounded" />
     </AnchorButton>
@@ -21,11 +21,19 @@
 <style lang="scss">
   @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
 
-  div {
-    margin-right: 8px;
+  .ToolbarBackButton {
+    display: inline-flex;
+
+    &.isSearchActive {
+      display: none;
+
+      @include mediaLg {
+        display: inline-flex;
+      }
+    }
 
     @include mediaLg {
-      margin-right: 24px;
+      align-self: flex-start;
     }
   }
 </style>

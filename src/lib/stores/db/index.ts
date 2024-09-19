@@ -8,7 +8,7 @@ export class MySubClassedDexie extends Dexie {
 
   constructor() {
     super('myDatabase');
-    this.version(2).stores({
+    this.version(1).stores({
       books: '++id, _id',
       phrases: '++id, _id, bookId',
     });
