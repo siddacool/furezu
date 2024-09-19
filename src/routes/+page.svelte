@@ -23,9 +23,8 @@
 
 <title>Furezu</title>
 
-<BooksToolbar />
-
 {#if useBooksStore.mounted}
+  <BooksToolbar />
   <BooksPlaceholder />
   <div>
     <BooksList />

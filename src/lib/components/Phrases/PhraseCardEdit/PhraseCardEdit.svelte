@@ -5,6 +5,7 @@
   import Card from '$lib/components/ui-framework/Layout/Card.svelte';
   import { Stack, StackItem } from '$lib/components/ui-framework/Layout/Stack';
   import Controls from './Controls.svelte';
+  import { limitTextLength } from '$lib/helpers/text-manipulations/limit-text-length';
 
   interface PhraseCardFormProps {
     phrase?: Phrase;
@@ -15,6 +16,8 @@
 
   let phraseName: string = $state(phrase?.phrase || '');
   let meaning: string = $state(phrase?.meaning || '');
+  let pronounciation: string = $state(phrase?.pronounciation || '');
+  let translation: string = $state(phrase?.translation || '');
 
   function onInputPhraseName(e: Event) {
     const target = e.target as HTMLInputElement;
@@ -26,6 +29,18 @@
     const target = e.target as HTMLInputElement;
 
     meaning = target.value;
+  }
+
+  function onInputPronounciation(e: Event) {
+    const target = e.target as HTMLInputElement;
+
+    pronounciation = target.value;
+  }
+
+  function onInputTranslation(e: Event) {
+    const target = e.target as HTMLInputElement;
+
+    translation = target.value;
   }
 
   async function onsubmit(e: SubmitEvent) {
@@ -41,11 +56,15 @@
       await usePhrasesStore.update(phrase._id, {
         phrase: phraseName,
         meaning,
+        pronounciation,
+        translation,
       });
     } else {
       await usePhrasesStore.add(bookId, {
         phrase: phraseName,
         meaning,
+        pronounciation,
+        translation,
       });
     }
 
@@ -55,9 +74,18 @@
 
 <form {onsubmit}>
   <Card>
-    <Stack space={2}>
+    <Stack space={3}>
       <StackItem>
-        <h3>{phrase?.phrase ? `Edit: ${phrase.phrase}` : 'Create: Phrase'}</h3>
+        <h3>{phrase?.phrase ? `Edit: ${limitTextLength(phrase.phrase)}` : 'Create: Phrase'}</h3>
+      </StackItem>
+      <StackItem>
+        <TextInput
+          disabled={usePhrasesStore.fetching}
+          label="Phrase Meaning"
+          placeholder="Enter Meaning"
+          oninput={onInputMeaning}
+          value={meaning}
+        />
       </StackItem>
       <StackItem>
         <TextInput
@@ -71,10 +99,19 @@
       <StackItem>
         <TextInput
           disabled={usePhrasesStore.fetching}
-          label="Meaning"
-          placeholder="Enter Meaning"
-          oninput={onInputMeaning}
-          value={meaning}
+          label="Pronounciation"
+          placeholder="Enter pronounciation"
+          oninput={onInputPronounciation}
+          value={pronounciation}
+        />
+      </StackItem>
+      <StackItem>
+        <TextInput
+          disabled={usePhrasesStore.fetching}
+          label="Translation"
+          placeholder="Enter translation"
+          oninput={onInputTranslation}
+          value={translation}
         />
       </StackItem>
       <Controls
@@ -86,6 +123,8 @@
 </form>
 
 <style lang="scss">
+  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
+
   form {
     display: flex;
     width: 100%;
@@ -94,6 +133,22 @@
 
     :global(.Card) {
       width: 100%;
+    }
+  }
+
+  h3 {
+    font-weight: 600;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 0;
+    margin-bottom: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 1.1rem;
+    margin-bottom: -6px;
+
+    @include mediaLg {
+      font-size: 1.2rem;
     }
   }
 </style>

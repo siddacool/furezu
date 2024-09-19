@@ -18,6 +18,7 @@ function createPhrasesStore() {
   let mounted: boolean = $state(false);
   let curruntlyEditing: string | undefined = $state(undefined);
   let createMode: boolean = $state(false);
+  let searchFilter: string | undefined = $state(undefined);
 
   return {
     get phrases() {
@@ -34,6 +35,9 @@ function createPhrasesStore() {
     },
     get createMode() {
       return createMode;
+    },
+    get searchFilter() {
+      return searchFilter;
     },
     async init() {
       try {
@@ -56,6 +60,7 @@ function createPhrasesStore() {
       mounted = false;
       curruntlyEditing = undefined;
       createMode = false;
+      searchFilter = undefined;
       phrases = [];
     },
     startCreateMode() {
@@ -104,7 +109,7 @@ function createPhrasesStore() {
           throw Error('PharseStore:update: Pharse is missing');
         }
 
-        await db.books.update(targetPharse.id, {
+        await db.phrases.update(targetPharse.id, {
           ...data,
           updatedAt: new Date(),
         });
@@ -166,6 +171,9 @@ function createPhrasesStore() {
       } finally {
         fetching = false;
       }
+    },
+    updateSearchFilter(value: string | undefined) {
+      searchFilter = value;
     },
   };
 }
