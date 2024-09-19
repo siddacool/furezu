@@ -206,7 +206,7 @@
     border: 0;
     border-radius: 30px;
     color: var(--color-grey-font-900);
-    display: none;
+    display: inline-flex;
 
     &:hover {
       background-color: var(--color-primary-200);
@@ -217,7 +217,7 @@
     }
 
     &.active {
-      display: inline-flex;
+      display: none;
     }
 
     @include mediaLg {

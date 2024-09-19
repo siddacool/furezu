@@ -74,14 +74,14 @@
     }
 
     h3 {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       margin-bottom: 0;
       margin-top: 0;
       line-height: 25px;
       font-weight: 500;
 
       @include mediaLg {
-        font-size: 1.3rem;
+        font-size: 1.45rem;
         line-height: 30px;
       }
     }

@@ -36,16 +36,19 @@
     </Button>
 
     <Button onclick={onCancel} disabled={useBooksStore.fetching}>Cancel</Button>
-    <Button
-      variant="danger"
-      class="Delete"
-      compact
-      title="Delete book"
-      onclick={onDelete}
-      disabled={useBooksStore.fetching}
-    >
-      <Icon icon="material-symbols:delete-outline-rounded" />
-    </Button>
+
+    {#if id}
+      <Button
+        variant="danger"
+        class="Delete"
+        compact
+        title="Delete book"
+        onclick={onDelete}
+        disabled={useBooksStore.fetching}
+      >
+        <Icon icon="material-symbols:delete-outline-rounded" />
+      </Button>
+    {/if}
   </div>
 </StackItem>
 

@@ -51,6 +51,13 @@ function createPhrasesStore() {
         mounted = true;
       }
     },
+    reset() {
+      fetching = false;
+      mounted = false;
+      curruntlyEditing = undefined;
+      createMode = false;
+      phrases = [];
+    },
     startCreateMode() {
       createMode = true;
     },

@@ -19,6 +19,7 @@ function createBooksStore() {
   let mounted: boolean = $state(false);
   let curruntlyEditing: string | undefined = $state(undefined);
   let createMode: boolean = $state(false);
+  let searchFilter: string | undefined = $state(undefined);
 
   return {
     get books() {
@@ -36,6 +37,9 @@ function createBooksStore() {
     get createMode() {
       return createMode;
     },
+    get searchFilter() {
+      return searchFilter;
+    },
     async init() {
       try {
         fetching = true;
@@ -51,6 +55,14 @@ function createBooksStore() {
         fetching = false;
         mounted = true;
       }
+    },
+    reset() {
+      fetching = false;
+      mounted = false;
+      curruntlyEditing = undefined;
+      createMode = false;
+      searchFilter = undefined;
+      books = [];
     },
     startCreateMode() {
       createMode = true;
@@ -136,6 +148,9 @@ function createBooksStore() {
       } finally {
         fetching = false;
       }
+    },
+    updateSearchFilter(value: string | undefined) {
+      searchFilter = value;
     },
   };
 }

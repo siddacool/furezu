@@ -21,6 +21,7 @@
     onAdd?: () => void;
     disabled?: boolean;
     label?: string;
+    searchValue?: string;
   }
 
   const {
@@ -34,6 +35,7 @@
     onAdd,
     disabled,
     label,
+    searchValue,
   }: ToolbarProps = $props();
 </script>
 
@@ -44,6 +46,7 @@
     onsearch={onSearch}
     oninput={onSearchInput}
     onclear={onSearchClear}
+    value={searchValue}
     {placeholder}
     {disabled}
   />

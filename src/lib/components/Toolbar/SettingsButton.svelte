@@ -4,15 +4,9 @@
   import { useToolbarContextStore } from './Toolbar.svelte';
 </script>
 
-{#if !useToolbarContextStore.isSearchActive}
-  <div class="ToolbarSettingsButtonMobile">
-    <AnchorButton compact href="/settings" title="Settings">
-      <Icon icon="mingcute:settings-6-line" />
-    </AnchorButton>
-  </div>
-{/if}
-
-<div class="ToolbarSettingsButtonDesktop">
+<div
+  class={`ToolbarSettingsButton ${useToolbarContextStore.isSearchActive ? 'isSearchActive' : ''}`}
+>
   <AnchorButton compact href="/settings" title="Settings">
     <Icon icon="mingcute:settings-6-line" />
   </AnchorButton>
@@ -21,20 +15,20 @@
 <style lang="scss">
   @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
 
-  .ToolbarSettingsButtonDesktop {
-    display: none;
+  .ToolbarSettingsButton {
+    display: inline-flex;
+    &.isSearchActive {
+      display: none;
+
+      @include mediaLg {
+        display: inline-flex;
+      }
+    }
 
     @include mediaLg {
-      display: inline-flex;
       position: fixed;
       right: 40px;
       top: 40px;
-    }
-  }
-
-  .ToolbarSettingsButtonMobile {
-    @include mediaLg {
-      display: none;
     }
   }
 </style>

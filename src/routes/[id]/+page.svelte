@@ -22,6 +22,11 @@
     }
 
     fetchData();
+
+    return () => {
+      useBooksStore.reset();
+      usePhrasesStore.reset();
+    };
   });
 </script>
 
