@@ -3,7 +3,7 @@
   import type { Book } from '$lib/stores/books/types';
   import ThickPlaceholderText from '../ThickPlaceholderText.svelte';
   import BookCard from './BookCard.svelte';
-  import BookCardEdit from './BookCardEdit/BookCardEdit.svelte';
+  import BookCardEdit from './BookCardEdit.svelte';
 
   let filteredBooks: Book[] = $state([]);
 

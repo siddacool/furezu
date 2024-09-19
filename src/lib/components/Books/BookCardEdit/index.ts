@@ -1,3 +1,3 @@
-import BookCardEdit from './BookCardEdit.svelte';
+import BookCardEdit from '../BookCardEdit.svelte';
 
 export default BookCardEdit;

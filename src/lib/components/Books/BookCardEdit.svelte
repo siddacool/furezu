@@ -4,8 +4,9 @@
   import TextInput from '$lib/components/ui-framework/Form/TextInput.svelte';
   import Card from '$lib/components/ui-framework/Layout/Card.svelte';
   import { Stack, StackItem } from '$lib/components/ui-framework/Layout/Stack';
-  import Controls from './Controls.svelte';
+  import Controls from './BookCardEdit/Controls.svelte';
   import { limitTextLength } from '$lib/helpers/text-manipulations/limit-text-length';
+  import EditCard from '../EditCard.svelte/EditCard.svelte';
 
   interface BookCardFormProps {
     book?: Book;
@@ -39,41 +40,39 @@
 
     useBooksStore.clearEditing();
   }
+
+  function onCancel() {
+    useBooksStore.clearEditing();
+  }
+
+  async function onDelete() {
+    if (book?._id) {
+      await useBooksStore.delete(book._id);
+    }
+
+    useBooksStore.clearEditing();
+  }
 </script>
 
-<form {onsubmit}>
-  <Card>
-    <Stack space={3}>
-      <StackItem>
-        <h3>{book?.name ? `Edit: ${limitTextLength(book.name, 40)}` : 'Create: Book'}</h3>
-      </StackItem>
-      <StackItem>
-        <TextInput
-          disabled={useBooksStore.fetching}
-          label="Name"
-          placeholder="Example: Thai for travel"
-          oninput={onInputName}
-          value={name}
-        />
-      </StackItem>
-      <Controls id={book?._id} {name} />
-    </Stack>
-  </Card>
-</form>
+<EditCard {onsubmit} {onCancel} {onDelete}>
+  <Stack space={2}>
+    <StackItem>
+      <h3>{book?.name ? `Edit: ${limitTextLength(book.name, 40)}` : 'Create: Book'}</h3>
+    </StackItem>
+    <StackItem>
+      <TextInput
+        disabled={useBooksStore.fetching}
+        label="Name"
+        placeholder="Example: Thai for travel"
+        oninput={onInputName}
+        value={name}
+      />
+    </StackItem>
+  </Stack>
+</EditCard>
 
 <style lang="scss">
   @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
-
-  form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    margin-bottom: 16px;
-
-    :global(.Card) {
-      width: 100%;
-    }
-  }
 
   h3 {
     font-weight: 600;
