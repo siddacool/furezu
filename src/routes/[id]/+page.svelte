@@ -36,7 +36,9 @@
 
 {#if usePhrasesStore.mounted}
   {#if !phrases.length}
-    <h3>Create a Phrase using the form below</h3>
+    <h3>
+      There are no books present, Click Add (+) button beside searchbar to add your first book.
+    </h3>
   {/if}
 
   {#each phrases as phrase}

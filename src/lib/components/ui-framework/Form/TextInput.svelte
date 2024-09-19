@@ -91,6 +91,28 @@
     letter-spacing: 0.3px;
     font-family: inherit;
 
+    &::-webkit-input-placeholder {
+      /* Chrome */
+      color: var(--color-grey-font-600);
+    }
+
+    &:-ms-input-placeholder {
+      /* IE 10+ */
+      color: var(--color-grey-font-600);
+    }
+
+    &::-moz-placeholder {
+      /* Firefox 19+ */
+      color: var(--color-grey-font-600);
+      opacity: 1;
+    }
+
+    &:-moz-placeholder {
+      /* Firefox 4 - 18 */
+      color: var(--color-grey-font-600);
+      opacity: 1;
+    }
+
     &:not(.error):not([disabled]) {
       &:focus {
         border-color: var(--color-primary-600);

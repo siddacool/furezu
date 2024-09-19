@@ -6,8 +6,6 @@
     variant?: ButtonVariant;
     compact?: boolean;
     disabled?: boolean;
-    onclick?: (e: MouseEvent) => void;
-    name?: string;
     title?: string;
     class?: string;
     href?: string;
@@ -19,7 +17,6 @@
     compact = false,
     disabled = false,
     children,
-    onclick,
     title,
     class: className = '',
     href,
@@ -30,7 +27,6 @@
 <a
   class={`AnchorButton variant variant--${variant} ${disabled ? 'disabled' : ''} ${className}`}
   class:compact
-  {onclick}
   {title}
   {href}
   {target}
@@ -41,14 +37,16 @@
 </a>
 
 <style lang="scss">
+  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
+
   a {
     margin: 0;
     padding: 0 14px;
-    border: 1px solid;
+    border: 2px solid;
     font-size: 1.12rem;
     font-weight: 500;
     border-radius: 20px;
-    min-width: 90px;
+    min-width: 60px;
     cursor: pointer;
     display: inline-flex;
     justify-content: center;
@@ -63,9 +61,16 @@
       font-size: 1.6rem;
     }
 
+    @include mediaLg {
+      min-width: 90px;
+    }
+
     &.compact {
-      min-width: 65px;
       padding: 0;
+
+      @include mediaLg {
+        min-width: 65px;
+      }
     }
 
     &:not(.disabled) {

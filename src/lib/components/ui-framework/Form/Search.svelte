@@ -1,18 +1,23 @@
-<script lang="ts">
-  import Icon from '@iconify/svelte';
-
-  interface SearchProps {
+<script lang="ts" module>
+  export interface SearchProps {
     name?: string;
     id?: string;
     label?: string;
     placeholder?: string;
     value?: string;
     disabled?: boolean;
+    class?: string;
     onchange?: (e: Event) => void;
     oninput?: (e: Event) => void;
     onsearch?: () => void;
     onclear?: () => void;
+    onfocus?: () => void;
+    onblur?: () => void;
   }
+</script>
+
+<script lang="ts">
+  import Icon from '@iconify/svelte';
 
   let {
     name,
@@ -24,6 +29,9 @@
     disabled = false,
     onsearch,
     onclear,
+    class: className = '',
+    onfocus,
+    onblur,
   }: SearchProps = $props();
 
   let active = $state(false);
@@ -39,12 +47,28 @@
       return;
     }
   }
+
+  function handleOnFocus() {
+    active = true;
+
+    if (onfocus) {
+      onfocus();
+    }
+  }
+
+  function handleOnBlur() {
+    active = false;
+
+    if (onblur) {
+      onblur();
+    }
+  }
 </script>
 
-<div class="Search" class:active class:disabled>
+<div class={`Search ${className}`} class:active class:disabled>
   {#if !active}
     <span class="search-icon" class:disabled>
-      <Icon icon="material-symbols:search" />
+      <Icon icon="twemoji:magnifying-glass-tilted-left" />
     </span>
   {/if}
 
@@ -57,18 +81,20 @@
     {onchange}
     {oninput}
     {disabled}
-    onfocus={() => (active = true)}
-    onblur={() => (active = false)}
+    onfocus={handleOnFocus}
+    onblur={handleOnBlur}
     onkeydown={handleKeyPress}
   />
   {#if value && !disabled}
-    <button class="close-icon" onclick={onclear}>
+    <button class="close-icon" onclick={onclear} class:active>
       <Icon icon="material-symbols:close-rounded" />
     </button>
   {/if}
 </div>
 
 <style lang="scss">
+  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
+
   div {
     display: flex;
     color: var(--color-grey-font-900);
@@ -106,8 +132,35 @@
     flex: 1;
     position: relative;
     z-index: 1;
-    padding-left: 60px;
+    padding-left: 40px;
     transition: all 100ms;
+    width: 100%;
+
+    &::-webkit-input-placeholder {
+      /* Chrome */
+      color: var(--color-grey-font-600);
+    }
+
+    &:-ms-input-placeholder {
+      /* IE 10+ */
+      color: var(--color-grey-font-600);
+    }
+
+    &::-moz-placeholder {
+      /* Firefox 19+ */
+      color: var(--color-grey-font-600);
+      opacity: 1;
+    }
+
+    &:-moz-placeholder {
+      /* Firefox 4 - 18 */
+      color: var(--color-grey-font-600);
+      opacity: 1;
+    }
+
+    @include mediaLg {
+      padding-left: 60px;
+    }
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button {
@@ -120,10 +173,10 @@
   }
 
   .search-icon {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     display: inline-flex;
     height: 100%;
-    width: 60px;
+    width: 40px;
     align-items: center;
     justify-content: center;
     position: absolute;
@@ -132,13 +185,17 @@
     z-index: 0;
 
     &:not(.disabled) {
-      color: var(--color-grey-font-600);
+      color: var(--color-grey-font-900);
+    }
+
+    @include mediaLg {
+      font-size: 1.8rem;
+      width: 60px;
     }
   }
 
   .close-icon {
     font-size: 1.7rem;
-    display: inline-flex;
     height: 100%;
     width: 60px;
     align-items: center;
@@ -148,7 +205,8 @@
     background-color: transparent;
     border: 0;
     border-radius: 30px;
-    color: var(--color-grey-font-600);
+    color: var(--color-grey-font-900);
+    display: none;
 
     &:hover {
       background-color: var(--color-primary-200);
@@ -156,6 +214,14 @@
 
     &:active {
       background-color: var(--color-primary-300);
+    }
+
+    &.active {
+      display: inline-flex;
+    }
+
+    @include mediaLg {
+      display: inline-flex;
     }
   }
 </style>

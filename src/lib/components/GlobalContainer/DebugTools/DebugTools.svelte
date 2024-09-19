@@ -15,8 +15,8 @@
   div {
     position: fixed;
 
-    top: 8px;
-    right: 8px;
+    top: 140px;
+    right: 16px;
   }
 
   section {

@@ -1,7 +1,8 @@
 <script lang="ts">
-  import AddBook from '$lib/components/Books/AddBook.svelte';
-  import BookCard from '$lib/components/Books/BookCard.svelte';
-  import BookCardEdit from '$lib/components/Books/BookCardEdit';
+  import BooksList from '$lib/components/Books/BooksList.svelte';
+  import BooksPlaceholder from '$lib/components/Books/BooksPlaceholder.svelte';
+  import BooksToolbar from '$lib/components/Books/BooksToolbar.svelte';
+  import CreateABook from '$lib/components/Books/CreateABook.svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
 
   $effect(() => {
@@ -13,24 +14,14 @@
   });
 </script>
 
-<title>Books</title>
+<title>Furezu</title>
+
+<BooksToolbar />
 
 {#if useBooksStore.mounted}
-  {#if !useBooksStore.books.length}
-    <h3>Create a Book using the form below</h3>
-  {/if}
-
-  {#each useBooksStore.books as book}
-    {#if useBooksStore.curruntlyEditing === book._id}
-      <BookCardEdit {book} />
-    {:else}
-      <BookCard {book} />
-    {/if}
-  {/each}
-
-  {#if !useBooksStore.curruntlyEditing}
-    <AddBook />
-  {/if}
+  <BooksPlaceholder />
+  <BooksList />
+  <CreateABook />
 {/if}
 
 <style lang="scss">

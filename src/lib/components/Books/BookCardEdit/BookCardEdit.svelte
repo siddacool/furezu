@@ -5,6 +5,7 @@
   import Card from '$lib/components/ui-framework/Layout/Card.svelte';
   import { Stack, StackItem } from '$lib/components/ui-framework/Layout/Stack';
   import Controls from './Controls.svelte';
+  import { limitTextLength } from '$lib/helpers/text-manipulations/limit-text-length';
 
   interface BookCardFormProps {
     book?: Book;
@@ -42,9 +43,9 @@
 
 <form {onsubmit}>
   <Card>
-    <Stack space={2}>
+    <Stack space={3}>
       <StackItem>
-        <h3>{book?.name ? `Edit: ${book.name}` : 'Create: Book'}</h3>
+        <h3>{book?.name ? `Edit: ${limitTextLength(book.name, 40)}` : 'Create: Book'}</h3>
       </StackItem>
       <StackItem>
         <TextInput
@@ -61,6 +62,8 @@
 </form>
 
 <style lang="scss">
+  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
+
   form {
     display: flex;
     width: 100%;
@@ -69,6 +72,22 @@
 
     :global(.Card) {
       width: 100%;
+    }
+  }
+
+  h3 {
+    font-weight: 600;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 0;
+    margin-bottom: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 1.1rem;
+    margin-bottom: -6px;
+
+    @include mediaLg {
+      font-size: 1.3rem;
     }
   }
 </style>

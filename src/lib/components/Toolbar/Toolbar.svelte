@@ -1,0 +1,69 @@
+<script lang="ts" module>
+  import { createToolbarContextStore } from './context.svelte';
+
+  export const useToolbarContextStore = createToolbarContextStore();
+</script>
+
+<script lang="ts">
+  import Searchbar from './Searchbar.svelte';
+  import BackButton from './BackButton.svelte';
+  import AddButton from './AddButton.svelte';
+  import SettingsButton from './SettingsButton.svelte';
+
+  interface ToolbarProps {
+    class?: string;
+    onSearchChange?: (e: Event) => void;
+    onSearchInput?: (e: Event) => void;
+    onSearch?: () => void;
+    onSearchClear?: () => void;
+    placeholder?: string;
+    backTo?: string | null;
+    onAdd?: () => void;
+    disabled?: boolean;
+    label?: string;
+  }
+
+  const {
+    class: className = '',
+    onSearchChange,
+    onSearchInput,
+    onSearch,
+    onSearchClear,
+    placeholder = 'Search',
+    backTo,
+    onAdd,
+    disabled,
+    label,
+  }: ToolbarProps = $props();
+</script>
+
+<div class={`Toolbar ${className}`}>
+  <BackButton {backTo} />
+  <Searchbar
+    onchange={onSearchChange}
+    onsearch={onSearch}
+    oninput={onSearchInput}
+    onclear={onSearchClear}
+    {placeholder}
+    {disabled}
+  />
+  <AddButton {onAdd} {disabled} {label} />
+  <SettingsButton />
+</div>
+
+<style lang="scss">
+  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
+
+  .Toolbar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include mediaLg {
+      padding-top: 24px;
+      margin-bottom: 40px;
+    }
+  }
+</style>
