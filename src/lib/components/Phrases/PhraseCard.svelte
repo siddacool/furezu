@@ -21,7 +21,7 @@
   disableClick
   hideEditButton={usePhrasesStore.curruntlyEditing || usePhrasesStore.createMode ? true : false}
 >
-  <Stack space={2}>
+  <Stack space={3}>
     <StackItem>
       <h3>{phrase.meaning}</h3>
     </StackItem>
@@ -40,33 +40,23 @@
   @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
 
   h3 {
-    font-size: 1.3rem;
+    font-size: 1.45rem;
     margin-bottom: 0;
     margin-top: 0;
     line-height: 25px;
     font-weight: 600;
-
-    @include mediaLg {
-      font-size: 1.45rem;
-      line-height: 30px;
-    }
   }
 
   h4 {
-    font-size: 1.3rem;
+    font-size: 1.45rem;
     margin-bottom: 0;
     margin-top: 0;
     line-height: 25px;
     font-weight: 500;
-
-    @include mediaLg {
-      font-size: 1.45rem;
-      line-height: 30px;
-    }
   }
 
   h5 {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     margin-bottom: 0;
     margin-top: 0;
     line-height: 25px;
@@ -81,11 +71,6 @@
       align-items: center;
       margin-right: 8px;
       color: var(--color-primary-600);
-    }
-
-    @include mediaLg {
-      font-size: 1.7rem;
-      line-height: 30px;
     }
   }
 </style>
