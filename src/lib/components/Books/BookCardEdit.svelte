@@ -67,6 +67,7 @@
   {onDelete}
   disableSubmit={!name.trim() ? true : false}
   title={book?.name ? `Edit: ${limitTextLength(book.name, 40)}` : 'Create: Book'}
+  hideDeleteButton={!book?._id}
 >
   <Stack space={2}>
     <StackItem>

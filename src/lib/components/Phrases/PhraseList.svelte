@@ -4,7 +4,7 @@
   import type { Phrase } from '$lib/stores/phrases/types';
   import ThickPlaceholderText from '../ThickPlaceholderText.svelte';
   import PhraseCard from './PhraseCard.svelte';
-  import PhraseCardEdit from './PhraseCardEdit';
+  import PhraseCardEdit from './PhraseCardEdit.svelte';
 
   let filteredPhrases: Phrase[] = $state([]);
 

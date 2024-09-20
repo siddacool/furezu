@@ -3,7 +3,6 @@
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import { Stack, StackItem } from '../ui-framework/Layout/Stack';
   import DisplayCard from '../DisplayCard.svelte';
-  import { flip } from 'svelte/animate';
 
   interface PhraseCardProps {
     phrase: Phrase;

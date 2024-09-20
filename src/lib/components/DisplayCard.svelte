@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { useBooksStore } from '$lib/stores/books/books.svelte';
   import type { SvelteComponentProps } from '$lib/types/svelte-component';
   import Icon from '@iconify/svelte';
   import Button from './ui-framework/Form/Button.svelte';
