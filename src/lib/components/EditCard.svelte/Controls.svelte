@@ -36,6 +36,7 @@
   .Controls {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 24px;
 
     :global(.Button) {
       margin-right: 8px;

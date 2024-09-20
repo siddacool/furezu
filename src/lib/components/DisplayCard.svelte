@@ -32,8 +32,8 @@
   </a>
 
   {#if !hideEditButton}
-    <Button class="EditButton" compact onclick={onEdit}>
-      <Icon icon="mdi:pencil-outline" />
+    <Button class="EditButton" compact onclick={onEdit} title="Edit">
+      <Icon icon="tabler:edit" />
     </Button>
   {/if}
 </section>
@@ -50,21 +50,30 @@
 
     :global(.EditButton) {
       position: absolute;
-      right: 12px;
-      top: 12px;
+      right: 6px;
+      top: 6px;
+      width: 60px;
+      height: 60px;
+      min-width: initial;
+      border-radius: 50%;
+      border: 0;
 
       @include mediaLg {
-        right: 16px;
-        top: 16px;
+        right: 12px;
+        top: 12px;
       }
+    }
+
+    :global(.EditButton.variant--default) {
+      color: var(--color-grey-font-700);
     }
 
     :global(.Card) {
       width: 100%;
-      padding-right: 70px;
+      padding-right: 66px;
 
       @include mediaLg {
-        padding-right: 80px;
+        padding-right: 71px;
       }
     }
   }

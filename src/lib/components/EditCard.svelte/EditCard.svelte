@@ -1,7 +1,5 @@
 <script lang="ts">
-  import type { Book } from '$lib/stores/books/types';
   import Card from '$lib/components/ui-framework/Layout/Card.svelte';
-  import { Stack } from '$lib/components/ui-framework/Layout/Stack';
   import Controls from './Controls.svelte';
   import type { SvelteComponentProps } from '$lib/types/svelte-component';
 
@@ -11,19 +9,27 @@
     onsubmit?: (e: SubmitEvent) => void;
     onCancel?: () => void;
     onDelete?: () => void;
+    title: string;
   }
 
-  const { children, onsubmit, disableSubmit, hideDeleteButton }: EditCardFormProps = $props();
+  const {
+    children,
+    onsubmit,
+    onCancel,
+    onDelete,
+    disableSubmit,
+    hideDeleteButton,
+    title,
+  }: EditCardFormProps = $props();
 </script>
 
 <form {onsubmit}>
   <Card>
+    <h3>{title}</h3>
     {#if children}
       {@render children()}
     {/if}
-    <Stack space={3}>
-      <Controls {disableSubmit} {hideDeleteButton} />
-    </Stack>
+    <Controls {disableSubmit} {hideDeleteButton} {onCancel} {onDelete} />
   </Card>
 </form>
 
@@ -38,6 +44,22 @@
 
     :global(.Card) {
       width: 100%;
+    }
+  }
+
+  h3 {
+    font-weight: 600;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 0;
+    margin-bottom: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+
+    @include mediaLg {
+      font-size: 1.2rem;
     }
   }
 </style>
