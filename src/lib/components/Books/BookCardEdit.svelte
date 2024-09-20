@@ -73,8 +73,8 @@
     <StackItem>
       <TextInput
         disabled={useBooksStore.fetching}
-        label="Name (Required)"
-        placeholder="Thai phrases for travel"
+        label="Name"
+        placeholder="e.g. Thai greetings (Required)"
         {oninput}
         value={name}
         name="name"

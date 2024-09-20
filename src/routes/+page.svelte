@@ -27,8 +27,6 @@
 
 <BooksToolbar />
 
-lastBook: {useLastOpenBookStore.lastOpenBook}
-
 {#if useBooksStore.mounted}
   <BooksPlaceholder />
   <Box>

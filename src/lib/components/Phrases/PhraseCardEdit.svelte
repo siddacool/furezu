@@ -15,7 +15,6 @@
 
   let phraseName: string = $state(phrase?.phrase || '');
   let meaning: string = $state(phrase?.meaning || '');
-  let pronounciation: string = $state(phrase?.pronounciation || '');
   let translation: string = $state(phrase?.translation || '');
 
   function oninput(e: Event) {
@@ -27,9 +26,6 @@
         break;
       case 'meaning':
         meaning = target.value;
-        break;
-      case 'pronounciation':
-        pronounciation = target.value;
         break;
       case 'translation':
         translation = target.value;
@@ -52,14 +48,12 @@
       await usePhrasesStore.update(phrase._id, {
         phrase: phraseName,
         meaning,
-        pronounciation,
         translation,
       });
     } else {
       await usePhrasesStore.add(bookId, {
         phrase: phraseName,
         meaning,
-        pronounciation,
         translation,
       });
     }
@@ -92,8 +86,8 @@
     <StackItem>
       <TextInput
         disabled={usePhrasesStore.fetching}
-        label="Phrase Meaning (Required)"
-        placeholder="Enter Meaning"
+        label="Meaning"
+        placeholder="e.g. Hello (Required)"
         {oninput}
         value={meaning}
         name="meaning"
@@ -102,8 +96,8 @@
     <StackItem>
       <TextInput
         disabled={usePhrasesStore.fetching}
-        label="Phrase (Required)"
-        placeholder="Enter phrase"
+        label="Phrase"
+        placeholder="e.g. Koni chi wa (Required)"
         {oninput}
         value={phraseName}
         name="phrase"
@@ -113,18 +107,8 @@
     <StackItem>
       <TextInput
         disabled={usePhrasesStore.fetching}
-        label="Pronounciation"
-        placeholder="Enter pronounciation"
-        {oninput}
-        value={pronounciation}
-        name="pronounciation"
-      />
-    </StackItem>
-    <StackItem>
-      <TextInput
-        disabled={usePhrasesStore.fetching}
-        label="Translation"
-        placeholder="Enter translation"
+        label="Local translation"
+        placeholder="e.g. こんにちは、元気ですか"
         {oninput}
         value={translation}
         name="translation"

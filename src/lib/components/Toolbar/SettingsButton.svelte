@@ -21,9 +21,9 @@
 
     @include mediaLg {
       margin-left: 0;
-      position: absolute;
-      right: 48px;
-      top: 32px;
+      position: fixed;
+      right: 56px;
+      top: 48px;
       justify-self: flex-end;
     }
 
