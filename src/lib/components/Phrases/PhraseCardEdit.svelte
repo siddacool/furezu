@@ -74,7 +74,7 @@
   }
 
   $effect(() => {
-    document.getElementById('phrase-card')?.scrollIntoView({ behavior: 'instant', block: 'start' });
+    document.getElementById('phrase-card')?.scrollIntoView(true);
   });
 </script>
 
@@ -92,6 +92,16 @@
       <TextInput
         disabled={usePhrasesStore.fetching}
         label="Phrase"
+        placeholder="e.g. Hello (Required)"
+        {oninput}
+        value={meaning}
+        name="meaning"
+      />
+    </StackItem>
+    <StackItem>
+      <TextInput
+        disabled={usePhrasesStore.fetching}
+        label="Local version"
         placeholder="e.g. Koni chi wa (Required)"
         {oninput}
         value={phraseName}
@@ -101,18 +111,7 @@
     <StackItem>
       <TextInput
         disabled={usePhrasesStore.fetching}
-        label="Meaning"
-        placeholder="e.g. Hello (Required)"
-        {oninput}
-        value={meaning}
-        name="meaning"
-      />
-    </StackItem>
-    <StackItem />
-    <StackItem>
-      <TextInput
-        disabled={usePhrasesStore.fetching}
-        label="Local translation"
+        label="Translation"
         placeholder="e.g. こんにちは、元気ですか"
         {oninput}
         value={translation}
