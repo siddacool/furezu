@@ -3,6 +3,7 @@
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import { Stack, StackItem } from '../ui-framework/Layout/Stack';
   import DisplayCard from '../DisplayCard.svelte';
+  import Icon from '@iconify/svelte';
 
   interface PhraseCardProps {
     phrase: Phrase;
@@ -20,12 +21,12 @@
   disableClick
   hideEditButton={usePhrasesStore.curruntlyEditing || usePhrasesStore.createMode ? true : false}
 >
-  <Stack space={3}>
+  <Stack space={2}>
     <StackItem>
       <h3>{phrase.meaning}</h3>
     </StackItem>
     <StackItem>
-      <h5>{phrase.phrase}</h5>
+      <h5><Icon icon="mdi:talk" /> {phrase.phrase}</h5>
     </StackItem>
     {#if phrase.translation}
       <StackItem>
@@ -65,11 +66,22 @@
   }
 
   h5 {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     margin-bottom: 0;
     margin-top: 0;
     line-height: 25px;
     font-weight: 300;
+    display: flex;
+    align-items: center;
+    color: var(--color-primary-700);
+    font-style: italic;
+
+    :global(svg) {
+      display: flex;
+      align-items: center;
+      margin-right: 8px;
+      color: var(--color-primary-600);
+    }
 
     @include mediaLg {
       font-size: 1.7rem;
