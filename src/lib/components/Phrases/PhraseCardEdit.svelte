@@ -74,7 +74,7 @@
   }
 
   $effect(() => {
-    document.getElementById('phrase-card')?.scrollIntoView();
+    document.getElementById('phrase-card')?.scrollIntoView({ behavior: 'instant', block: 'start' });
   });
 </script>
 

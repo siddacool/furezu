@@ -61,7 +61,7 @@
   }
 
   $effect(() => {
-    document.getElementById('book-card')?.scrollIntoView();
+    document.getElementById('book-card')?.scrollIntoView({ behavior: 'instant', block: 'start' });
   });
 </script>
 
