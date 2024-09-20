@@ -86,21 +86,21 @@
     <StackItem>
       <TextInput
         disabled={usePhrasesStore.fetching}
-        label="Meaning"
-        placeholder="e.g. Hello (Required)"
-        {oninput}
-        value={meaning}
-        name="meaning"
-      />
-    </StackItem>
-    <StackItem>
-      <TextInput
-        disabled={usePhrasesStore.fetching}
         label="Phrase"
         placeholder="e.g. Koni chi wa (Required)"
         {oninput}
         value={phraseName}
         name="phrase"
+      />
+    </StackItem>
+    <StackItem>
+      <TextInput
+        disabled={usePhrasesStore.fetching}
+        label="Meaning"
+        placeholder="e.g. Hello (Required)"
+        {oninput}
+        value={meaning}
+        name="meaning"
       />
     </StackItem>
     <StackItem />

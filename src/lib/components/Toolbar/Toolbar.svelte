@@ -65,26 +65,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
-    position: sticky;
-    left: 0;
-    width: 100%;
-    z-index: 200;
-    top: -16px;
-    padding-top: 8px;
-    background-color: var(--color-white);
-
-    @include mediaLg {
-      padding-top: 24px;
-      margin-left: 0;
-      margin-right: 0;
-      padding-bottom: 20px;
-      margin-bottom: 20px;
-      top: -24px;
-    }
   }
 
   .manager {

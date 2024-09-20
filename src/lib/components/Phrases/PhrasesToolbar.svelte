@@ -1,6 +1,11 @@
 <script lang="ts">
+  import { page } from '$app/stores';
   import Toolbar from '$lib/components/Toolbar';
+  import { useBooksStore } from '$lib/stores/books/books.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
+
+  const id = $page.params.id;
+  const targetBook = $derived(useBooksStore.books.find((item) => item._id === id));
 
   function onSearchInput(e: Event) {
     const target = e.target as HTMLInputElement;
@@ -15,9 +20,9 @@
 
 <Toolbar
   class="PhrasesToolbar"
-  placeholder="Search phrases"
+  placeholder={`Search ${targetBook?.name || ''}`}
   onAdd={() => usePhrasesStore.startCreateMode()}
-  label="Book"
+  label="Phrase"
   disabled={usePhrasesStore.curruntlyEditing || usePhrasesStore.createMode ? true : false}
   {onSearchInput}
   {onSearchClear}

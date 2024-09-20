@@ -5,10 +5,9 @@
   import BooksToolbar from '$lib/components/Books/BooksToolbar.svelte';
   import CreateABook from '$lib/components/Books/CreateABook.svelte';
   import Box from '$lib/components/Box.svelte';
+  import Header from '$lib/components/Header.svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import { useLastOpenBookStore } from '$lib/stores/local-settings/last-open-book.svelte';
-
-  let pageMounted = $state(false);
 
   $effect(() => {
     if (useLastOpenBookStore.lastOpenBook) {
@@ -25,7 +24,9 @@
 
 <title>Furezu</title>
 
-<BooksToolbar />
+<Header>
+  <BooksToolbar />
+</Header>
 
 {#if useBooksStore.mounted}
   <BooksPlaceholder />

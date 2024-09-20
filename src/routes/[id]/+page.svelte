@@ -3,6 +3,7 @@
   import { page } from '$app/stores';
   import BackButton from '$lib/components/BackButton.svelte';
   import Box from '$lib/components/Box.svelte';
+  import Header from '$lib/components/Header.svelte';
   import CreateAPhrase from '$lib/components/Phrases/CreateAPhrase.svelte';
   import PhraseList from '$lib/components/Phrases/PhraseList.svelte';
   import PhrasesPlaceholder from '$lib/components/Phrases/PhrasesPlaceholder.svelte';
@@ -34,12 +35,15 @@
 
 <title>{targetBook?.name}</title>
 
+<Header>
+  <PhrasesToolbar />
+</Header>
+
 {#if !targetBook?.name}
   <ThickPlaceholderText>Book not found. Go back <BackButton backTo="/" /></ThickPlaceholderText>
 {/if}
 
 {#if usePhrasesStore.mounted && targetBook?._id}
-  <PhrasesToolbar />
   <PhrasesPlaceholder />
   <Box>
     <PhraseList />

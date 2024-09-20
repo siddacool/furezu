@@ -25,7 +25,7 @@
       <h3>{phrase.meaning}</h3>
     </StackItem>
     <StackItem>
-      <h5>"{phrase.phrase}"</h5>
+      <h5>{phrase.phrase}</h5>
     </StackItem>
     {#if phrase.translation}
       <StackItem>
@@ -70,7 +70,6 @@
     margin-top: 0;
     line-height: 25px;
     font-weight: 300;
-    font-style: italic;
 
     @include mediaLg {
       font-size: 1.7rem;

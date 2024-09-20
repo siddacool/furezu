@@ -15,7 +15,6 @@
 <style lang="scss">
   main {
     background-color: var(--color-white);
-    padding: 16px;
     overflow-y: auto;
     overflow-x: hidden;
     height: 100vh;

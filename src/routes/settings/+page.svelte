@@ -1,7 +1,14 @@
 <script lang="ts">
+  import { page } from '$app/stores';
+  import Box from '$lib/components/Box.svelte';
+  import SettingRouteCard from '$lib/components/Settings/SettingRouteCard.svelte';
+  import SettingsHeader from '$lib/components/Settings/SettingsHeader.svelte';
 </script>
 
-<div>Yo</div>
+<title>Settings</title>
 
-<style lang="scss">
-</style>
+<SettingsHeader />
+
+<Box>
+  <SettingRouteCard href="/settings/appearance" title="Appearance" />
+</Box>
