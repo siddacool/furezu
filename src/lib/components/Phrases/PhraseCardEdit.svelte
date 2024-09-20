@@ -72,6 +72,10 @@
 
     usePhrasesStore.clearEditing();
   }
+
+  $effect(() => {
+    document.getElementById('phrase-card')?.scrollIntoView();
+  });
 </script>
 
 <EditCard
@@ -81,6 +85,7 @@
   title={phrase?.phrase ? `Edit: ${limitTextLength(phrase.meaning)}` : 'Create: Phrase'}
   disableSubmit={!phraseName?.trim() || !meaning?.trim() ? true : false}
   hideDeleteButton={!phrase?._id}
+  id="phrase-card"
 >
   <Stack space={2}>
     <StackItem>

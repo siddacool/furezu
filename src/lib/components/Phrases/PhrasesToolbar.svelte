@@ -16,12 +16,16 @@
   function onSearchClear() {
     usePhrasesStore.updateSearchFilter(undefined);
   }
+
+  function onAdd() {
+    usePhrasesStore.startCreateMode();
+  }
 </script>
 
 <Toolbar
   class="PhrasesToolbar"
   placeholder={`Search ${targetBook?.name || ''}`}
-  onAdd={() => usePhrasesStore.startCreateMode()}
+  {onAdd}
   label="Phrase"
   disabled={usePhrasesStore.curruntlyEditing || usePhrasesStore.createMode ? true : false}
   {onSearchInput}

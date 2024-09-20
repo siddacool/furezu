@@ -10,6 +10,7 @@
     onCancel?: () => void;
     onDelete?: () => void;
     title: string;
+    id: string;
   }
 
   const {
@@ -20,10 +21,11 @@
     disableSubmit,
     hideDeleteButton,
     title,
+    id,
   }: EditCardFormProps = $props();
 </script>
 
-<form {onsubmit}>
+<form {onsubmit} {id}>
   <Card>
     <h3>{title}</h3>
     {#if children}

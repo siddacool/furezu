@@ -11,12 +11,16 @@
   function onSearchClear() {
     useBooksStore.updateSearchFilter(undefined);
   }
+
+  function onAdd() {
+    useBooksStore.startCreateMode();
+  }
 </script>
 
 <Toolbar
   class="BooksToolbar"
   placeholder="Search books"
-  onAdd={() => useBooksStore.startCreateMode()}
+  {onAdd}
   label="Book"
   disabled={useBooksStore.curruntlyEditing || useBooksStore.createMode ? true : false}
   {onSearchInput}

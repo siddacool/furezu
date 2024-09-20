@@ -20,6 +20,10 @@
 
   function onclick() {
     if (document.referrer.indexOf(window.location.host) !== -1) {
+      if (title && document.referrer.includes('settings/')) {
+        goto('/');
+      }
+
       history.go(-1);
       return;
     } else {
@@ -36,14 +40,14 @@
 
     <h3>
       {#if title}
-        / <a href="/settings">Settings</a>
+        <a href="/settings">Settings</a>
       {:else}
         Settings
       {/if}
     </h3>
 
     {#if title}
-      <p>{title}</p>
+      <p>/ {title}</p>
     {/if}
   </div>
 </Header>
@@ -57,15 +61,18 @@
     font-weight: 500;
     font-size: 1.35rem;
     line-height: 30px;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
 
     @include mediaLg {
       margin-left: 16px;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
     }
   }
 
   div {
-    max-width: 545px;
+    max-width: 534px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -78,7 +85,7 @@
 
     @include mediaLg {
       margin-left: 16px;
-      font-size: 1.35rem;
+      font-size: 1.45rem;
     }
   }
 

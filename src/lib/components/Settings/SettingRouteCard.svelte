@@ -1,19 +1,25 @@
 <script lang="ts">
+  import type { Snippet } from 'svelte';
   import Card from '../ui-framework/Layout/Card.svelte';
 
   interface SettingRouteCardProps {
     href: string;
     title: string;
+    icon?: Snippet;
   }
 
-  const { href, title }: SettingRouteCardProps = $props();
+  const { href, title, icon }: SettingRouteCardProps = $props();
 </script>
 
 <a {href}>
   <Card>
-    <h3>
-      {title}
-    </h3>
+    {#if icon}
+      <div class="Icon">
+        {@render icon()}
+      </div>
+    {/if}
+
+    <h3>{title}</h3>
   </Card>
 </a>
 
@@ -29,6 +35,13 @@
 
     :global(.Card) {
       width: 100%;
+      display: flex;
+      align-items: center;
+      transition: all 100ms;
+
+      &:hover {
+        background-color: var(--color-primary-100);
+      }
     }
   }
 
@@ -36,5 +49,23 @@
     margin: 0;
     font-size: 1.3rem;
     font-weight: 500;
+
+    @include mediaLg {
+      font-size: 1.45rem;
+    }
+  }
+
+  .Icon {
+    font-size: 1.6rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    color: var(--color-primary-700);
+
+    @include mediaLg {
+      font-size: 1.8rem;
+      width: 50px;
+    }
   }
 </style>

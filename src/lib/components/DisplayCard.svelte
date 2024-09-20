@@ -70,6 +70,7 @@
     :global(.Card) {
       width: 100%;
       padding-right: 66px;
+      transition: all 100ms;
 
       @include mediaLg {
         padding-right: 71px;
@@ -87,6 +88,12 @@
     &.disabled {
       cursor: default;
       pointer-events: none;
+    }
+
+    &:hover {
+      :global(.Card) {
+        background-color: var(--color-primary-100);
+      }
     }
   }
 </style>

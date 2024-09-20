@@ -59,6 +59,10 @@
 
     useBooksStore.clearEditing();
   }
+
+  $effect(() => {
+    document.getElementById('book-card')?.scrollIntoView();
+  });
 </script>
 
 <EditCard
@@ -68,6 +72,7 @@
   disableSubmit={!name.trim() ? true : false}
   title={book?.name ? `Edit: ${limitTextLength(book.name, 40)}` : 'Create: Book'}
   hideDeleteButton={!book?._id}
+  id="book-card"
 >
   <Stack space={2}>
     <StackItem>
