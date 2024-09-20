@@ -63,7 +63,7 @@
       :global(button:last-child) {
         border-top-right-radius: 20px;
         border-bottom-right-radius: 20px;
-        border-right-width: 1px;
+        border-right-width: 2px;
       }
     }
   }
