@@ -121,7 +121,7 @@
   }
 
   input {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 400;
     outline: none;
     border: 0;
@@ -159,6 +159,7 @@
     }
 
     @include mediaLg {
+      font-size: 1.2rem;
       padding-left: 60px;
     }
 

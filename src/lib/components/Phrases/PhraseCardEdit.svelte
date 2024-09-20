@@ -84,7 +84,7 @@
   {onsubmit}
   {onCancel}
   {onDelete}
-  title={phrase?.phrase ? `Edit: ${limitTextLength(phrase.phrase)}` : 'Create: Phrase'}
+  title={phrase?.phrase ? `Edit: ${limitTextLength(phrase.meaning)}` : 'Create: Phrase'}
   disableSubmit={!phraseName?.trim() || !meaning?.trim() ? true : false}
   hideDeleteButton={!phrase?._id}
 >
@@ -92,7 +92,7 @@
     <StackItem>
       <TextInput
         disabled={usePhrasesStore.fetching}
-        label="Phrase Meaning"
+        label="Phrase Meaning (Required)"
         placeholder="Enter Meaning"
         {oninput}
         value={meaning}
@@ -102,13 +102,14 @@
     <StackItem>
       <TextInput
         disabled={usePhrasesStore.fetching}
-        label="Phrase"
+        label="Phrase (Required)"
         placeholder="Enter phrase"
         {oninput}
         value={phraseName}
         name="phrase"
       />
     </StackItem>
+    <StackItem />
     <StackItem>
       <TextInput
         disabled={usePhrasesStore.fetching}

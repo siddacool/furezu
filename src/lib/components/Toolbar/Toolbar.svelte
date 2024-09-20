@@ -64,13 +64,16 @@
   .Toolbar {
     display: flex;
     align-items: center;
-    margin-bottom: 24px;
-    margin-left: auto;
-    margin-right: auto;
     justify-content: center;
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-bottom: 24px;
+    position: sticky;
 
     @include mediaLg {
       padding-top: 24px;
+      margin-left: 0;
+      margin-right: 0;
       margin-bottom: 40px;
     }
   }
@@ -79,12 +82,6 @@
     display: flex;
     flex: 1;
     align-items: center;
-    margin: 0 8px;
     max-width: 450px;
-
-    @include mediaLg {
-      margin-left: auto;
-      margin-right: auto;
-    }
   }
 </style>

@@ -15,7 +15,7 @@
 <style lang="scss">
   div {
     width: 100%;
-    max-width: 700px;
+    max-width: 540px;
     margin: 0 auto;
   }
 </style>

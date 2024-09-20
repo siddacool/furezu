@@ -56,14 +56,6 @@ function createBooksStore() {
         mounted = true;
       }
     },
-    reset() {
-      fetching = false;
-      mounted = false;
-      curruntlyEditing = undefined;
-      createMode = false;
-      searchFilter = undefined;
-      books = [];
-    },
     startCreateMode() {
       createMode = true;
     },

@@ -1,7 +1,6 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
-  import AnchorButton from '../ui-framework/Form/AnchorButton.svelte';
   import { useToolbarContextStore } from './Toolbar.svelte';
+  import BackButton from '../BackButton.svelte';
 
   interface BackButtonProps {
     backTo?: string | null;
@@ -12,9 +11,7 @@
 
 {#if backTo}
   <div class={`ToolbarBackButton ${useToolbarContextStore.isSearchActive ? 'isSearchActive' : ''}`}>
-    <AnchorButton compact href="/" title="back">
-      <Icon icon="material-symbols:arrow-back-rounded" />
-    </AnchorButton>
+    <BackButton {backTo} title="back" />
   </div>
 {/if}
 
@@ -23,17 +20,14 @@
 
   .ToolbarBackButton {
     display: inline-flex;
+    margin-right: 8px;
 
     @include mediaLg {
-      align-self: flex-start;
+      margin-right: 16px;
     }
 
     &.isSearchActive {
       display: none;
-
-      @include mediaLg {
-        display: inline-flex;
-      }
     }
   }
 </style>

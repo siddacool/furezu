@@ -27,12 +27,16 @@
     <StackItem>
       <h4>{phrase.phrase}</h4>
     </StackItem>
-    <StackItem>
-      <h4>{phrase.pronounciation}</h4>
-    </StackItem>
-    <StackItem>
-      <h4>{phrase.translation}</h4>
-    </StackItem>
+    {#if phrase.pronounciation}
+      <StackItem>
+        <h4>{phrase.pronounciation}</h4>
+      </StackItem>
+    {/if}
+    {#if phrase.translation}
+      <StackItem>
+        <h4>{phrase.translation}</h4>
+      </StackItem>
+    {/if}
   </Stack>
 </DisplayCard>
 

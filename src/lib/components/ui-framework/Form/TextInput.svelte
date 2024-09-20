@@ -78,17 +78,16 @@
   }
 
   input {
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 400;
     outline: none;
-    height: 44px;
+    height: 50px;
     padding: 0 12px;
     border: 2px solid;
     border-color: var(--color-grey-500);
     border-radius: 10px;
     background-color: transparent;
     transition: all 100ms;
-    letter-spacing: 0.3px;
     font-family: inherit;
 
     &::-webkit-input-placeholder {

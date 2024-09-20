@@ -3,9 +3,11 @@
   import './styles/index.scss';
   import DebugTools from './DebugTools';
   import ThemeSetter from './ThemeSetter.svelte';
+  import ObstructiveLoadingScreen from './ObstructiveLoadingScreen.svelte';
 
   polyfillCountryFlagEmojis();
 </script>
 
 <DebugTools />
 <ThemeSetter />
+<ObstructiveLoadingScreen />

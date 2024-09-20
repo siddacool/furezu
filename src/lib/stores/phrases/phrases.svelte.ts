@@ -55,14 +55,6 @@ function createPhrasesStore() {
         mounted = true;
       }
     },
-    reset() {
-      fetching = false;
-      mounted = false;
-      curruntlyEditing = undefined;
-      createMode = false;
-      searchFilter = undefined;
-      phrases = [];
-    },
     startCreateMode() {
       createMode = true;
     },

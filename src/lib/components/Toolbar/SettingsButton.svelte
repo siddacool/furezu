@@ -17,9 +17,14 @@
 
   .ToolbarSettingsButton {
     display: inline-flex;
+    margin-left: 8px;
 
     @include mediaLg {
-      align-self: flex-start;
+      margin-left: 0;
+      position: absolute;
+      right: 48px;
+      top: 32px;
+      justify-self: flex-end;
     }
 
     &.isSearchActive {

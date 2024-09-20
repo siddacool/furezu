@@ -1,22 +1,24 @@
 <script lang="ts">
+  import { goto } from '$app/navigation';
   import BooksList from '$lib/components/Books/BooksList.svelte';
   import BooksPlaceholder from '$lib/components/Books/BooksPlaceholder.svelte';
   import BooksToolbar from '$lib/components/Books/BooksToolbar.svelte';
   import CreateABook from '$lib/components/Books/CreateABook.svelte';
+  import Box from '$lib/components/Box.svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
-  import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
+  import { useLastOpenBookStore } from '$lib/stores/local-settings/last-open-book.svelte';
+
+  let pageMounted = $state(false);
 
   $effect(() => {
-    async function fetchData() {
-      await useBooksStore.init();
-      await usePhrasesStore.init();
+    if (useLastOpenBookStore.lastOpenBook) {
+      goto(`/${useLastOpenBookStore.lastOpenBook}`);
     }
+  });
 
-    fetchData();
-
+  $effect(() => {
     return () => {
-      useBooksStore.reset();
-      usePhrasesStore.reset();
+      useBooksStore.clearEditing();
     };
   });
 </script>
@@ -25,17 +27,12 @@
 
 <BooksToolbar />
 
+lastBook: {useLastOpenBookStore.lastOpenBook}
+
 {#if useBooksStore.mounted}
   <BooksPlaceholder />
-  <div>
+  <Box>
     <BooksList />
     <CreateABook />
-  </div>
+  </Box>
 {/if}
-
-<style lang="scss">
-  div {
-    max-width: 540px;
-    margin: 0 auto;
-  }
-</style>
