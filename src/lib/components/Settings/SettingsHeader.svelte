@@ -53,22 +53,15 @@
 </Header>
 
 <style lang="scss">
-  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
-
   h3 {
     margin: 0;
-    margin-left: 8px;
+    margin-left: 16px;
     font-weight: 500;
-    font-size: 1.35rem;
+    font-size: 1.8rem;
     line-height: 30px;
     height: 60px;
     display: inline-flex;
     align-items: center;
-
-    @include mediaLg {
-      margin-left: 16px;
-      font-size: 1.8rem;
-    }
   }
 
   div {
@@ -81,12 +74,8 @@
   p {
     margin: 0;
     font-size: 1rem;
-    margin-left: 8px;
-
-    @include mediaLg {
-      margin-left: 16px;
-      font-size: 1.45rem;
-    }
+    margin-left: 16px;
+    font-size: 1.45rem;
   }
 
   a {

@@ -26,41 +26,18 @@
       <h3>{phrase.meaning}</h3>
     </StackItem>
     <StackItem>
-      <h5><Icon icon="mdi:talk" /> {phrase.phrase}</h5>
+      <h3 class="phrase"><Icon icon="mdi:talk" /> {phrase.phrase}</h3>
     </StackItem>
     {#if phrase.translation}
       <StackItem>
-        <h4>{phrase.translation}</h4>
+        <h3>{phrase.translation}</h3>
       </StackItem>
     {/if}
   </Stack>
 </DisplayCard>
 
 <style lang="scss">
-  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
-
-  h3 {
-    font-size: 1.45rem;
-    margin-bottom: 0;
-    margin-top: 0;
-    line-height: 25px;
-    font-weight: 600;
-  }
-
-  h4 {
-    font-size: 1.45rem;
-    margin-bottom: 0;
-    margin-top: 0;
-    line-height: 25px;
-    font-weight: 500;
-  }
-
-  h5 {
-    font-size: 1.7rem;
-    margin-bottom: 0;
-    margin-top: 0;
-    line-height: 25px;
-    font-weight: 300;
+  .phrase {
     display: flex;
     align-items: center;
     color: var(--color-primary-700);

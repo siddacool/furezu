@@ -49,27 +49,8 @@
 </DisplayCard>
 
 <style lang="scss">
-  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
-
-  h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0;
-    margin-top: 0;
-    line-height: 25px;
-    font-weight: 500;
-
-    @include mediaLg {
-      font-size: 1.45rem;
-      line-height: 30px;
-    }
-  }
-
   .totalPhrases {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 25px;
-
-    @include mediaLg {
-      font-size: 1.2rem;
-    }
   }
 </style>

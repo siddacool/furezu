@@ -93,8 +93,6 @@
 </div>
 
 <style lang="scss">
-  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
-
   div {
     display: flex;
     color: var(--color-grey-font-900);
@@ -121,7 +119,7 @@
   }
 
   input {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 400;
     outline: none;
     border: 0;
@@ -132,7 +130,7 @@
     flex: 1;
     position: relative;
     z-index: 1;
-    padding-left: 40px;
+    padding-left: 60px;
     transition: all 100ms;
     width: 100%;
     font-family: inherit;
@@ -159,11 +157,6 @@
       opacity: 1;
     }
 
-    @include mediaLg {
-      font-size: 1.2rem;
-      padding-left: 60px;
-    }
-
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button {
       appearance: none;
@@ -175,24 +168,19 @@
   }
 
   .search-icon {
-    font-size: 1.3rem;
     display: inline-flex;
     height: 100%;
-    width: 40px;
     align-items: center;
     justify-content: center;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 0;
+    font-size: 1.8rem;
+    width: 60px;
 
     &:not(.disabled) {
       color: var(--color-grey-font-900);
-    }
-
-    @include mediaLg {
-      font-size: 1.8rem;
-      width: 60px;
     }
   }
 
@@ -220,10 +208,6 @@
 
     &.active {
       display: none;
-    }
-
-    @include mediaLg {
-      display: inline-flex;
     }
   }
 </style>

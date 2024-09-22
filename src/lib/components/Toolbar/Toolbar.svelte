@@ -59,8 +59,6 @@
 </div>
 
 <style lang="scss">
-  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
-
   .Toolbar {
     display: flex;
     align-items: center;

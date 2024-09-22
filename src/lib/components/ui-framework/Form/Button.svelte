@@ -44,8 +44,6 @@
 </button>
 
 <style lang="scss">
-  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
-
   button {
     margin: 0;
     padding: 0 14px;
@@ -53,7 +51,7 @@
     font-size: 1.12rem;
     font-weight: 500;
     border-radius: 20px;
-    min-width: 60px;
+    min-width: 90px;
     cursor: pointer;
     display: inline-flex;
     justify-content: center;
@@ -67,16 +65,9 @@
       font-size: 1.6rem;
     }
 
-    @include mediaLg {
-      min-width: 90px;
-    }
-
     &.compact {
       padding: 0;
-
-      @include mediaLg {
-        min-width: 65px;
-      }
+      min-width: 65px;
     }
 
     &:not([disabled]) {

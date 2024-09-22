@@ -36,8 +36,6 @@
 </form>
 
 <style lang="scss">
-  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
-
   form {
     display: flex;
     width: 100%;
@@ -57,11 +55,7 @@
     margin-bottom: 0;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin-bottom: 16px;
-
-    @include mediaLg {
-      font-size: 1.2rem;
-    }
   }
 </style>

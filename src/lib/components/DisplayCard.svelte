@@ -38,29 +38,22 @@
 </section>
 
 <style lang="scss">
-  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
-
   .DisplayCard {
     position: relative;
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 16px;
-    color: var(--color-grey-font-900);
+    color: var(--color-grey-font-800);
 
     :global(.EditButton) {
       position: absolute;
-      right: 6px;
-      top: 6px;
+      right: 12px;
+      top: 12px;
       width: 60px;
       height: 60px;
       min-width: initial;
       border-radius: 50%;
       border: 0;
-
-      @include mediaLg {
-        right: 12px;
-        top: 12px;
-      }
     }
 
     :global(.EditButton.variant--default) {
@@ -69,12 +62,24 @@
 
     :global(.Card) {
       width: 100%;
-      padding-right: 66px;
+      padding-right: 71px;
       transition: all 100ms;
+    }
 
-      @include mediaLg {
-        padding-right: 71px;
-      }
+    :global(h3) {
+      font-size: 1.45rem;
+      margin-bottom: 0;
+      margin-top: 0;
+      line-height: 25px;
+      font-weight: 500;
+    }
+
+    :global(h2) {
+      font-size: 1.6rem;
+      margin-bottom: 0;
+      margin-top: 0;
+      line-height: 30px;
+      font-weight: 400;
     }
   }
 
