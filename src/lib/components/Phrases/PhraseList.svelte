@@ -21,7 +21,7 @@
       (item) =>
         !item.hidden &&
         item.bookId === bookId &&
-        item.phrase.trim().toLocaleLowerCase().includes(searchFilter),
+        item.meaning.trim().toLocaleLowerCase().includes(searchFilter),
     );
   });
 </script>
