@@ -135,6 +135,7 @@
     padding-left: 40px;
     transition: all 100ms;
     width: 100%;
+    font-family: inherit;
 
     &::-webkit-input-placeholder {
       /* Chrome */
