@@ -2,6 +2,7 @@ import { nanoid } from 'nanoid';
 import { db } from '../db';
 import type { Book } from './types';
 import { usePhrasesStore } from '../phrases/phrases.svelte';
+import { getMoment } from '$lib/helpers/time';
 
 async function getBook(idToFind: string) {
   try {
@@ -131,6 +132,64 @@ function createBooksStore() {
         books = await db.books?.toArray();
 
         await usePhrasesStore.deleteAllPharsesFromBook(idToDelete);
+
+        return Promise.resolve();
+      } catch (e) {
+        console.error(e);
+
+        return Promise.reject(e);
+      } finally {
+        fetching = false;
+      }
+    },
+    async importData(booksToUpdate: Book[]) {
+      try {
+        fetching = true;
+
+        const bookIds = booksToUpdate.map((item) => item._id);
+        const newBooks = [...booksToUpdate];
+        let anyDataPut = false;
+
+        for (let index = 0; index < newBooks.length; index++) {
+          const book = newBooks[index];
+
+          delete book.id;
+
+          // New book pushed
+          if (!bookIds.includes(book._id)) {
+            newBooks.push(book);
+
+            anyDataPut = true;
+            continue;
+          }
+
+          // Update book data
+          const targetBookIndex = newBooks.findIndex((item) => item._id === book._id);
+
+          if (targetBookIndex < 0) {
+            continue;
+          }
+
+          const updatedAt = getMoment(book.updatedAt);
+          const targetBook = newBooks[targetBookIndex];
+          const updatedAtTargetBook = getMoment(targetBook.updatedAt);
+
+          // Update approved
+          if (updatedAt.isAfter(updatedAtTargetBook)) {
+            newBooks[targetBookIndex] = {
+              ...newBooks[targetBookIndex],
+              ...book,
+            };
+
+            anyDataPut = true;
+          }
+        }
+
+        if (!anyDataPut) {
+          await db.books.bulkPut(newBooks);
+
+          books = await db.books?.toArray();
+        }
 
         return Promise.resolve();
       } catch (e) {

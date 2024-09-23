@@ -5,7 +5,9 @@ import customParseFormat from 'dayjs/plugin/customParseFormat.js';
 dayjs.extend(utc);
 dayjs.extend(customParseFormat);
 
-export type TimeValue = string | number | dayjs.Dayjs | Date | null | undefined;
+export type DayjsValue = dayjs.Dayjs;
+
+export type TimeValue = string | number | DayjsValue | Date | null | undefined;
 
 export const getMoment = (time?: TimeValue, format?: OptionType) => dayjs(time, format);
 

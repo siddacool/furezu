@@ -24,14 +24,11 @@
     }
 
     :global(h3) {
-      font-weight: 500;
+      font-size: 1.2rem;
       margin-top: 0;
-      font-size: 1rem;
-      margin-bottom: 12px;
-
-      @include mediaLg {
-        font-size: 1.1rem;
-      }
+      line-height: 25px;
+      font-weight: 500;
+      margin-bottom: 16px;
     }
   }
 </style>

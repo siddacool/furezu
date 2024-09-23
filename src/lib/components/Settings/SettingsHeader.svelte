@@ -38,13 +38,7 @@
       <Icon icon="material-symbols:arrow-back-rounded" />
     </Button>
 
-    <h3>
-      {#if title}
-        <a href="/settings">Settings</a>
-      {:else}
-        Settings
-      {/if}
-    </h3>
+    <h3>Settings</h3>
 
     {#if title}
       <p>/ {title}</p>
@@ -76,15 +70,5 @@
     font-size: 1rem;
     margin-left: 16px;
     font-size: 1.45rem;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-      color: var(--color-primary-700);
-    }
   }
 </style>

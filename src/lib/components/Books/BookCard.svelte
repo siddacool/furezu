@@ -51,6 +51,6 @@
 <style lang="scss">
   .totalPhrases {
     font-size: 1.2rem;
-    line-height: 25px;
+    line-height: 30px;
   }
 </style>
