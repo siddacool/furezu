@@ -17,7 +17,7 @@
   </SettingRouteCard>
   <SettingRouteCard href="/settings/sync" title="Sync">
     {#snippet icon()}
-      <Icon icon="mdi:theme-outline" />
+      <Icon icon="material-symbols:sync" />
     {/snippet}
   </SettingRouteCard>
 </Box>

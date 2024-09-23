@@ -24,8 +24,6 @@
 </a>
 
 <style lang="scss">
-  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
-
   a {
     display: flex;
     width: 100%;
@@ -48,25 +46,18 @@
 
   h3 {
     margin: 0;
-    font-size: 1.3rem;
+    font-size: 1.45rem;
     font-weight: 500;
-
-    @include mediaLg {
-      font-size: 1.45rem;
-    }
   }
 
   .Icon {
-    font-size: 1.6rem;
-    width: 60px;
-    height: 60px;
+    font-size: 2.1rem;
+    width: 40px;
+    height: 50px;
     display: flex;
     align-items: center;
     color: var(--color-primary-700);
-
-    @include mediaLg {
-      font-size: 1.8rem;
-      width: 50px;
-    }
+    justify-content: flex-start;
+    margin-right: 12px;
   }
 </style>
