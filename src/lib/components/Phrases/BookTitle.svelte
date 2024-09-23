@@ -1,6 +1,5 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import ThickPlaceholderText from '../ThickPlaceholderText.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
 

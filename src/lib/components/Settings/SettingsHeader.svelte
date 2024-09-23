@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { afterNavigate, goto } from '$app/navigation';
+  import { goto } from '$app/navigation';
   import Icon from '@iconify/svelte';
   import Header from '../Header.svelte';
   import Button from '../ui-framework/Form/Button.svelte';
@@ -9,14 +9,6 @@
   }
 
   const { title }: SettingsHeaderProps = $props();
-
-  let backTo = $state('/');
-
-  afterNavigate(({ from }) => {
-    if (from?.url.pathname) {
-      backTo = from.url.pathname;
-    }
-  });
 
   function onclick() {
     if (document.referrer.indexOf(window.location.host) !== -1) {

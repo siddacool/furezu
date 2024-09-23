@@ -4,7 +4,6 @@
   import ButtonGroup from '$lib/components/ui-framework/Form/ButtonGroup.svelte';
   import { useThemeStore } from '$lib/stores/local-settings/theme.svelte';
   import { Themes } from '$lib/stores/local-settings/types';
-  import Icon from '@iconify/svelte';
 
   function onclick(e: MouseEvent) {
     const target = e.target as HTMLButtonElement;
