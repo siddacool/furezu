@@ -23,10 +23,10 @@
         if (sytemTheme === AppColorSchemes.LIGHT) {
           metaThemeColor.setAttribute('content', '#ffffff');
         } else {
-          metaThemeColor.setAttribute('content', '#0b0b43');
+          metaThemeColor.setAttribute('content', '#0b0b21');
         }
       } else if (useThemeStore.theme === Themes.DARK) {
-        metaThemeColor.setAttribute('content', '#0b0b43');
+        metaThemeColor.setAttribute('content', '#0b0b21');
       } else {
         metaThemeColor.setAttribute('content', '#ffffff');
       }
