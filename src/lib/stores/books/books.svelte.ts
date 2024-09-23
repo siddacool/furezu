@@ -146,50 +146,38 @@ function createBooksStore() {
       try {
         fetching = true;
 
-        const bookIds = booksToUpdate.map((item) => item._id);
-        const newBooks = [...booksToUpdate];
-        let anyDataPut = false;
+        const newBooks: Book[] = [];
 
-        for (let index = 0; index < newBooks.length; index++) {
-          const book = newBooks[index];
+        booksToUpdate.forEach((itemToUpdate) => {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          const { id, ...restItemProps } = itemToUpdate;
 
-          delete book.id;
+          const targetIndex = books.findIndex((item) => item._id === itemToUpdate._id);
 
-          // New book pushed
-          if (!bookIds.includes(book._id)) {
-            newBooks.push(book);
-
-            anyDataPut = true;
-            continue;
+          if (targetIndex < 0) {
+            // New
+            newBooks.push({ ...restItemProps });
+            return;
           }
 
-          // Update book data
-          const targetBookIndex = newBooks.findIndex((item) => item._id === book._id);
+          // update
+          const updatedAt = getMoment(itemToUpdate.updatedAt);
+          const updatedAtPrevious = getMoment(books[targetIndex].updatedAt);
 
-          if (targetBookIndex < 0) {
-            continue;
+          if (updatedAt.isBefore(updatedAtPrevious)) {
+            return;
           }
-
-          const updatedAt = getMoment(book.updatedAt);
-          const targetBook = newBooks[targetBookIndex];
-          const updatedAtTargetBook = getMoment(targetBook.updatedAt);
 
           // Update approved
-          if (updatedAt.isAfter(updatedAtTargetBook)) {
-            newBooks[targetBookIndex] = {
-              ...newBooks[targetBookIndex],
-              ...book,
-            };
+          newBooks.push({
+            ...books[targetIndex],
+            ...restItemProps,
+          });
+        });
 
-            anyDataPut = true;
-          }
-        }
+        await db.books.bulkPut(newBooks);
 
-        if (!anyDataPut) {
-          await db.books.bulkPut(newBooks);
-
-          books = await db.books?.toArray();
-        }
+        books = await db.books?.toArray();
 
         return Promise.resolve();
       } catch (e) {

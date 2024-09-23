@@ -169,50 +169,39 @@ function createPhrasesStore() {
       try {
         fetching = true;
 
-        const phraseIds = phrasesToUpdate.map((item) => item._id);
-        const newPhrases = [...phrasesToUpdate];
-        let anyDataPut = false;
+        const newPhrases: Phrase[] = [];
 
-        for (let index = 0; index < newPhrases.length; index++) {
-          const phrase = newPhrases[index];
-
-          delete phrase.id;
-
-          // New phrase pushed
-          if (!phraseIds.includes(phrase._id)) {
-            newPhrases.push(phrase);
-
-            anyDataPut = true;
-            continue;
-          }
+        phrasesToUpdate.forEach((itemToUpdate) => {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          const { id, ...restItemProps } = itemToUpdate;
 
           // Update phrase data
-          const targetPhraseIndex = newPhrases.findIndex((item) => item._id === phrase._id);
+          const targetIndex = phrases.findIndex((item) => item._id === itemToUpdate._id);
 
-          if (targetPhraseIndex < 0) {
-            continue;
+          if (targetIndex < 0) {
+            // New
+            newPhrases.push({ ...restItemProps });
+            return;
           }
 
-          const updatedAt = getMoment(phrase.updatedAt);
-          const targetPhrase = newPhrases[targetPhraseIndex];
-          const updatedAtTargetPhrase = getMoment(targetPhrase.updatedAt);
+          // update
+          const updatedAt = getMoment(itemToUpdate.updatedAt);
+          const updatedAtPrevious = getMoment(phrases[targetIndex].updatedAt);
+
+          if (updatedAt.isBefore(updatedAtPrevious)) {
+            return;
+          }
 
           // Update approved
-          if (updatedAt.isAfter(updatedAtTargetPhrase)) {
-            newPhrases[targetPhraseIndex] = {
-              ...newPhrases[targetPhraseIndex],
-              ...phrase,
-            };
+          newPhrases.push({
+            ...phrases[targetIndex],
+            ...restItemProps,
+          });
+        });
 
-            anyDataPut = true;
-          }
-        }
+        await db.phrases.bulkPut(newPhrases);
 
-        if (!anyDataPut) {
-          await db.phrases.bulkPut(newPhrases);
-
-          phrases = await db.phrases?.toArray();
-        }
+        phrases = await db.phrases?.toArray();
 
         return Promise.resolve();
       } catch (e) {
