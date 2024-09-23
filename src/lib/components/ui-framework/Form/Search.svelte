@@ -68,7 +68,7 @@
 <div class={`Search ${className}`} class:active class:disabled>
   {#if !active}
     <span class="search-icon" class:disabled>
-      <Icon icon="twemoji:magnifying-glass-tilted-left" />
+      <Icon icon="material-symbols:search" />
     </span>
   {/if}
 

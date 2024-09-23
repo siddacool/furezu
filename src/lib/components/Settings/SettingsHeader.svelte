@@ -12,10 +12,6 @@
 
   function onclick() {
     if (document.referrer.indexOf(window.location.host) !== -1) {
-      if (title && document.referrer.includes('settings/')) {
-        goto('/');
-      }
-
       history.go(-1);
       return;
     } else {
