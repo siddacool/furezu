@@ -2,21 +2,36 @@
   "name": "Furezu - Phrasebook",
   "short_name": "furezu",
   "description": "a simple Phrasebook for travel.",
-  "theme_color": "#000",
-  "background_color": "#fafafa",
+  "theme_color": "#fff",
+  "background_color": "#5b48cb",
   "display": "standalone",
   "scope": ".",
   "start_url": "/",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/assets/android-chrome-192x192.png",
+      "src": "/assets/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/assets/android-chrome-512x512.png",
+      "src": "/assets/icon-512x512.png",
       "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icon-2048x2048.png",
+      "sizes": "2048x2048",
       "type": "image/png"
     }
   ],
