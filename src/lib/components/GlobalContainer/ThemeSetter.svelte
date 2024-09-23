@@ -21,14 +21,14 @@
     if (metaThemeColor) {
       if (useThemeStore.theme === Themes.SYSTEM) {
         if (sytemTheme === AppColorSchemes.LIGHT) {
-          metaThemeColor.setAttribute('content', '#ffffff');
+          metaThemeColor.setAttribute('content', '#fafafa');
         } else {
           metaThemeColor.setAttribute('content', '#0b0b21');
         }
       } else if (useThemeStore.theme === Themes.DARK) {
         metaThemeColor.setAttribute('content', '#0b0b21');
       } else {
-        metaThemeColor.setAttribute('content', '#ffffff');
+        metaThemeColor.setAttribute('content', '#fafafa');
       }
     }
   });
