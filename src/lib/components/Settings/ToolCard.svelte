@@ -30,5 +30,10 @@
       font-weight: 500;
       margin-bottom: 16px;
     }
+
+    :global(p) {
+      font-size: 1.2rem;
+      line-height: 30px;
+    }
   }
 </style>

@@ -118,8 +118,6 @@
   }
 
   p {
-    font-size: 1.2rem;
-    line-height: 30px;
     margin-bottom: 0;
     margin-top: 8px;
   }

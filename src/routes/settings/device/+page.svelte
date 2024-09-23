@@ -2,16 +2,12 @@
   import Box from '$lib/components/Box.svelte';
   import DeviceNameSettings from '$lib/components/Settings/Device/DeviceNameSettings.svelte';
   import SettingsHeader from '$lib/components/Settings/SettingsHeader.svelte';
-  import ExportSettings from '$lib/components/Settings/Sync/ExportSettings.svelte';
-  import ImportSettings from '$lib/components/Settings/Sync/ImportSettings.svelte';
 </script>
 
-<title>Sync</title>
+<title>Device</title>
 
-<SettingsHeader title="Sync" />
+<SettingsHeader title="Device" />
 
 <Box>
   <DeviceNameSettings />
-  <ExportSettings />
-  <ImportSettings />
 </Box>

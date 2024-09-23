@@ -4,6 +4,7 @@
   import { downloadFile } from '$lib/helpers/download-file';
   import { getMoment, timeout } from '$lib/helpers/time';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
+  import { useDeviceNameStore } from '$lib/stores/local-settings/device-name.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import type { SyncData } from '$lib/types/sync';
 
@@ -25,7 +26,9 @@
 
       const data = new Blob([JSON.stringify(exportData)], { type: 'text/plain' });
 
-      const fileName = `furezu-export_${exportedAt.format('DD-MM-YYYY-HH-mm-ss')}.json`;
+      const deviceName = useDeviceNameStore.deviceName ? `${useDeviceNameStore.deviceName}_` : '';
+
+      const fileName = `furezu-export_${deviceName}${exportedAt.format('DD-MM-YYYY-HH-mm-ss')}.json`;
 
       await downloadFile(fileName, data);
       await timeout(200);
@@ -59,8 +62,6 @@
 
 <style lang="scss">
   p {
-    font-size: 1.2rem;
-    line-height: 30px;
     margin: 0;
   }
 </style>

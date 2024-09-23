@@ -8,11 +8,13 @@ export const USER_LOCAL_SETTINGS = generateCookieName('USER_LOCAL_SETTINGS');
 export type LocalSettings = {
   theme: number;
   lastOpenBook?: string;
+  deviceName?: string;
 };
 
 const defaultLocalSettings: LocalSettings = {
   theme: Themes.SYSTEM,
   lastOpenBook: undefined,
+  deviceName: undefined,
 };
 
 export function getLocalSettings() {
