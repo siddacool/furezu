@@ -47,8 +47,8 @@
 
     :global(.EditButton) {
       position: absolute;
-      right: 12px;
-      top: 12px;
+      right: 6px;
+      top: 6px;
       width: 60px;
       height: 60px;
       min-width: initial;
@@ -62,7 +62,7 @@
 
     :global(.Card) {
       width: 100%;
-      padding-right: 71px;
+      padding-right: 66px;
       transition: all 100ms;
     }
 

@@ -26,8 +26,11 @@
 </script>
 
 <GlobalContainer />
-<MainLayout>
-  {#if children}
-    {@render children()}
-  {/if}
-</MainLayout>
+
+{#if useBooksStore.mounted && usePhrasesStore.mounted}
+  <MainLayout>
+    {#if children}
+      {@render children()}
+    {/if}
+  </MainLayout>
+{/if}
