@@ -132,6 +132,9 @@ importers:
       vite-plugin-pwa:
         specifier: ^0.20.5
         version: 0.20.5(vite@5.4.5(@types/node@22.5.5)(sass@1.78.0)(terser@5.33.0))(workbox-build@7.1.1)(workbox-window@7.1.0)
+      workbox-window:
+        specifier: ^7.1.0
+        version: 7.1.0
 
 packages:
 
