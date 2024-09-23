@@ -34,6 +34,7 @@
     :global(p) {
       font-size: 1.2rem;
       line-height: 30px;
+      color: var(--color-grey-font-600);
     }
   }
 </style>

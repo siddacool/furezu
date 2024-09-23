@@ -40,7 +40,7 @@
   a {
     margin: 0;
     padding: 0 14px;
-    border: 1px solid;
+    border: 0;
     font-size: 1.12rem;
     font-weight: 500;
     border-radius: 20px;
@@ -67,38 +67,33 @@
     &:not(.disabled) {
       &.variant {
         &--default {
-          background-color: var(--color-white);
-          border-color: var(--color-grey-500);
+          background-color: var(--color-primary-200);
           color: var(--color-grey-font-900);
 
           &:hover {
-            background-color: var(--color-primary-200);
+            background-color: var(--color-primary-300);
           }
 
           &:active {
-            background-color: var(--color-primary-300);
+            background-color: var(--color-primary-400);
           }
         }
 
         &--primary {
           background-color: var(--color-primary-700);
-          border-color: var(--color-primary-700);
           color: var(--color-white-const);
 
           &:hover {
             background-color: var(--color-primar-800);
-            border-color: var(--color-primary-800);
           }
 
           &:active {
             background-color: var(--color-primary-900);
-            border-color: var(--color-primary-900);
           }
         }
 
         &--danger {
           background-color: var(--color-danger-100);
-          border-color: var(--color-danger-400);
           color: var(--color-danger-800);
 
           &:hover {
@@ -113,7 +108,6 @@
     }
 
     &.disabled {
-      border-color: var(--color-grey-200);
       cursor: not-allowed;
       background-color: var(--color-grey-200);
       color: var(--color-grey-font-400);
