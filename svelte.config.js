@@ -14,9 +14,6 @@ const config = {
       edge: false,
       split: false,
     }),
-    serviceWorker: {
-      register: false,
-    },
   },
 };
 

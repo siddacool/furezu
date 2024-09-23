@@ -4,9 +4,9 @@
   import SettingsHeader from '$lib/components/Settings/SettingsHeader.svelte';
 </script>
 
-<title>Appearance</title>
+<title>Sync</title>
 
-<SettingsHeader title="Appearance" />
+<SettingsHeader title="Sync" />
 
 <Box>
   <ThemeSettings />
