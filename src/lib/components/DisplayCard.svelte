@@ -58,6 +58,10 @@
 
     :global(.EditButton.variant--default) {
       color: var(--color-grey-font-700);
+
+      &:not(:hover):not(:active) {
+        background-color: transparent;
+      }
     }
 
     :global(.Card) {

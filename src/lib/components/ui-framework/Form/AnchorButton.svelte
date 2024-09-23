@@ -40,7 +40,7 @@
   a {
     margin: 0;
     padding: 0 14px;
-    border: 2px solid;
+    border: 1px solid;
     font-size: 1.12rem;
     font-weight: 500;
     border-radius: 20px;
@@ -67,7 +67,7 @@
     &:not(.disabled) {
       &.variant {
         &--default {
-          background-color: transparent;
+          background-color: var(--color-white);
           border-color: var(--color-grey-500);
           color: var(--color-grey-font-900);
 
@@ -81,18 +81,18 @@
         }
 
         &--primary {
-          background-color: var(--color-primary-const-700);
-          border-color: var(--color-primary-const-700);
+          background-color: var(--color-primary-700);
+          border-color: var(--color-primary-700);
           color: var(--color-white-const);
 
           &:hover {
-            background-color: var(--color-primary-const-800);
-            border-color: var(--color-primary-const-800);
+            background-color: var(--color-primar-800);
+            border-color: var(--color-primary-800);
           }
 
           &:active {
-            background-color: var(--color-primary-const-900);
-            border-color: var(--color-primary-const-900);
+            background-color: var(--color-primary-900);
+            border-color: var(--color-primary-900);
           }
         }
 
@@ -113,9 +113,9 @@
     }
 
     &.disabled {
-      border-color: var(--color-grey-300);
+      border-color: var(--color-grey-200);
       cursor: not-allowed;
-      background-color: var(--color-grey-100);
+      background-color: var(--color-grey-200);
       color: var(--color-grey-font-400);
       pointer-events: none;
     }

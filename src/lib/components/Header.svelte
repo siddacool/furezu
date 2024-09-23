@@ -22,7 +22,7 @@
     top: 0;
     left: 0;
     z-index: 200;
-    background-color: var(--color-white);
+    background-color: var(--color-backdrop);
     padding-left: 8px;
     padding-right: 8px;
     padding-top: 14px;

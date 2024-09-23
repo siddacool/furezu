@@ -66,7 +66,7 @@
 
     &:not(.error):not(.disabled) {
       &.active {
-        color: var(--color-primary-800);
+        color: var(--color-primary-600);
       }
     }
 
@@ -83,12 +83,13 @@
     outline: none;
     height: 50px;
     padding: 0 12px;
-    border: 2px solid;
+    border: 1px solid;
     border-color: var(--color-grey-500);
     border-radius: 10px;
     background-color: transparent;
     transition: all 100ms;
     font-family: inherit;
+    background-color: var(--color-white);
 
     &::-webkit-input-placeholder {
       /* Chrome */
@@ -129,7 +130,7 @@
     }
 
     &[disabled] {
-      background-color: var(--color-grey-100);
+      background-color: var(--color-grey-200);
       color: var(--color-grey-font-400);
       border-color: var(--color-grey-200);
     }

@@ -97,13 +97,14 @@
     display: flex;
     color: var(--color-grey-font-900);
     transition: all 100ms;
-    border: 2px solid;
+    border: 1px solid;
     border-color: var(--color-grey-500);
     height: 60px;
     border-radius: 30px;
     overflow: hidden;
     position: relative;
     transition: all 100ms;
+    background-color: var(--color-white);
 
     &:not(.disabled) {
       &.active {
@@ -112,7 +113,7 @@
     }
 
     &.disabled {
-      background-color: var(--color-grey-100);
+      background-color: var(--color-grey-200);
       color: var(--color-grey-font-400);
       border-color: var(--color-grey-200);
     }

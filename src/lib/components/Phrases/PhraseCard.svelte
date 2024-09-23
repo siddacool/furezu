@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Phrase } from '$lib/stores/phrases/types';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
+  import { useThemeStore } from '$lib/stores/local-settings/theme.svelte';
   import { Stack, StackItem } from '../ui-framework/Layout/Stack';
   import DisplayCard from '../DisplayCard.svelte';
   import Icon from '@iconify/svelte';
@@ -40,7 +41,7 @@
   .phrase {
     display: flex;
     align-items: center;
-    color: var(--color-primary-700);
+    color: var(--color-primary-600);
     font-style: italic;
 
     :global(svg) {
@@ -49,5 +50,9 @@
       margin-right: 8px;
       color: var(--color-primary-600);
     }
+  }
+
+  h3.phrase {
+    font-size: 1.5rem;
   }
 </style>
