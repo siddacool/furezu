@@ -3,7 +3,7 @@
   "short_name": "furezu",
   "description": "a simple Phrasebook for travel.",
   "theme_color": "#fafafa",
-  "background_color": "#fff",
+  "background_color": "#7259FF",
   "display": "standalone",
   "scope": ".",
   "start_url": "/",
