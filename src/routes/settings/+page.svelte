@@ -15,4 +15,9 @@
       <Icon icon="mdi:theme-outline" />
     {/snippet}
   </SettingRouteCard>
+  <SettingRouteCard href="/settings/sync" title="Sync">
+    {#snippet icon()}
+      <Icon icon="mdi:theme-outline" />
+    {/snippet}
+  </SettingRouteCard>
 </Box>
