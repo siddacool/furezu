@@ -5,6 +5,10 @@
   import { Stack, StackItem } from '../ui-framework/Layout/Stack';
   import DisplayCard from '../DisplayCard.svelte';
   import Icon from '@iconify/svelte';
+  import Button from '../ui-framework/Form/Button.svelte';
+  import { useBooksStore } from '$lib/stores/books/books.svelte';
+  import { speak } from '$lib/stores/voices/speak';
+  import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
 
   interface PhraseCardProps {
     phrase: Phrase;
@@ -12,8 +16,15 @@
 
   const { phrase }: PhraseCardProps = $props();
 
+  const targetBook = $derived(useBooksStore.books.find((item) => item._id === phrase.bookId));
+  const voice = $derived(useVoicesStore.voices.find((item) => item.value === targetBook?.voice));
+
   function onEdit() {
     usePhrasesStore.startEditing(phrase._id);
+  }
+
+  function onSpeaking(reading: boolean) {
+    console.log(reading);
   }
 </script>
 
@@ -31,6 +42,7 @@
     </StackItem>
     {#if phrase.translation}
       <StackItem>
+        <Button onclick={() => speak(voice, phrase.translation, onSpeaking)}>Speak</Button>
         <h3>{phrase.translation}</h3>
       </StackItem>
     {/if}
