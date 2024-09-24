@@ -42,7 +42,16 @@
     </StackItem>
     {#if phrase.translation}
       <StackItem>
-        <Button onclick={() => speak(voice, phrase.translation, onSpeaking)}>Speak</Button>
+        <div class="speakContainer">
+          <Button
+            onclick={() => speak(voice, phrase.translation, onSpeaking)}
+            class="Speak"
+            variant="primary"
+          >
+            Speak
+          </Button>
+        </div>
+
         <h3>{phrase.translation}</h3>
       </StackItem>
     {/if}
@@ -66,5 +75,12 @@
 
   h3.phrase {
     font-size: 1.5rem;
+  }
+
+  .speakContainer {
+    :global(.Speak) {
+      cursor: default;
+      pointer-events: all;
+    }
   }
 </style>
