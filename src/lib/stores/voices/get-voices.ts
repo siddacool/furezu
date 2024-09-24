@@ -2,8 +2,8 @@ import { browser } from '$app/environment';
 import { isoLanguages } from './iso-languages';
 
 export type Voice = {
-  name: string;
-  language: string;
+  value: string;
+  label: string;
   model: SpeechSynthesisVoice;
 };
 
@@ -54,8 +54,8 @@ export async function getVoices() {
       const language = isoLanguages[langCode];
 
       voices.push({
-        name: item.name,
-        language: language || langCode,
+        value: item.name,
+        label: language ? `${item.name} (${language})` : item.name,
         model: item,
       });
     }

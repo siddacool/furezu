@@ -5,6 +5,8 @@
   import { Stack, StackItem } from '$lib/components/ui-framework/Layout/Stack';
   import { limitTextLength } from '$lib/helpers/text-manipulations/limit-text-length';
   import EditCard from '../EditCard.svelte/EditCard.svelte';
+  import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
+  import Select from '../ui-framework/Form/Select.svelte';
 
   interface BookCardFormProps {
     book?: Book;
@@ -28,6 +30,10 @@
       default:
         break;
     }
+  }
+
+  function onChangeVoice() {
+    console.log('yo');
   }
 
   async function onsubmit(e: SubmitEvent) {
@@ -83,6 +89,15 @@
         {oninput}
         value={name}
         name="name"
+      />
+    </StackItem>
+    <StackItem>
+      <Select
+        label="Voice (Text to Speech)"
+        options={useVoicesStore.voices}
+        onchange={onChangeVoice}
+        value={voice}
+        placeholder="Select voice"
       />
     </StackItem>
   </Stack>

@@ -56,7 +56,8 @@
     "country-flag-emoji-polyfill": "^0.1.8",
     "dayjs": "^1.11.13",
     "dexie": "^4.0.8",
-    "nanoid": "^5.0.7"
+    "nanoid": "^5.0.7",
+    "svelte-select": "^5.8.3"
   },
   "volta": {
     "node": "20.17.0",

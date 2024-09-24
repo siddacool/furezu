@@ -90,6 +90,7 @@
     transition: all 100ms;
     font-family: inherit;
     background-color: var(--color-white);
+    color: inherit;
 
     &::-webkit-input-placeholder {
       /* Chrome */

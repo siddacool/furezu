@@ -28,6 +28,8 @@
 
     fetchBookData();
   });
+
+  function onchange() {}
 </script>
 
 <GlobalContainer />
@@ -39,7 +41,3 @@
     {/if}
   </MainLayout>
 {/if}
-
-{#each useVoicesStore.voices as voice}
-  <div>{voice.language} ({voice.model.lang}) - {voice.name}</div>
-{/each}
