@@ -12,7 +12,7 @@
 
   interface SelectProps {
     disabled?: boolean;
-    onchange: () => void;
+    onchange: (e: CustomEvent) => void;
     name?: string;
     label?: string;
     class?: string;
@@ -48,10 +48,9 @@
     {value}
     on:blur={() => (active = false)}
     on:focus={() => (active = true)}
-    on:change={() => onchange()}
+    on:change={(e: CustomEvent) => onchange(e)}
     {disabled}
     {name}
-    listOpen={true}
     --background="var(--color-white)"
     --list-background="var(--color-white)"
     --border-radius="10px"
@@ -131,65 +130,6 @@
       }
     }
   }
-
-  // input {
-  //   font-size: 1.05rem;
-  //   font-weight: 400;
-  //   outline: none;
-  //   height: 50px;
-  //   padding: 0 12px;
-  //   border: 1px solid;
-  //   border-color: var(--color-grey-500);
-  //   border-radius: 10px;
-  //   background-color: transparent;
-  //   transition: all 100ms;
-  //   font-family: inherit;
-  //   background-color: var(--color-white);
-
-  //   &::-webkit-input-placeholder {
-  //     /* Chrome */
-  //     color: var(--color-grey-font-600);
-  //   }
-
-  //   &:-ms-input-placeholder {
-  //     /* IE 10+ */
-  //     color: var(--color-grey-font-600);
-  //   }
-
-  //   &::-moz-placeholder {
-  //     /* Firefox 19+ */
-  //     color: var(--color-grey-font-600);
-  //     opacity: 1;
-  //   }
-
-  //   &:-moz-placeholder {
-  //     /* Firefox 4 - 18 */
-  //     color: var(--color-grey-font-600);
-  //     opacity: 1;
-  //   }
-
-  //   &:not(.error):not([disabled]) {
-  //     &:focus {
-  //       border-color: var(--color-primary-600);
-  //     }
-  //   }
-
-  //   &:not([disabled]) {
-  //     &.error {
-  //       border-color: var(--color-danger-400);
-
-  //       &:focus {
-  //         border-color: var(--color-danger-600);
-  //       }
-  //     }
-  //   }
-
-  //   &[disabled] {
-  //     background-color: var(--color-grey-200);
-  //     color: var(--color-grey-font-400);
-  //     border-color: var(--color-grey-200);
-  //   }
-  // }
 
   .ErrorMessage {
     margin-top: 6px;

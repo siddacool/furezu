@@ -4,6 +4,7 @@
   import { Stack, StackItem } from '../ui-framework/Layout/Stack';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import DisplayCard from '../DisplayCard.svelte';
+  import { goto } from '$app/navigation';
 
   interface BookCardProps {
     book: Book;
@@ -17,16 +18,19 @@
     usePhrasesStore.phrases.filter((item) => !item.hidden && item.bookId === book._id).length,
   );
 
-  function onEdit() {
+  function onedit() {
     useBooksStore.startEditing(book._id);
+  }
+
+  function onclick() {
+    goto(`/${book._id}`);
   }
 </script>
 
 <DisplayCard
-  href={`/${book._id}`}
-  disableClick={useBooksStore.curruntlyEditing || useBooksStore.createMode ? true : false}
   hideEditButton={useBooksStore.curruntlyEditing || useBooksStore.createMode ? true : false}
-  {onEdit}
+  {onedit}
+  onclick={useBooksStore.curruntlyEditing || useBooksStore.createMode ? undefined : onclick}
 >
   <Stack>
     <StackItem>

@@ -1,11 +1,7 @@
 import { browser } from '$app/environment';
 import type { Voice } from './get-voices';
 
-export function speak(
-  voice: Voice | undefined,
-  textToRead: string | undefined,
-  callback: (reading: boolean) => void,
-) {
+export function speak(voice: Voice, textToRead: string, callback: (reading: boolean) => void) {
   if (!browser) {
     console.log(`Sorry, your browser doesn't support text to speech!`);
 

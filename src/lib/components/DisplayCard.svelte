@@ -6,32 +6,41 @@
 
   interface DisplayCardProps extends SvelteComponentProps {
     data?: string;
-    href?: string;
-    disableClick?: boolean;
     hideEditButton?: boolean;
-    onEdit: () => void;
+    onedit: () => void;
+    onclick?: () => void;
   }
 
-  const {
-    children,
-    href,
-    disableClick = false,
-    onEdit,
-    hideEditButton = false,
-  }: DisplayCardProps = $props();
+  const { children, onedit, onclick, hideEditButton = false }: DisplayCardProps = $props();
+
+  function onkeydown(e: KeyboardEvent) {
+    if (e.key !== 'Enter' && e.key !== ' ') {
+      return;
+    }
+
+    e.preventDefault();
+
+    const target = e.target as HTMLButtonElement;
+
+    target?.click();
+  }
 </script>
 
-<section class="DisplayCard">
-  <a {href} class={`${disableClick || !href ? 'disabled' : ''}`}>
-    <Card>
-      {#if children}
-        {@render children()}
-      {/if}
-    </Card>
-  </a>
+<section
+  class={`DisplayCard ${!onclick ? 'disable' : ''}`}
+  {onclick}
+  role="button"
+  tabindex="0"
+  {onkeydown}
+>
+  <Card>
+    {#if children}
+      {@render children()}
+    {/if}
+  </Card>
 
   {#if !hideEditButton}
-    <Button class="EditButton" compact onclick={onEdit} title="Edit">
+    <Button class="EditButton" compact onclick={onedit} title="Edit">
       <Icon icon="tabler:edit" />
     </Button>
   {/if}
@@ -47,27 +56,24 @@
 
     :global(.EditButton) {
       position: absolute;
-      right: 6px;
-      top: 6px;
-      width: 60px;
-      height: 60px;
-      min-width: initial;
-      border-radius: 50%;
-      border: 0;
-    }
-
-    :global(.EditButton.variant--default) {
-      color: var(--color-grey-font-700);
-
-      &:not(:hover):not(:active) {
-        background-color: transparent;
-      }
+      right: 12px;
+      top: 12px;
     }
 
     :global(.Card) {
       width: 100%;
-      padding-right: 66px;
+      padding-right: 76px;
       transition: all 100ms;
+    }
+
+    &:not(.disable) {
+      :global(.Card) {
+        cursor: pointer;
+      }
+
+      :global(.Card:hover) {
+        background-color: var(--color-primary-100);
+      }
     }
 
     :global(h3) {
@@ -84,25 +90,6 @@
       margin-top: 0;
       line-height: 30px;
       font-weight: 400;
-    }
-  }
-
-  a {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    text-decoration: none;
-    color: inherit;
-
-    &.disabled {
-      cursor: default;
-      pointer-events: none;
-    }
-
-    &:hover {
-      :global(.Card) {
-        background-color: var(--color-primary-100);
-      }
     }
   }
 </style>

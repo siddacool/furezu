@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { Phrase } from '$lib/stores/phrases/types';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
-  import { useThemeStore } from '$lib/stores/local-settings/theme.svelte';
   import { Stack, StackItem } from '../ui-framework/Layout/Stack';
   import DisplayCard from '../DisplayCard.svelte';
   import Icon from '@iconify/svelte';
@@ -17,20 +16,14 @@
   const { phrase }: PhraseCardProps = $props();
 
   const targetBook = $derived(useBooksStore.books.find((item) => item._id === phrase.bookId));
-  const voice = $derived(useVoicesStore.voices.find((item) => item.value === targetBook?.voice));
 
-  function onEdit() {
+  function onedit() {
     usePhrasesStore.startEditing(phrase._id);
-  }
-
-  function onSpeaking(reading: boolean) {
-    console.log(reading);
   }
 </script>
 
 <DisplayCard
-  {onEdit}
-  disableClick
+  {onedit}
   hideEditButton={usePhrasesStore.curruntlyEditing || usePhrasesStore.createMode ? true : false}
 >
   <Stack space={3}>
@@ -38,21 +31,36 @@
       <h3>{phrase.meaning}</h3>
     </StackItem>
     <StackItem>
-      <h3 class="phrase"><Icon icon="mdi:talk" /> {phrase.phrase}</h3>
+      <h3 class="phrase">{phrase.phrase}</h3>
     </StackItem>
     {#if phrase.translation}
       <StackItem>
-        <div class="speakContainer">
-          <Button
-            onclick={() => speak(voice, phrase.translation, onSpeaking)}
-            class="Speak"
-            variant="primary"
-          >
-            Speak
-          </Button>
-        </div>
+        <div class="translationContainer">
+          {#if targetBook?.voice}
+            {#if useVoicesStore.speakingPhraseId === phrase._id}
+              <Button class="Speaking" compact>
+                <Icon icon="svg-spinners:bars-scale" />
+              </Button>
+            {:else}
+              <Button
+                onclick={() =>
+                  useVoicesStore.speak(
+                    phrase._id,
+                    targetBook.voice || '',
+                    phrase.translation || '',
+                  )}
+                class="Speak"
+                disabled={useVoicesStore.speaking}
+                compact
+                title="Say it aloud"
+              >
+                <Icon icon="f7:speaker-2" />
+              </Button>
+            {/if}
+          {/if}
 
-        <h3>{phrase.translation}</h3>
+          <h3>{phrase.translation}</h3>
+        </div>
       </StackItem>
     {/if}
   </Stack>
@@ -77,10 +85,18 @@
     font-size: 1.5rem;
   }
 
-  .speakContainer {
+  .translationContainer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
     :global(.Speak) {
-      cursor: default;
-      pointer-events: all;
+      margin-right: 16px;
+    }
+
+    :global(.Speaking) {
+      margin-right: 16px;
+      pointer-events: none;
     }
   }
 </style>

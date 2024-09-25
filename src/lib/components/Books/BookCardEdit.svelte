@@ -7,6 +7,7 @@
   import EditCard from '../EditCard.svelte/EditCard.svelte';
   import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
   import Select from '../ui-framework/Form/Select.svelte';
+  import type { Voice } from '$lib/stores/voices/get-voices';
 
   interface BookCardFormProps {
     book?: Book;
@@ -32,8 +33,8 @@
     }
   }
 
-  function onChangeVoice() {
-    console.log('yo');
+  function onChangeVoice(e: CustomEvent<Voice>) {
+    voice = e.detail.value;
   }
 
   async function onsubmit(e: SubmitEvent) {
@@ -97,7 +98,7 @@
         options={useVoicesStore.voices}
         onchange={onChangeVoice}
         value={voice}
-        placeholder="Select voice"
+        placeholder="No voice selected"
       />
     </StackItem>
   </Stack>
