@@ -2,12 +2,11 @@
   import type { Phrase } from '$lib/stores/phrases/types';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import { Stack, StackItem } from '../ui-framework/Layout/Stack';
-  import DisplayCard from '../DisplayCard.svelte';
   import Icon from '@iconify/svelte';
   import Button from '../ui-framework/Form/Button.svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
-  import { speak } from '$lib/stores/voices/speak';
   import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
+  import DisplayCard from '../DisplayCard';
 
   interface PhraseCardProps {
     phrase: Phrase;
@@ -25,11 +24,9 @@
 <DisplayCard
   {onedit}
   hideEditButton={usePhrasesStore.curruntlyEditing || usePhrasesStore.createMode ? true : false}
+  title={phrase.meaning}
 >
   <Stack space={3}>
-    <StackItem>
-      <h3>{phrase.meaning}</h3>
-    </StackItem>
     <StackItem>
       <h3 class="phrase">{phrase.phrase}</h3>
     </StackItem>
@@ -81,6 +78,10 @@
     }
   }
 
+  h3 {
+    margin: 0;
+  }
+
   h3.phrase {
     font-size: 1.5rem;
   }
@@ -88,15 +89,16 @@
   .translationContainer {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
 
     :global(.Speak) {
       margin-right: 16px;
+      align-self: baseline;
     }
 
     :global(.Speaking) {
       margin-right: 16px;
       pointer-events: none;
+      align-self: baseline;
     }
   }
 </style>

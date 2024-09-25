@@ -3,8 +3,8 @@
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import { Stack, StackItem } from '../ui-framework/Layout/Stack';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
-  import DisplayCard from '../DisplayCard.svelte';
   import { goto } from '$app/navigation';
+  import DisplayCard from '../DisplayCard';
 
   interface BookCardProps {
     book: Book;
@@ -31,11 +31,9 @@
   hideEditButton={useBooksStore.curruntlyEditing || useBooksStore.createMode ? true : false}
   {onedit}
   onclick={useBooksStore.curruntlyEditing || useBooksStore.createMode ? undefined : onclick}
+  title={book.name}
 >
   <Stack>
-    <StackItem>
-      <h3>{book.name}</h3>
-    </StackItem>
     <StackItem>
       <div class="totalPhrases">
         {#if totalPhrases === 1}
