@@ -56,6 +56,7 @@
     --border-radius="10px"
     --item-hover-bg="var(--color-primary-100)"
     --item-is-active-bg="var(--color-primary-700)"
+    --border-focused="1px solid var(--color-primary-600)"
   />
 
   {#if error && !disabled}

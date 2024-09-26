@@ -3,7 +3,7 @@
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import type { Phrase } from '$lib/stores/phrases/types';
   import ThickPlaceholderText from '../ThickPlaceholderText.svelte';
-  import PhraseCard from './PhraseCard.svelte';
+  import PhraseCard from './PhraseCard';
   import PhraseCardEdit from './PhraseCardEdit.svelte';
 
   let filteredPhrases: Phrase[] = $state([]);
