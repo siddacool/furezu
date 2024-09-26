@@ -46,12 +46,12 @@
 <style lang="scss">
   button {
     margin: 0;
-    padding: 0 14px;
+    padding: 0 8px;
     border: 0;
-    font-size: 1.12rem;
+    font-size: 1rem;
     font-weight: 500;
     border-radius: 20px;
-    min-width: 90px;
+    min-width: 85px;
     cursor: pointer;
     display: inline-flex;
     justify-content: center;
@@ -62,7 +62,7 @@
     font-family: inherit;
 
     :global(svg) {
-      font-size: 1.6rem;
+      font-size: 1.55rem;
     }
 
     &.compact {

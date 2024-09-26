@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { SvelteComponentProps } from '$lib/types/svelte-component';
+  import FormLabel from './shared/FormLabel.svelte';
 
   interface ButtonGroupProps extends SvelteComponentProps {
     id?: string;
@@ -12,8 +13,7 @@
 
 <article class="ButtonGroup" {id}>
   {#if label}
-    <!-- svelte-ignore a11y_label_has_associated_control -->
-    <label>{label}</label>
+    <FormLabel {label} />
   {/if}
 
   <section class:conjoint>
@@ -27,14 +27,6 @@
   article {
     display: flex;
     flex-direction: column;
-  }
-
-  label {
-    font-size: 1rem;
-    display: block;
-    margin-bottom: 10px;
-    font-weight: 500;
-    padding-left: 8px;
   }
 
   section {
