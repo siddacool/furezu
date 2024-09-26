@@ -4,7 +4,8 @@
   import { Stack } from '../../ui-framework/Layout/Stack';
   import { goto } from '$app/navigation';
   import DisplayCard from '../../DisplayCard';
-  import TotalPhrases from './TotalPhrases.svelte';
+  import DownloadButton from './DownloadButton.svelte';
+  import Stats from './Stats';
 
   interface BookCardProps {
     book: Book;
@@ -28,6 +29,8 @@
   title={book.name}
 >
   <Stack>
-    <TotalPhrases {book} />
+    <Stats {book} />
   </Stack>
+
+  <DownloadButton {book} />
 </DisplayCard>

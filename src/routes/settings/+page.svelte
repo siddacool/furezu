@@ -10,6 +10,12 @@
 <SettingsHeader />
 
 <Box>
+  <SettingRouteCard href="/settings/library" title="Library">
+    {#snippet icon()}
+      <Icon icon="mingcute:device-line" />
+    {/snippet}
+  </SettingRouteCard>
+
   <SettingRouteCard href="/settings/appearance" title="Appearance">
     {#snippet icon()}
       <Icon icon="mdi:theme-outline" />

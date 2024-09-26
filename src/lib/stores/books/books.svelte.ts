@@ -3,6 +3,7 @@ import { db } from '../db';
 import type { Book } from './types';
 import { usePhrasesStore } from '../phrases/phrases.svelte';
 import { getMoment } from '$lib/helpers/time';
+import { useVoicesStore } from '../voices/voices.svelte';
 
 async function getBook(idToFind: string) {
   try {
@@ -148,15 +149,25 @@ function createBooksStore() {
 
         const newBooks: Book[] = [];
 
+        const voices = useVoicesStore.voices;
+
         booksToUpdate.forEach((itemToUpdate) => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          const { id, ...restItemProps } = itemToUpdate;
+          const { id, voice, ...restItemProps } = itemToUpdate;
+
+          const decoratedItem: Book = { ...restItemProps };
+
+          const isVoiceFound = voices.some((item) => item.value === voice);
+
+          if (isVoiceFound || !voice) {
+            decoratedItem.voice = voice;
+          }
 
           const targetIndex = books.findIndex((item) => item._id === itemToUpdate._id);
 
           if (targetIndex < 0) {
             // New
-            newBooks.push({ ...restItemProps });
+            newBooks.push(decoratedItem);
             return;
           }
 
@@ -171,7 +182,7 @@ function createBooksStore() {
           // Update approved
           newBooks.push({
             ...books[targetIndex],
-            ...restItemProps,
+            ...decoratedItem,
           });
         });
 
