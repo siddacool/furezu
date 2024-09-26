@@ -135,6 +135,7 @@
     transition: all 100ms;
     width: 100%;
     font-family: inherit;
+    color: var(--color-black-pure);
 
     &::-webkit-input-placeholder {
       /* Chrome */

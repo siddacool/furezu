@@ -111,7 +111,7 @@
     }
 
     :global(.selected-item) {
-      color: var(--color-grey-font-900);
+      color: var(--color-black-pure);
     }
   }
 
