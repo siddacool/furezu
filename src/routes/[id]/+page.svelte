@@ -40,12 +40,14 @@
 </Header>
 
 {#if !targetBook?.name}
-  <ThickPlaceholderText>Book not found. Go back <BackButton backTo="/" /></ThickPlaceholderText>
+  <Box>
+    <ThickPlaceholderText>Book not found. Go back <BackButton backTo="/" /></ThickPlaceholderText>
+  </Box>
 {/if}
 
 {#if usePhrasesStore.mounted && targetBook?._id}
-  <PhrasesPlaceholder />
   <Box>
+    <PhrasesPlaceholder />
     <PhraseList />
     <CreateAPhrase />
   </Box>

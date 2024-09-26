@@ -13,11 +13,17 @@
 </div>
 
 <style lang="scss">
+  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
+
   div {
     width: 100%;
     max-width: 572px;
     margin: 0 auto;
-    padding: 16px;
+    padding: 10px;
     padding-top: 0;
+
+    @include mediaLg {
+      padding: 16px;
+    }
   }
 </style>

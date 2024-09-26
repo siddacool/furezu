@@ -24,15 +24,15 @@
     }
 
     :global(h3) {
-      font-size: 1.2rem;
+      font-size: 1rem;
       margin-top: 0;
       line-height: 25px;
       font-weight: 500;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
     }
 
     :global(p) {
-      font-size: 1.2rem;
+      font-size: 1rem;
       line-height: 30px;
       color: var(--color-grey-font-600);
     }

@@ -73,16 +73,16 @@
 
   .Title {
     display: flex;
-    margin-bottom: 12px;
+    margin-bottom: 4px;
     padding-right: 52px;
     justify-content: space-between;
   }
 
   h3 {
-    font-size: 1.45rem;
+    font-size: 1.3rem;
     margin-top: 0;
     line-height: 25px;
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 0;
     flex: 1;
 

@@ -85,7 +85,7 @@
   hideDeleteButton={!book?._id}
   id="book-card"
 >
-  <Stack space={2}>
+  <Stack space={3}>
     <StackItem>
       <TextInput
         disabled={useBooksStore.fetching}

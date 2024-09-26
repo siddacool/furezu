@@ -14,19 +14,13 @@
   @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
 
   h2 {
-    margin-top: 40px;
+    margin-top: 30px;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
     line-height: 40px;
     text-align: center;
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     font-weight: 500;
-
-    @include mediaLg {
-      font-size: 1.7rem;
-      line-height: 40px;
-      margin-top: 70px;
-    }
   }
 </style>

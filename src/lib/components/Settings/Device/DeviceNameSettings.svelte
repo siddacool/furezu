@@ -12,12 +12,12 @@
 
 <ToolCard>
   <div>
-    <h3>Device name</h3>
     <TextInput
       name="device-name"
       value={useDeviceNameStore.deviceName}
       {oninput}
       placeholder="e.g. MY_COMPUTER, PHONE etc."
+      label="Device name"
     />
 
     <p>* Useful for Syncing data</p>
@@ -27,5 +27,6 @@
 <style lang="scss">
   p {
     margin-bottom: 0;
+    margin-top: 8px;
   }
 </style>
