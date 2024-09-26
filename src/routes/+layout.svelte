@@ -15,9 +15,9 @@
     async function fetchBookData() {
       try {
         useLoadingScreenStore.updateObstructiveLoadingScreen(true);
+        await useVoicesStore.init();
         await useBooksStore.init();
         await usePhrasesStore.init();
-        await useVoicesStore.init();
       } catch (e) {
         console.log(e);
       } finally {
