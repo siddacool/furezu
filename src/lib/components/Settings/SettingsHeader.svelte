@@ -11,12 +11,7 @@
   const { title }: SettingsHeaderProps = $props();
 
   function onclick() {
-    if (document.referrer.indexOf(window.location.host) !== -1) {
-      history.go(-1);
-      return;
-    } else {
-      goto('/');
-    }
+    history.back();
   }
 </script>
 
