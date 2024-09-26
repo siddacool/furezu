@@ -111,7 +111,7 @@
     <StackItem>
       <TextInput
         disabled={usePhrasesStore.fetching}
-        label="Translation"
+        label="Translation (Text to Speech)"
         placeholder="e.g. こんにちは、元気ですか"
         {oninput}
         value={translation}

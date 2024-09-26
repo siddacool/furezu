@@ -5,6 +5,9 @@
   import { Stack, StackItem } from '$lib/components/ui-framework/Layout/Stack';
   import { limitTextLength } from '$lib/helpers/text-manipulations/limit-text-length';
   import EditCard from '../EditCard.svelte/EditCard.svelte';
+  import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
+  import Select from '../ui-framework/Form/Select.svelte';
+  import type { Voice } from '$lib/stores/voices/get-voices';
 
   interface BookCardFormProps {
     book?: Book;
@@ -28,6 +31,14 @@
       default:
         break;
     }
+  }
+
+  function onChangeVoice(e: CustomEvent<Voice>) {
+    voice = e.detail.value;
+  }
+
+  function onClearVoice() {
+    voice = undefined;
   }
 
   async function onsubmit(e: SubmitEvent) {
@@ -83,6 +94,16 @@
         {oninput}
         value={name}
         name="name"
+      />
+    </StackItem>
+    <StackItem>
+      <Select
+        label="Voice (Text to Speech)"
+        options={useVoicesStore.voices}
+        onchange={onChangeVoice}
+        onclear={onClearVoice}
+        value={voice}
+        placeholder="No voice selected"
       />
     </StackItem>
   </Stack>

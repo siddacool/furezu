@@ -3,7 +3,8 @@
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import { Stack, StackItem } from '../ui-framework/Layout/Stack';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
-  import DisplayCard from '../DisplayCard.svelte';
+  import { goto } from '$app/navigation';
+  import DisplayCard from '../DisplayCard';
 
   interface BookCardProps {
     book: Book;
@@ -17,21 +18,22 @@
     usePhrasesStore.phrases.filter((item) => !item.hidden && item.bookId === book._id).length,
   );
 
-  function onEdit() {
+  function onedit() {
     useBooksStore.startEditing(book._id);
+  }
+
+  function onclick() {
+    goto(`/${book._id}`);
   }
 </script>
 
 <DisplayCard
-  href={`/${book._id}`}
-  disableClick={useBooksStore.curruntlyEditing || useBooksStore.createMode ? true : false}
   hideEditButton={useBooksStore.curruntlyEditing || useBooksStore.createMode ? true : false}
-  {onEdit}
+  {onedit}
+  onclick={useBooksStore.curruntlyEditing || useBooksStore.createMode ? undefined : onclick}
+  title={book.name}
 >
   <Stack>
-    <StackItem>
-      <h3>{book.name}</h3>
-    </StackItem>
     <StackItem>
       <div class="totalPhrases">
         {#if totalPhrases === 1}
