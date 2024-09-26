@@ -49,7 +49,7 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    height: 44px;
+    height: var(--size-ui-element-height);
     transition: all 100ms;
     letter-spacing: 0.3px;
     font-family: inherit;

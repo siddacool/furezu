@@ -99,7 +99,7 @@
     transition: all 100ms;
     border: 1px solid;
     border-color: var(--color-grey-500);
-    height: 60px;
+    height: var(--size-ui-element-input-height);
     border-radius: 30px;
     overflow: hidden;
     position: relative;
@@ -120,7 +120,7 @@
   }
 
   input {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 400;
     outline: none;
     border: 0;
@@ -131,7 +131,7 @@
     flex: 1;
     position: relative;
     z-index: 1;
-    padding-left: 60px;
+    padding-left: var(--size-ui-element-input-height);
     transition: all 100ms;
     width: 100%;
     font-family: inherit;
@@ -178,8 +178,8 @@
     top: 0;
     left: 0;
     z-index: 0;
-    font-size: 1.8rem;
-    width: 60px;
+    font-size: 1.4rem;
+    width: var(--size-ui-element-input-height);
 
     &:not(.disabled) {
       color: var(--color-grey-font-900);
@@ -187,9 +187,9 @@
   }
 
   .close-icon {
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     height: 100%;
-    width: 60px;
+    width: var(--size-ui-element-input-height);
     align-items: center;
     justify-content: center;
     cursor: pointer;

@@ -1,4 +1,7 @@
 <script lang="ts">
+  import ErrorMessage from './shared/ErrorMessage.svelte';
+  import FormLabel from './shared/FormLabel.svelte';
+
   interface TextInputProps {
     name?: string;
     id?: string;
@@ -28,7 +31,7 @@
 
 <div class="TextInput">
   {#if label}
-    <label for={name} class:error class:active class:disabled>{label}</label>
+    <FormLabel {name} {error} {active} {disabled} {label} />
   {/if}
 
   <input
@@ -46,7 +49,7 @@
   />
 
   {#if error && !disabled}
-    <p class="ErrorMessage">{error}</p>
+    <ErrorMessage message={error} />
   {/if}
 </div>
 
@@ -57,31 +60,11 @@
     color: var(--color-grey-font-900);
   }
 
-  label {
-    font-size: 0.95rem;
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 500;
-    padding-left: 8px;
-
-    &:not(.error):not(.disabled) {
-      &.active {
-        color: var(--color-primary-600);
-      }
-    }
-
-    &:not(.disabled) {
-      &.error {
-        color: var(--color-danger-800);
-      }
-    }
-  }
-
   input {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 400;
     outline: none;
-    height: 50px;
+    height: var(--size-ui-element-input-height);
     padding: 0 12px;
     border: 1px solid;
     border-color: var(--color-grey-500);
@@ -135,13 +118,5 @@
       color: var(--color-grey-font-400);
       border-color: var(--color-grey-200);
     }
-  }
-
-  .ErrorMessage {
-    margin-top: 6px;
-    padding-left: 8px;
-    color: var(--color-danger-800);
-    font-size: 1rem;
-    font-weight: 500;
   }
 </style>
