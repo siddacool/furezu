@@ -13,6 +13,7 @@
   interface SelectProps {
     disabled?: boolean;
     onchange: (e: CustomEvent) => void;
+    onclear?: () => void;
     name?: string;
     label?: string;
     class?: string;
@@ -25,6 +26,7 @@
   const {
     label,
     onchange,
+    onclear,
     name,
     class: className = '',
     disabled = false,
@@ -49,6 +51,7 @@
     on:blur={() => (active = false)}
     on:focus={() => (active = true)}
     on:change={(e: CustomEvent) => onchange(e)}
+    on:clear={onclear ? onclear : () => {}}
     {disabled}
     {name}
     --background="var(--color-white)"

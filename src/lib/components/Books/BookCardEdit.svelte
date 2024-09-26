@@ -37,6 +37,10 @@
     voice = e.detail.value;
   }
 
+  function onClearVoice() {
+    voice = undefined;
+  }
+
   async function onsubmit(e: SubmitEvent) {
     e.preventDefault();
 
@@ -97,6 +101,7 @@
         label="Voice (Text to Speech)"
         options={useVoicesStore.voices}
         onchange={onChangeVoice}
+        onclear={onClearVoice}
         value={voice}
         placeholder="No voice selected"
       />
