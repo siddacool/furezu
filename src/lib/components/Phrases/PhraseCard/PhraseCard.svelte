@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
   import type { Phrase } from '$lib/stores/phrases/types';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import DisplayCard from '$lib/components/DisplayCard/DisplayCard.svelte';

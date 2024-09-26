@@ -28,8 +28,6 @@
 
     fetchBookData();
   });
-
-  function onchange() {}
 </script>
 
 <GlobalContainer />
