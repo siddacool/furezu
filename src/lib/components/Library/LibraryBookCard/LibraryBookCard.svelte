@@ -3,6 +3,8 @@
   import { Stack, StackItem } from '$lib/components/ui-framework/Layout/Stack';
   import type { LibraryData } from '$lib/stores/library/types';
   import Add from './Add.svelte';
+  import TotalPhrases from './TotalPhrases.svelte';
+  import Update from './Update.svelte';
 
   interface LibraryBookCardProps {
     book: LibraryData;
@@ -13,11 +15,13 @@
 
 <div>
   <Card>
-    <Stack>
+    <Stack space={1}>
       <StackItem>
         <h3>{book.book.name}</h3>
       </StackItem>
+      <TotalPhrases {book} />
       <Add {book} />
+      <Update {book} />
     </Stack>
   </Card>
 </div>

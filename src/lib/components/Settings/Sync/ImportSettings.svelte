@@ -1,7 +1,7 @@
 <script lang="ts">
   import ToolCard from '$lib/components/Settings/ToolCard.svelte';
   import Button from '$lib/components/ui-framework/Form/Button.svelte';
-  import { getMoment, timeout } from '$lib/helpers/time';
+  import { getMoment } from '$lib/helpers/time';
   import validateJson from '$lib/helpers/validators/vaidate-json';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
@@ -60,8 +60,6 @@
 
       await useBooksStore.importData(importedData.books, importedData.exportedAt);
       await usePhrasesStore.importData(importedData.phrases, importedData.exportedAt);
-
-      await timeout(50);
 
       files = undefined;
       importedAt = getMoment().format('DD/MM/YYYY hh:mm:ss A');

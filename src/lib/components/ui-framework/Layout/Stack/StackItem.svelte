@@ -6,7 +6,7 @@
   const { children }: StackItemProps = $props();
 </script>
 
-<article class="Stack">
+<article class="StackItem">
   {#if children}
     {@render children()}
   {/if}

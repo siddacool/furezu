@@ -18,12 +18,12 @@
 
 <span>
   {#if totalPhrases === 1}
-    {totalPhrases} Phrase.
+    {totalPhrases} Phrase
   {:else}
-    {totalPhrases} Phrases.
+    {totalPhrases} Phrases
   {/if}
 
   {#if !isAnyPharseEverAdd}
-    <br /> Click on the book to add Phrases
+    <br /> Click on the book to add Phrases.
   {/if}
 </span>

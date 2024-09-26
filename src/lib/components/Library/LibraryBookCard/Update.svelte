@@ -1,19 +1,33 @@
 <script lang="ts">
-  import Paragraph from '$lib/components/Paragraph.svelte';
   import Button from '$lib/components/ui-framework/Form/Button.svelte';
-  import Chip from '$lib/components/ui-framework/FormattedInfo/Chip.svelte';
   import { StackItem } from '$lib/components/ui-framework/Layout/Stack';
+  import { getMoment } from '$lib/helpers/time';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import type { LibraryData } from '$lib/stores/library/types';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
-  import Icon from '@iconify/svelte';
 
-  interface AddProps {
+  interface UpdateProps {
     book: LibraryData;
   }
 
-  const { book }: AddProps = $props();
+  const { book }: UpdateProps = $props();
+  const targetBook = $derived(useBooksStore.books.find((item) => item._id === book._id));
   const alreadyAdded = $derived(useBooksStore.books.some((item) => item._id === book._id));
+
+  let updated = $state(false);
+
+  $effect(() => {
+    if (!targetBook?.importedAt) {
+      return;
+    }
+
+    const targetBookImportedAtMoment = getMoment(targetBook.importedAt);
+    const exportedAtAtMoment = getMoment(book.exportedAt);
+
+    if (exportedAtAtMoment.isAfter(targetBookImportedAtMoment)) {
+      updated = true;
+    }
+  });
 
   async function onclick() {
     try {
@@ -23,31 +37,19 @@
       console.log(e);
     }
   }
-
 </script>
 
-<StackItem>
-  <div>
-    {#if alreadyAdded}
-      <Chip size="normal">
-        <Icon icon="material-symbols:check" /> Already added
-      </Chip>
-    {:else}
+{#if alreadyAdded && updated}
+  <StackItem></StackItem>
+  <StackItem>
+    <div>
       <Button
         disabled={useBooksStore.importing || usePhrasesStore.importing ? true : false}
         variant="primary"
         {onclick}
       >
-        Add book
+        Update book
       </Button>
-    {/if}
-  </div>
-</StackItem>
-
-<style lang="scss">
-  div {
-    :global(span.size--normal svg) {
-      margin-right: 6px;
-    }
-  }
-</style>
+    </div>
+  </StackItem>
+{/if}
