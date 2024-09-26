@@ -58,10 +58,10 @@
 
       const importedData = JSON.parse(file) as SyncData;
 
-      await useBooksStore.importData(importedData.books);
-      await usePhrasesStore.importData(importedData.phrases);
+      await useBooksStore.importData(importedData.books, importedData.exportedAt);
+      await usePhrasesStore.importData(importedData.phrases, importedData.exportedAt);
 
-      await timeout(500);
+      await timeout(50);
 
       files = undefined;
       importedAt = getMoment().format('DD/MM/YYYY hh:mm:ss A');
@@ -90,11 +90,15 @@
       name="upload"
       type="file"
       {onchange}
-      disabled={uploading}
+      disabled={uploading || useBooksStore.importing || usePhrasesStore.importing ? true : false}
       class="file-upload"
     />
 
-    <Button variant="primary" disabled={uploading} onclick={triggerFileUpload}>
+    <Button
+      variant="primary"
+      disabled={uploading || useBooksStore.importing || usePhrasesStore.importing ? true : false}
+      onclick={triggerFileUpload}
+    >
       {#if uploading}
         Importing books...
       {:else}

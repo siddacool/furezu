@@ -22,6 +22,7 @@ function createBooksStore() {
   let curruntlyEditing: string | undefined = $state(undefined);
   let createMode: boolean = $state(false);
   let searchFilter: string | undefined = $state(undefined);
+  let importing: boolean = $state(false);
 
   return {
     get books() {
@@ -41,6 +42,9 @@ function createBooksStore() {
     },
     get searchFilter() {
       return searchFilter;
+    },
+    get importing() {
+      return importing;
     },
     async init() {
       try {
@@ -143,9 +147,10 @@ function createBooksStore() {
         fetching = false;
       }
     },
-    async importData(booksToUpdate: Book[]) {
+    async importData(booksToUpdate: Book[], importedAt: Date) {
       try {
         fetching = true;
+        importing = true;
 
         const newBooks: Book[] = [];
 
@@ -155,7 +160,7 @@ function createBooksStore() {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const { id, voice, ...restItemProps } = itemToUpdate;
 
-          const decoratedItem: Book = { ...restItemProps };
+          const decoratedItem: Book = { ...restItemProps, importedAt };
 
           const isVoiceFound = voices.some((item) => item.value === voice);
 
@@ -197,6 +202,7 @@ function createBooksStore() {
         return Promise.reject(e);
       } finally {
         fetching = false;
+        importing = false;
       }
     },
     updateSearchFilter(value: string | undefined) {

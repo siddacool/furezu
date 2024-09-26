@@ -12,4 +12,5 @@ export interface Phrase extends CreatePhrase {
   createdAt: Date;
   updatedAt: Date;
   hidden?: boolean;
+  importedAt?: Date;
 }

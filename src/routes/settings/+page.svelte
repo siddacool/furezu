@@ -12,7 +12,7 @@
 <Box>
   <SettingRouteCard href="/settings/library" title="Library">
     {#snippet icon()}
-      <Icon icon="mingcute:device-line" />
+      <Icon icon="material-symbols:book-outline" />
     {/snippet}
   </SettingRouteCard>
 
@@ -25,12 +25,6 @@
   <SettingRouteCard href="/settings/sync" title="Sync">
     {#snippet icon()}
       <Icon icon="material-symbols:sync" />
-    {/snippet}
-  </SettingRouteCard>
-
-  <SettingRouteCard href="/settings/device" title="Device">
-    {#snippet icon()}
-      <Icon icon="mingcute:device-line" />
     {/snippet}
   </SettingRouteCard>
 </Box>

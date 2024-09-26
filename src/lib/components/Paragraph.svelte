@@ -1,12 +1,14 @@
 <script lang="ts">
   import type { SvelteComponentProps } from '$lib/types/svelte-component';
 
-  type ParagraphProps = SvelteComponentProps;
+  interface ParagraphProps extends SvelteComponentProps {
+    class?: string;
+  }
 
-  const { children }: ParagraphProps = $props();
+  const { children, class: className = '' }: ParagraphProps = $props();
 </script>
 
-<p>
+<p class={`Paragraph ${className}`}>
   {#if children}
     {@render children()}
   {/if}

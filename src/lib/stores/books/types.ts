@@ -5,4 +5,5 @@ export interface Book {
   voice?: string;
   createdAt: Date;
   updatedAt: Date;
+  importedAt?: Date;
 }
