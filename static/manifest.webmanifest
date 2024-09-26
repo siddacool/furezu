@@ -2,7 +2,7 @@
   "name": "Furezu - Phrasebook",
   "short_name": "Furezu",
   "description": "a simple Phrasebook for travel.",
-  "theme_color": "#fafafa",
+  "theme_color": "#7259FF",
   "background_color": "#7259FF",
   "display": "standalone",
   "scope": ".",
