@@ -2,7 +2,7 @@
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import type { Book } from '$lib/stores/books/types';
   import ThickPlaceholderText from '../ThickPlaceholderText.svelte';
-  import BookCard from './BookCard.svelte';
+  import BookCard from './BookCard';
   import BookCardEdit from './BookCardEdit.svelte';
 
   let filteredBooks: Book[] = $state([]);

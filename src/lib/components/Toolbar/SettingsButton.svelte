@@ -23,7 +23,7 @@
       margin-left: 0;
       position: fixed;
       right: 56px;
-      top: 36px;
+      top: 34px;
       justify-self: flex-end;
     }
 

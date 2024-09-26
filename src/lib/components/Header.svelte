@@ -30,7 +30,6 @@
     margin-bottom: 10px;
 
     @include mediaLg {
-      height: 86px;
       padding-left: 16px;
       padding-right: 16px;
       padding-top: 16px;

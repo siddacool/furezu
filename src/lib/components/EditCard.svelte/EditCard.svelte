@@ -48,7 +48,7 @@
   }
 
   h3 {
-    font-weight: 600;
+    font-weight: 500;
     width: 100%;
     overflow: hidden;
     margin-top: 0;
@@ -57,5 +57,6 @@
     text-overflow: ellipsis;
     font-size: 1.2rem;
     margin-bottom: 16px;
+    line-height: 25px;
   }
 </style>
