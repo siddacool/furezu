@@ -7,6 +7,7 @@
   import type { SyncData } from '$lib/types/sync';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import { downloadFile } from '$lib/helpers/download-file';
+  import { simplifyText } from '$lib/helpers/text-manipulations/simplify-text';
 
   interface DownloadButtonProps {
     book: Book;
@@ -32,7 +33,9 @@
 
       const data = new Blob([JSON.stringify(exportData)], { type: 'text/plain' });
 
-      await downloadFile(`${book.name}.json`, data);
+      const simplifiedName = simplifyText(book.name, true).toLocaleLowerCase();
+
+      await downloadFile(`${simplifiedName}.json`, data);
     } catch (e) {
       console.error(e);
     } finally {

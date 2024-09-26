@@ -11,23 +11,13 @@
   }
 
   const { book }: UpdateProps = $props();
-  const targetBook = $derived(useBooksStore.books.find((item) => item._id === book._id));
   const alreadyAdded = $derived(useBooksStore.books.some((item) => item._id === book._id));
-
-  let updated = $state(false);
-
-  $effect(() => {
-    if (!targetBook?.importedAt) {
-      return;
-    }
-
-    const targetBookImportedAtMoment = getMoment(targetBook.importedAt);
-    const exportedAtAtMoment = getMoment(book.exportedAt);
-
-    if (exportedAtAtMoment.isAfter(targetBookImportedAtMoment)) {
-      updated = true;
-    }
-  });
+  const targetBook = $derived(useBooksStore.books.find((item) => item._id === book._id));
+  const importedAt = $derived(getMoment(targetBook?.importedAt));
+  const exportedAt = $derived(getMoment(book.exportedAt));
+  const updated = $derived(
+    !targetBook?.importedAt || exportedAt.isAfter(importedAt) ? true : false,
+  );
 
   async function onclick() {
     try {
@@ -42,14 +32,12 @@
 {#if alreadyAdded && updated}
   <StackItem></StackItem>
   <StackItem>
-    <div>
-      <Button
-        disabled={useBooksStore.importing || usePhrasesStore.importing ? true : false}
-        variant="primary"
-        {onclick}
-      >
-        Update book
-      </Button>
-    </div>
+    <Button
+      disabled={useBooksStore.importing || usePhrasesStore.importing ? true : false}
+      {onclick}
+      variant="primary"
+    >
+      Update book
+    </Button>
   </StackItem>
 {/if}

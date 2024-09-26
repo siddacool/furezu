@@ -1,18 +1,17 @@
 <script lang="ts">
   import Paragraph from '$lib/components/Paragraph.svelte';
   import Button from '$lib/components/ui-framework/Form/Button.svelte';
-  import Chip from '$lib/components/ui-framework/FormattedInfo/Chip.svelte';
   import { StackItem } from '$lib/components/ui-framework/Layout/Stack';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import type { LibraryData } from '$lib/stores/library/types';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
-  import Icon from '@iconify/svelte';
 
   interface AddProps {
     book: LibraryData;
   }
 
   const { book }: AddProps = $props();
+
   const alreadyAdded = $derived(useBooksStore.books.some((item) => item._id === book._id));
 
   async function onclick() {
@@ -23,31 +22,16 @@
       console.log(e);
     }
   }
-
 </script>
 
-<StackItem>
-  <div>
-    {#if alreadyAdded}
-      <Chip size="normal">
-        <Icon icon="material-symbols:check" /> Already added
-      </Chip>
-    {:else}
-      <Button
-        disabled={useBooksStore.importing || usePhrasesStore.importing ? true : false}
-        variant="primary"
-        {onclick}
-      >
-        Add book
-      </Button>
-    {/if}
-  </div>
-</StackItem>
-
-<style lang="scss">
-  div {
-    :global(span.size--normal svg) {
-      margin-right: 6px;
-    }
-  }
-</style>
+{#if !alreadyAdded}
+  <StackItem>
+    <Button
+      disabled={useBooksStore.importing || usePhrasesStore.importing ? true : false}
+      variant="primary"
+      {onclick}
+    >
+      Add book
+    </Button>
+  </StackItem>
+{/if}

@@ -1,4 +1,4 @@
-import { getBooksFromLibrary } from '$lib/data/library';
+import { getBooksFromLibrary } from './data';
 import type { LibraryData } from './types';
 
 function createLibraryStore() {
