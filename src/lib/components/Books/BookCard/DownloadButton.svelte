@@ -8,6 +8,7 @@
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import { downloadFile } from '$lib/helpers/download-file';
   import { simplifyText } from '$lib/helpers/text-manipulations/simplify-text';
+  import type { LibraryData } from '$lib/stores/library/types';
 
   interface DownloadButtonProps {
     book: Book;
@@ -25,8 +26,9 @@
 
       const phrases = usePhrasesStore.phrases.filter((item) => item.bookId === book._id);
 
-      const exportData: SyncData = {
-        books: [book],
+      const exportData: LibraryData = {
+        _id: book._id,
+        book,
         phrases,
         exportedAt: exportedAt.toDate(),
       };
