@@ -4,7 +4,6 @@
   import Button from '$lib/components/ui-framework/Form/Button.svelte';
   import Icon from '@iconify/svelte';
   import { getMoment } from '$lib/helpers/time';
-  import type { SyncData } from '$lib/types/sync';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import { downloadFile } from '$lib/helpers/download-file';
   import { simplifyText } from '$lib/helpers/text-manipulations/simplify-text';
