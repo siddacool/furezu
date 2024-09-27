@@ -10,13 +10,12 @@
 {#if !useBooksStore.books.length && !useBooksStore.createMode}
   <Box>
     <ThickPlaceholderText>
-      Furezu - A simple Phrasebook for travel.<br />
       Click
       <Button compact variant="primary" onclick={() => useBooksStore.startCreateMode()}>
         <Icon icon="material-symbols:add" />
       </Button>
       to add your first book.
-      <br /> or browse (beta) the
+      <br /> or browse the
       <AnchorButton variant="primary" href="library">Library</AnchorButton>
     </ThickPlaceholderText>
   </Box>

@@ -10,9 +10,9 @@
 <SettingsHeader />
 
 <Box>
-  <SettingRouteCard href="/library" title="Library">
+  <SettingRouteCard href="/settings/sync" title="Sync">
     {#snippet icon()}
-      <Icon icon="material-symbols:book-outline" />
+      <Icon icon="material-symbols:sync" />
     {/snippet}
   </SettingRouteCard>
 
@@ -22,9 +22,9 @@
     {/snippet}
   </SettingRouteCard>
 
-  <SettingRouteCard href="/settings/sync" title="Sync">
+  <SettingRouteCard href="/library" title="Library">
     {#snippet icon()}
-      <Icon icon="material-symbols:sync" />
+      <Icon icon="material-symbols:book-outline" />
     {/snippet}
   </SettingRouteCard>
 </Box>

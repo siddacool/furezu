@@ -4,7 +4,10 @@
   import { getMoment } from '$lib/helpers/time';
   import validateJson from '$lib/helpers/validators/vaidate-json';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
+  import type { Book } from '$lib/stores/books/types';
+  import type { LibraryData } from '$lib/stores/library/types';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
+  import type { Phrase } from '$lib/stores/phrases/types';
   import type { SyncData } from '$lib/types/sync';
 
   let uploading = $state(false);
@@ -57,8 +60,21 @@
       }
 
       const importedData = JSON.parse(file) as SyncData;
+      const importedDataFlat = importedData as any;
 
-      await useBooksStore.importData(importedData.books, importedData.exportedAt);
+      let books: Book[] = [];
+
+      if (importedDataFlat._id) {
+        // libabary Data, e.g. japanese.book.json
+        const libraryData = importedData as unknown as LibraryData;
+
+        books = [libraryData.book];
+      } else {
+        // Normal export
+        books = importedData.books;
+      }
+
+      await useBooksStore.importData(books, importedData.exportedAt);
       await usePhrasesStore.importData(importedData.phrases, importedData.exportedAt);
 
       files = undefined;

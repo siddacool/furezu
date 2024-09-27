@@ -5,8 +5,6 @@
 <footer>
   <Box>
     <a href="library">Library</a>
-    <a href="settings">Settings</a>
-    <a href="https://github.com/siddacool/furezu" target="_blank">Github</a>
   </Box>
 </footer>
 
