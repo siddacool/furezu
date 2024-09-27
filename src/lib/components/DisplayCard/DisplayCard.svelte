@@ -52,7 +52,7 @@
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     color: var(--color-grey-font-800);
 
     :global(.Card) {
@@ -73,13 +73,11 @@
 
   .Title {
     display: flex;
-    margin-bottom: 4px;
-    padding-right: 52px;
-    justify-content: space-between;
+    padding-right: 64px;
   }
 
   h3 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin-top: 0;
     line-height: 25px;
     font-weight: 500;

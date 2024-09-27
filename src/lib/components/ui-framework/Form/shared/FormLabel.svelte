@@ -14,11 +14,11 @@
 
 <style lang="scss">
   label {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     display: block;
     margin-bottom: 6px;
     font-weight: 500;
-    padding-left: 8px;
+    padding-left: 4px;
 
     &:not(.error):not(.disabled) {
       &.active {

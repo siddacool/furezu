@@ -1,6 +1,5 @@
 <script lang="ts">
   import Button from '$lib/components/ui-framework/Form/Button.svelte';
-  import { StackItem } from '$lib/components/ui-framework/Layout/Stack';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import type { LibraryData } from '$lib/stores/library/types';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
@@ -24,7 +23,7 @@
 </script>
 
 {#if !alreadyAdded}
-  <StackItem>
+  <div>
     <Button
       disabled={useBooksStore.importing || usePhrasesStore.importing ? true : false}
       variant="primary"
@@ -32,5 +31,11 @@
     >
       Add book
     </Button>
-  </StackItem>
+  </div>
 {/if}
+
+<style lang="scss">
+  div {
+    margin-top: 8px;
+  }
+</style>

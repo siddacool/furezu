@@ -16,7 +16,7 @@
 
 <style lang="scss">
   p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     line-height: 30px;
     color: var(--color-grey-font-600);
     margin: 0;

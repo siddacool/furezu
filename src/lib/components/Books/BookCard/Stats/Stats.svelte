@@ -24,10 +24,6 @@
 </StackItem>
 
 <style lang="scss">
-  div {
-    margin-top: 4px;
-  }
-
   .tags-row {
     margin-top: 4px;
   }

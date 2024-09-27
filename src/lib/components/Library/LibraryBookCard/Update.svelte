@@ -1,6 +1,5 @@
 <script lang="ts">
   import Button from '$lib/components/ui-framework/Form/Button.svelte';
-  import { StackItem } from '$lib/components/ui-framework/Layout/Stack';
   import { getMoment } from '$lib/helpers/time';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import type { LibraryData } from '$lib/stores/library/types';
@@ -30,8 +29,7 @@
 </script>
 
 {#if alreadyAdded && updated}
-  <StackItem></StackItem>
-  <StackItem>
+  <div>
     <Button
       disabled={useBooksStore.importing || usePhrasesStore.importing ? true : false}
       {onclick}
@@ -39,5 +37,11 @@
     >
       Update book
     </Button>
-  </StackItem>
+  </div>
 {/if}
+
+<style lang="scss">
+  div {
+    margin-top: 16px;
+  }
+</style>

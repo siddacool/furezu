@@ -1,7 +1,5 @@
 <script lang="ts">
   import Card from '$lib/components/ui-framework/Layout/Card.svelte';
-  import { Stack, StackItem } from '$lib/components/ui-framework/Layout/Stack';
-  import { useBooksStore } from '$lib/stores/books/books.svelte';
   import type { LibraryData } from '$lib/stores/library/types';
   import Add from './Add.svelte';
   import AlreadyAdded from './AlreadyAdded.svelte';
@@ -13,27 +11,27 @@
   }
 
   const { book }: LibraryBookCardProps = $props();
-
-  const alreadyAdded = $derived(useBooksStore.books.some((item) => item._id === book._id));
 </script>
 
-<div class:alreadyAdded>
+<div>
   <Card>
-    <Stack space={1}>
-      <StackItem>
-        <h3>{book.book.name}</h3>
-      </StackItem>
-      <TotalPhrases {book} />
-      <AlreadyAdded {book} />
-      <Add {book} />
-      <Update {book} />
-    </Stack>
+    <h3>{book.book.name}</h3>
+    <TotalPhrases {book} />
+    <AlreadyAdded {book} />
+    <Add {book} />
+    <Update {book} />
   </Card>
 </div>
 
 <style lang="scss">
+  div {
+    :global(.Card) {
+      margin-bottom: 20px;
+    }
+  }
+
   h3 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     line-height: 25px;
     font-weight: 500;
     margin: 0;

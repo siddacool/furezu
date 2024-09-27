@@ -1,6 +1,5 @@
 <script lang="ts">
   import Chip from '$lib/components/ui-framework/FormattedInfo/Chip.svelte';
-  import { StackItem } from '$lib/components/ui-framework/Layout/Stack';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import type { LibraryData } from '$lib/stores/library/types';
   import Icon from '@iconify/svelte';
@@ -14,17 +13,16 @@
 </script>
 
 {#if alreadyAdded}
-  <StackItem>
-    <div>
-      <Chip>
-        <Icon icon="material-symbols:check" /> Book added
-      </Chip>
-    </div>
-  </StackItem>
+  <div>
+    <Chip>
+      <Icon icon="material-symbols:check" /> Book added
+    </Chip>
+  </div>
 {/if}
 
 <style lang="scss">
   div {
+    margin-top: 8px;
     :global(span.size--normal svg) {
       margin-right: 6px;
     }

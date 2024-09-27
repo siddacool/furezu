@@ -87,7 +87,7 @@
   hideDeleteButton={!phrase?._id}
   id="phrase-card"
 >
-  <Stack space={3}>
+  <Stack space={2}>
     <StackItem>
       <TextInput
         disabled={usePhrasesStore.fetching}

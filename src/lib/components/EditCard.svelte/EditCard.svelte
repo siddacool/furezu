@@ -40,7 +40,7 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 
     :global(.Card) {
       width: 100%;
@@ -48,14 +48,14 @@
   }
 
   h3 {
-    font-weight: 500;
+    font-weight: 600;
     width: 100%;
     overflow: hidden;
     margin-top: 0;
     margin-bottom: 0;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 16px;
     line-height: 25px;
   }

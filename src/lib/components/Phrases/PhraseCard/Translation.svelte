@@ -45,7 +45,7 @@
 <style lang="scss">
   h3 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 400;
   }
 
@@ -54,12 +54,12 @@
     align-items: center;
 
     :global(.Speak) {
-      margin-right: 16px;
+      margin-right: 8px;
       align-self: baseline;
     }
 
     :global(.Speaking) {
-      margin-right: 16px;
+      margin-right: 8px;
       pointer-events: none;
       align-self: baseline;
     }

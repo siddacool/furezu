@@ -22,7 +22,7 @@
     hideEditButton={usePhrasesStore.curruntlyEditing || usePhrasesStore.createMode ? true : false}
     title={phrase.meaning}
   >
-    <Stack space={2}>
+    <Stack space={1}>
       <StackItem>
         <h3>{phrase.phrase}</h3>
       </StackItem>
@@ -37,7 +37,7 @@
     align-items: center;
     color: var(--color-primary-600);
     font-style: italic;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin-bottom: 0;
     margin-top: 8px;
     line-height: 25px;
@@ -46,13 +46,6 @@
     :global(svg) {
       font-style: normal;
       margin-right: 4px;
-    }
-  }
-
-  div {
-    :global(.Title h3) {
-      font-size: 1.2rem;
-      font-weight: 500;
     }
   }
 </style>
