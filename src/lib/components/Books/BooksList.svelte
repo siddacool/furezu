@@ -1,7 +1,7 @@
 <script lang="ts">
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import type { Book } from '$lib/stores/books/types';
-  import ThickPlaceholderText from '../ThickPlaceholderText.svelte';
+  import Title from '../Title.svelte';
   import BookCard from './BookCard';
   import BookCardEdit from './BookCardEdit.svelte';
 
@@ -27,7 +27,7 @@
     {/each}
 
     {#if !filteredBooks.length}
-      <ThickPlaceholderText>No results found</ThickPlaceholderText>
+      <Title>No results found</Title>
     {/if}
   </div>
 {/if}

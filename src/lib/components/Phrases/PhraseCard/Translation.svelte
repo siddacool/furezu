@@ -3,7 +3,6 @@
   import Icon from '@iconify/svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
-  import { StackItem } from '$lib/components/ui-framework/Layout/Stack';
   import Button from '$lib/components/ui-framework/Form/Button.svelte';
 
   interface TranslationProps {
@@ -17,29 +16,28 @@
 </script>
 
 {#if phrase.translation}
-  <StackItem>
-    <div class="translationContainer">
-      {#if voice?.value}
-        {#if useVoicesStore.speakingPhraseId === phrase._id}
-          <Button class="Speaking" compact>
-            <Icon icon="svg-spinners:bars-scale" />
-          </Button>
-        {:else}
-          <Button
-            onclick={() => useVoicesStore.speak(phrase._id, voice.value, phrase.translation || '')}
-            class="Speak"
-            disabled={useVoicesStore.speaking}
-            compact
-            title="Say it aloud"
-          >
-            <Icon icon="f7:speaker-2" />
-          </Button>
-        {/if}
+  <div class="translationContainer">
+    {#if voice?.value}
+      {#if useVoicesStore.speakingPhraseId === phrase._id}
+        <Button class="TranslationButton Speaking" compact variant="default">
+          <Icon icon="svg-spinners:bars-scale" />
+        </Button>
+      {:else}
+        <Button
+          onclick={() => useVoicesStore.speak(phrase._id, voice.value, phrase.translation || '')}
+          class="TranslationButton Speak"
+          disabled={useVoicesStore.speaking}
+          compact
+          title="Say it aloud"
+          variant="default"
+        >
+          <Icon icon="f7:speaker-2" />
+        </Button>
       {/if}
+    {/if}
 
-      <h3>{phrase.translation}</h3>
-    </div>
-  </StackItem>
+    <h3>{phrase.translation}</h3>
+  </div>
 {/if}
 
 <style lang="scss">
@@ -52,16 +50,23 @@
   .translationContainer {
     display: flex;
     align-items: center;
+    margin-top: 14px;
 
-    :global(.Speak) {
+    :global(.TranslationButton.variant--default) {
       margin-right: 8px;
       align-self: baseline;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      min-width: initial;
+    }
+
+    :global(.TranslationButton svg) {
+      font-size: 1.3rem;
     }
 
     :global(.Speaking) {
-      margin-right: 8px;
       pointer-events: none;
-      align-self: baseline;
     }
   }
 </style>

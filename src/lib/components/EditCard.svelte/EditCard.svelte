@@ -40,7 +40,7 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 32px;
 
     :global(.Card) {
       width: 100%;

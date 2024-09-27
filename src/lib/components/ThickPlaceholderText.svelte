@@ -1,26 +1,23 @@
 <script lang="ts">
   import type { SvelteComponentProps } from '$lib/types/svelte-component';
+  import Title from './Title.svelte';
 
   const { children }: SvelteComponentProps = $props();
 </script>
 
-<h2 class="ThickPlaceholderText">
-  {#if children}
-    {@render children()}
-  {/if}
-</h2>
+<div class="ThickPlaceholderText">
+  <Title>
+    {#if children}
+      {@render children()}
+    {/if}
+  </Title>
+</div>
 
 <style lang="scss">
-  @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
-
-  h2 {
+  div {
     margin-top: 30px;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-    line-height: 40px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: 500;
   }
 </style>

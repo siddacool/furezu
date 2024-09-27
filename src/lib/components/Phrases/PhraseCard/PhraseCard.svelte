@@ -2,7 +2,6 @@
   import type { Phrase } from '$lib/stores/phrases/types';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import DisplayCard from '$lib/components/DisplayCard/DisplayCard.svelte';
-  import { Stack, StackItem } from '$lib/components/ui-framework/Layout/Stack';
   import Translation from './Translation.svelte';
 
   interface PhraseCardProps {
@@ -22,12 +21,8 @@
     hideEditButton={usePhrasesStore.curruntlyEditing || usePhrasesStore.createMode ? true : false}
     title={phrase.meaning}
   >
-    <Stack space={1}>
-      <StackItem>
-        <h3>{phrase.phrase}</h3>
-      </StackItem>
-      <Translation {phrase} />
-    </Stack>
+    <h3>{phrase.phrase}</h3>
+    <Translation {phrase} />
   </DisplayCard>
 </div>
 
@@ -39,7 +34,7 @@
     font-style: italic;
     font-size: 1.1rem;
     margin-bottom: 0;
-    margin-top: 8px;
+    margin-top: 0;
     line-height: 25px;
     font-weight: 500;
 

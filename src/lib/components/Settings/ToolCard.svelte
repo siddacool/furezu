@@ -17,7 +17,7 @@
   @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
 
   section {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 
     :global(.Card) {
       min-height: initial;

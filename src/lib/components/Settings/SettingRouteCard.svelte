@@ -30,7 +30,7 @@
     flex-wrap: wrap;
     text-decoration: none;
     color: inherit;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 
     :global(.Card) {
       width: 100%;

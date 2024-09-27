@@ -20,8 +20,20 @@
 
 <style lang="scss">
   div {
-    position: absolute;
-    right: 12px;
-    top: 12px;
+    margin-top: -8px;
+    margin-right: -8px;
+
+    :global(.EditButton.variant--default) {
+      width: 40px;
+      height: 40px;
+      min-width: initial;
+      border-radius: 50%;
+      background-color: transparent;
+      color: var(--color-primary-700);
+    }
+
+    :global(.EditButton svg) {
+      font-size: 1.3rem;
+    }
   }
 </style>

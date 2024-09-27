@@ -2,7 +2,7 @@
   import { page } from '$app/stores';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import type { Phrase } from '$lib/stores/phrases/types';
-  import ThickPlaceholderText from '../ThickPlaceholderText.svelte';
+  import Title from '../Title.svelte';
   import PhraseCard from './PhraseCard';
   import PhraseCardEdit from './PhraseCardEdit.svelte';
 
@@ -37,7 +37,7 @@
     {/each}
 
     {#if !filteredPhrases.length}
-      <ThickPlaceholderText>No results found</ThickPlaceholderText>
+      <Title>No results found</Title>
     {/if}
   </div>
 {/if}
