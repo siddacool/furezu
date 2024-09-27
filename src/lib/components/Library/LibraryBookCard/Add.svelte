@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Paragraph from '$lib/components/Paragraph.svelte';
   import Button from '$lib/components/ui-framework/Form/Button.svelte';
   import { StackItem } from '$lib/components/ui-framework/Layout/Stack';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
