@@ -47,7 +47,7 @@
 
 {#if env.isDebugMode}
   <div class="download-book">
-    <Button compact {onclick} disabled={downloading}>
+    <Button compact {onclick} disabled={downloading} class="Download" title="Download book">
       <Icon icon="material-symbols:download-sharp" />
     </Button>
   </div>
@@ -56,8 +56,21 @@
 <style lang="scss">
   .download-book {
     position: absolute;
-    bottom: 0;
-    right: 12px;
+    bottom: 8px;
+    right: 8px;
     z-index: 1;
+
+    :global(.Download.variant--default) {
+      width: 40px;
+      height: 40px;
+      min-width: initial;
+      border-radius: 50%;
+      background-color: transparent;
+      color: var(--color-primary-700);
+    }
+
+    :global(.Download svg) {
+      font-size: 1.3rem;
+    }
   }
 </style>

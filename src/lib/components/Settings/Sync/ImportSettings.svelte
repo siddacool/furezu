@@ -7,7 +7,6 @@
   import type { Book } from '$lib/stores/books/types';
   import type { LibraryData } from '$lib/stores/library/types';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
-  import type { Phrase } from '$lib/stores/phrases/types';
   import type { SyncData } from '$lib/types/sync';
 
   let uploading = $state(false);
@@ -60,7 +59,7 @@
       }
 
       const importedData = JSON.parse(file) as SyncData;
-      const importedDataFlat = importedData as any;
+      const importedDataFlat = importedData as { _id?: string };
 
       let books: Book[] = [];
 
