@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
   import Icon from '@iconify/svelte';
   import Header from '../Header.svelte';
   import Button from '../ui-framework/Form/Button.svelte';
