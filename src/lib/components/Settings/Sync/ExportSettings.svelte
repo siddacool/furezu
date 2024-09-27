@@ -45,7 +45,13 @@
     <h3>Export</h3>
 
     {#if useBooksStore.books.length}
-      <Button variant="primary" disabled={downloading} {onclick}>
+      <Button
+        variant="primary"
+        disabled={downloading || useBooksStore.importing || usePhrasesStore.importing
+          ? true
+          : false}
+        {onclick}
+      >
         Export - {useBooksStore.books.length}
 
         {#if useBooksStore.books.length === 1}

@@ -3,6 +3,7 @@ import { db } from '../db';
 import type { Book } from './types';
 import { usePhrasesStore } from '../phrases/phrases.svelte';
 import { getMoment } from '$lib/helpers/time';
+import { useVoicesStore } from '../voices/voices.svelte';
 
 async function getBook(idToFind: string) {
   try {
@@ -21,6 +22,7 @@ function createBooksStore() {
   let curruntlyEditing: string | undefined = $state(undefined);
   let createMode: boolean = $state(false);
   let searchFilter: string | undefined = $state(undefined);
+  let importing: boolean = $state(false);
 
   return {
     get books() {
@@ -40,6 +42,9 @@ function createBooksStore() {
     },
     get searchFilter() {
       return searchFilter;
+    },
+    get importing() {
+      return importing;
     },
     async init() {
       try {
@@ -142,21 +147,32 @@ function createBooksStore() {
         fetching = false;
       }
     },
-    async importData(booksToUpdate: Book[]) {
+    async importData(booksToUpdate: Book[], importedAt: Date) {
       try {
         fetching = true;
+        importing = true;
 
         const newBooks: Book[] = [];
 
+        const voices = useVoicesStore.voices;
+
         booksToUpdate.forEach((itemToUpdate) => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          const { id, ...restItemProps } = itemToUpdate;
+          const { id, voice, ...restItemProps } = itemToUpdate;
+
+          const decoratedItem: Book = { ...restItemProps, importedAt };
+
+          const isVoiceFound = voices.some((item) => item.value === voice);
+
+          if (isVoiceFound || !voice) {
+            decoratedItem.voice = voice;
+          }
 
           const targetIndex = books.findIndex((item) => item._id === itemToUpdate._id);
 
           if (targetIndex < 0) {
             // New
-            newBooks.push({ ...restItemProps });
+            newBooks.push(decoratedItem);
             return;
           }
 
@@ -171,7 +187,7 @@ function createBooksStore() {
           // Update approved
           newBooks.push({
             ...books[targetIndex],
-            ...restItemProps,
+            ...decoratedItem,
           });
         });
 
@@ -186,6 +202,7 @@ function createBooksStore() {
         return Promise.reject(e);
       } finally {
         fetching = false;
+        importing = false;
       }
     },
     updateSearchFilter(value: string | undefined) {

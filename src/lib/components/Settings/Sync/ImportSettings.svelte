@@ -1,7 +1,7 @@
 <script lang="ts">
   import ToolCard from '$lib/components/Settings/ToolCard.svelte';
   import Button from '$lib/components/ui-framework/Form/Button.svelte';
-  import { getMoment, timeout } from '$lib/helpers/time';
+  import { getMoment } from '$lib/helpers/time';
   import validateJson from '$lib/helpers/validators/vaidate-json';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
@@ -58,10 +58,8 @@
 
       const importedData = JSON.parse(file) as SyncData;
 
-      await useBooksStore.importData(importedData.books);
-      await usePhrasesStore.importData(importedData.phrases);
-
-      await timeout(500);
+      await useBooksStore.importData(importedData.books, importedData.exportedAt);
+      await usePhrasesStore.importData(importedData.phrases, importedData.exportedAt);
 
       files = undefined;
       importedAt = getMoment().format('DD/MM/YYYY hh:mm:ss A');
@@ -90,11 +88,15 @@
       name="upload"
       type="file"
       {onchange}
-      disabled={uploading}
+      disabled={uploading || useBooksStore.importing || usePhrasesStore.importing ? true : false}
       class="file-upload"
     />
 
-    <Button variant="primary" disabled={uploading} onclick={triggerFileUpload}>
+    <Button
+      variant="primary"
+      disabled={uploading || useBooksStore.importing || usePhrasesStore.importing ? true : false}
+      onclick={triggerFileUpload}
+    >
       {#if uploading}
         Importing books...
       {:else}

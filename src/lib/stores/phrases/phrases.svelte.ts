@@ -20,6 +20,7 @@ function createPhrasesStore() {
   let curruntlyEditing: string | undefined = $state(undefined);
   let createMode: boolean = $state(false);
   let searchFilter: string | undefined = $state(undefined);
+  let importing: boolean = $state(false);
 
   return {
     get phrases() {
@@ -39,6 +40,9 @@ function createPhrasesStore() {
     },
     get searchFilter() {
       return searchFilter;
+    },
+    get importing() {
+      return importing;
     },
     async init() {
       try {
@@ -165,9 +169,10 @@ function createPhrasesStore() {
         fetching = false;
       }
     },
-    async importData(phrasesToUpdate: Phrase[]) {
+    async importData(phrasesToUpdate: Phrase[], importedAt: Date) {
       try {
         fetching = true;
+        importing = true;
 
         const newPhrases: Phrase[] = [];
 
@@ -175,12 +180,14 @@ function createPhrasesStore() {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const { id, ...restItemProps } = itemToUpdate;
 
+          const decoratedItem: Phrase = { ...restItemProps, importedAt };
+
           // Update phrase data
           const targetIndex = phrases.findIndex((item) => item._id === itemToUpdate._id);
 
           if (targetIndex < 0) {
             // New
-            newPhrases.push({ ...restItemProps });
+            newPhrases.push(decoratedItem);
             return;
           }
 
@@ -195,7 +202,7 @@ function createPhrasesStore() {
           // Update approved
           newPhrases.push({
             ...phrases[targetIndex],
-            ...restItemProps,
+            ...decoratedItem,
           });
         });
 
@@ -210,6 +217,7 @@ function createPhrasesStore() {
         return Promise.reject(e);
       } finally {
         fetching = false;
+        importing = false;
       }
     },
     updateSearchFilter(value: string | undefined) {
