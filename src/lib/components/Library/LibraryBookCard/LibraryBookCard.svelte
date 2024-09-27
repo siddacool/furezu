@@ -35,7 +35,7 @@
   h3 {
     font-size: 1.3rem;
     line-height: 25px;
-    font-weight: 400;
+    font-weight: 500;
     margin: 0;
   }
 </style>

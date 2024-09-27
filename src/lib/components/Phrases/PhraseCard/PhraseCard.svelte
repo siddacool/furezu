@@ -37,11 +37,11 @@
     align-items: center;
     color: var(--color-primary-600);
     font-style: italic;
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     margin-bottom: 0;
     margin-top: 8px;
     line-height: 25px;
-    font-weight: 400;
+    font-weight: 500;
 
     :global(svg) {
       font-style: normal;
@@ -52,7 +52,7 @@
   div {
     :global(.Title h3) {
       font-size: 1.2rem;
-      font-weight: 400;
+      font-weight: 500;
     }
   }
 </style>
