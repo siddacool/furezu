@@ -3,11 +3,11 @@
   "book": {
     "_id": "xi6U3muAt7XKdgu2toSLg",
     "name": "Japanese 🇯🇵",
-    "voice": "Google 日本語",
     "createdAt": "2024-09-26T09:24:57.943Z",
     "updatedAt": "2024-09-26T09:24:57.943Z",
-    "id": 3,
-    "importedAt": "2024-09-26T14:36:50.454Z"
+    "importedAt": "2024-09-27T05:27:20.781Z",
+    "voice": "Google 日本語",
+    "id": 9
   },
   "phrases": [
     {
@@ -18,8 +18,8 @@
       "translation": "こんにちは",
       "createdAt": "2024-09-26T10:23:45.747Z",
       "updatedAt": "2024-09-26T10:24:52.627Z",
-      "id": 2,
-      "importedAt": "2024-09-26T14:36:50.454Z"
+      "importedAt": "2024-09-27T05:27:20.781Z",
+      "id": 28
     },
     {
       "_id": "hJYtkPkTo6MP9MCFCTHJQ",
@@ -29,8 +29,8 @@
       "translation": "ありがとうございます",
       "createdAt": "2024-09-26T10:24:41.201Z",
       "updatedAt": "2024-09-26T10:25:23.745Z",
-      "id": 3,
-      "importedAt": "2024-09-26T14:36:50.454Z"
+      "importedAt": "2024-09-27T05:27:20.781Z",
+      "id": 29
     },
     {
       "_id": "Dt19OXFTmvy89zvZRGoWT",
@@ -40,8 +40,8 @@
       "translation": "ください",
       "createdAt": "2024-09-26T10:25:49.095Z",
       "updatedAt": "2024-09-26T10:25:49.095Z",
-      "id": 4,
-      "importedAt": "2024-09-26T14:36:50.454Z"
+      "importedAt": "2024-09-27T05:27:20.781Z",
+      "id": 30
     },
     {
       "_id": "smZs5IjKFKmoHqH9IPsbD",
@@ -51,8 +51,8 @@
       "translation": "すみません",
       "createdAt": "2024-09-26T10:26:34.501Z",
       "updatedAt": "2024-09-26T10:27:53.036Z",
-      "id": 5,
-      "importedAt": "2024-09-26T14:36:50.454Z"
+      "importedAt": "2024-09-27T05:27:20.781Z",
+      "id": 31
     },
     {
       "_id": "DMnTsorYDKTQXcridOzFa",
@@ -62,8 +62,8 @@
       "translation": "はい",
       "createdAt": "2024-09-26T10:27:08.695Z",
       "updatedAt": "2024-09-26T10:27:08.695Z",
-      "id": 6,
-      "importedAt": "2024-09-26T14:36:50.454Z"
+      "importedAt": "2024-09-27T05:27:20.781Z",
+      "id": 32
     },
     {
       "_id": "bd0m8b-_kcDnjK6xLIgJq",
@@ -73,9 +73,9 @@
       "translation": "いいえ",
       "createdAt": "2024-09-26T10:27:24.365Z",
       "updatedAt": "2024-09-26T10:27:24.365Z",
-      "id": 7,
-      "importedAt": "2024-09-26T14:36:50.454Z"
+      "importedAt": "2024-09-27T05:27:20.781Z",
+      "id": 33
     }
   ],
-  "exportedAt": "2024-09-27T05:27:20.781Z"
+  "exportedAt": "2024-09-27T12:23:12.186Z"
 }
