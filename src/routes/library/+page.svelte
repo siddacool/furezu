@@ -2,11 +2,12 @@
   import Box from '$lib/components/Box.svelte';
   import LibraryList from '$lib/components/Library/LibraryList.svelte';
   import Loading from '$lib/components/Loading/Loading.svelte';
-  import SettingsHeader from '$lib/components/Settings/SettingsHeader.svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import { useLibraryStore } from '$lib/stores/library/library.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
+  import LibraryHeader from '$lib/components/Library/LibraryHeader.svelte';
+
   const mounted = $derived(
     useBooksStore.mounted && usePhrasesStore.mounted && useVoicesStore.mounted ? true : false,
   );
@@ -30,7 +31,7 @@
 
 <title>Library</title>
 
-<SettingsHeader title="Library" />
+<LibraryHeader />
 
 {#if mounted && !fetching}
   <Box>

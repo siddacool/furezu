@@ -10,7 +10,7 @@
 <SettingsHeader />
 
 <Box>
-  <SettingRouteCard href="/settings/library" title="Library">
+  <SettingRouteCard href="/library" title="Library">
     {#snippet icon()}
       <Icon icon="material-symbols:book-outline" />
     {/snippet}

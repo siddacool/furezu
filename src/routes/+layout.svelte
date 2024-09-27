@@ -5,6 +5,7 @@
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
   import type { SvelteComponentProps } from '$lib/types/svelte-component';
+  import TheFooter from '$lib/components/TheFooter.svelte';
 
   const { children }: SvelteComponentProps = $props();
 
@@ -26,7 +27,11 @@
 <GlobalContainer />
 
 <MainLayout>
-  {#if children}
-    {@render children()}
-  {/if}
+  <div>
+    {#if children}
+      {@render children()}
+    {/if}
+  </div>
+
+  <TheFooter />
 </MainLayout>
