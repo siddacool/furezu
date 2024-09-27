@@ -46,18 +46,16 @@
 
   h3 {
     margin: 0;
-    font-size: 1.2rem;
-    font-weight: 400;
+    font-size: 1.1rem;
+    font-weight: 500;
   }
 
   .Icon {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     width: 40px;
-    height: 50px;
     display: flex;
     align-items: center;
     color: var(--color-primary-700);
     justify-content: flex-start;
-    margin-right: 4px;
   }
 </style>

@@ -82,7 +82,7 @@
     font-size: 1.3rem;
     margin-top: 0;
     line-height: 25px;
-    font-weight: 400;
+    font-weight: 500;
     margin-bottom: 0;
     flex: 1;
 
