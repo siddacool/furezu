@@ -23,7 +23,7 @@
     margin-top: -8px;
     margin-right: -8px;
 
-    :global(.EditButton) {
+    :global(.EditButton.variant--inert) {
       width: 40px;
       height: 40px;
       min-width: initial;
