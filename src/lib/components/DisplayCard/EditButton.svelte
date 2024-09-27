@@ -12,7 +12,7 @@
 
 {#if !hideEditButton}
   <div>
-    <Button class="EditButton" compact {onclick} title="Edit">
+    <Button class="EditButton" compact {onclick} title="Edit" variant="inert">
       <Icon icon="tabler:edit" />
     </Button>
   </div>
@@ -23,13 +23,11 @@
     margin-top: -8px;
     margin-right: -8px;
 
-    :global(.EditButton.variant--default) {
+    :global(.EditButton) {
       width: 40px;
       height: 40px;
       min-width: initial;
       border-radius: 50%;
-      background-color: transparent;
-      color: var(--color-primary-700);
     }
 
     :global(.EditButton svg) {

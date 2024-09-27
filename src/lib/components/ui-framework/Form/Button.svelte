@@ -1,5 +1,5 @@
 <script lang="ts" module>
-  export type ButtonVariant = 'default' | 'primary' | 'danger';
+  export type ButtonVariant = 'default' | 'primary' | 'danger' | 'inert';
 </script>
 
 <script lang="ts">
@@ -72,6 +72,19 @@
 
     &:not([disabled]) {
       &.variant {
+        &--inert {
+          background-color: transparent;
+          color: var(--color-primary-700);
+
+          &:hover {
+            background-color: var(--color-primary-200);
+          }
+
+          &:active {
+            background-color: var(--color-primary-300);
+          }
+        }
+
         &--default {
           background-color: var(--color-primary-200);
           color: var(--color-grey-font-900);

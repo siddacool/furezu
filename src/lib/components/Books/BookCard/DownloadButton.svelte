@@ -47,7 +47,14 @@
 
 {#if env.isDebugMode}
   <div class="download-book">
-    <Button compact {onclick} disabled={downloading} class="Download" title="Download book">
+    <Button
+      compact
+      {onclick}
+      disabled={downloading}
+      class="Download"
+      title="Download book"
+      variant="inert"
+    >
       <Icon icon="material-symbols:download-sharp" />
     </Button>
   </div>
@@ -60,13 +67,11 @@
     right: 8px;
     z-index: 1;
 
-    :global(.Download.variant--default) {
+    :global(.Download) {
       width: 40px;
       height: 40px;
       min-width: initial;
       border-radius: 50%;
-      background-color: transparent;
-      color: var(--color-primary-700);
     }
 
     :global(.Download svg) {
