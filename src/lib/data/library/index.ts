@@ -1,14 +1,20 @@
+import { browser } from '$app/environment';
 import type { LibraryData } from '$lib/stores/library/types';
 import type { SyncData } from '$lib/types/sync';
 
-export async function getBooksFromLibrary() {
+export async function getLibrary() {
   try {
-    const importedBooks = import.meta.glob('./books/*.json', { eager: true, import: 'default' });
+    if (!browser) {
+      return Promise.resolve([]);
+    }
+
+    const importedBooks = import.meta.glob('./books/*.json');
 
     const library: LibraryData[] = [];
 
-    for (const importedBook in importedBooks) {
-      const syncData = importedBooks[importedBook] as SyncData;
+    for (const path in importedBooks) {
+      const module = await importedBooks[path]();
+      const syncData = module as SyncData;
 
       const book = syncData.books[0];
 

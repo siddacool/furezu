@@ -1,13 +1,20 @@
 <script lang="ts">
   import { useLibraryStore } from '$lib/stores/library/library.svelte';
+  import Loading from '../Loading/Loading.svelte';
   import LibraryBookCard from './LibraryBookCard';
 </script>
 
 <div class="LibraryList">
   <p>Add pre-made books from Library</p>
-  {#each useLibraryStore.data as book}
-    <LibraryBookCard {book} />
-  {/each}
+  {#if useLibraryStore.mounted && !useLibraryStore.fetching}
+    <div>
+      {#each useLibraryStore.data as book}
+        <LibraryBookCard {book} />
+      {/each}
+    </div>
+  {:else}
+    <Loading />
+  {/if}
 </div>
 
 <style lang="scss">

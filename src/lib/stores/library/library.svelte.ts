@@ -1,4 +1,4 @@
-import { getBooksFromLibrary } from './data';
+import { getLibrary } from '$lib/data/library';
 import type { LibraryData } from './types';
 
 function createLibraryStore() {
@@ -20,7 +20,7 @@ function createLibraryStore() {
       try {
         fetching = true;
 
-        data = await getBooksFromLibrary();
+        data = await getLibrary();
 
         return Promise.resolve();
       } catch (e) {
