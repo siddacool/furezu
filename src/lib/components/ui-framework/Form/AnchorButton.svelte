@@ -84,7 +84,7 @@
           color: var(--color-white-const);
 
           &:hover {
-            background-color: var(--color-primar-800);
+            background-color: var(--color-primary-800);
           }
 
           &:active {
