@@ -25,8 +25,7 @@ Make sure you are on suitable `node` and `pnpm` versions. I would recommend usin
 
 #### Debug tools
 
-1. Quick theme changer - Change theme quickly
-2. Download book button - Download books and the corrosponding phrases
+1. Download book button - Download books and the corrosponding phrases
 
 ### Check code
 
