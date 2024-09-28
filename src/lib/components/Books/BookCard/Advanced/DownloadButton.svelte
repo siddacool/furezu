@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Book } from '$lib/stores/books/types';
-  import env from '$lib/helpers/env';
   import Button from '$lib/components/ui-framework/Form/Button.svelte';
   import Icon from '@iconify/svelte';
   import { getMoment } from '$lib/helpers/time';
@@ -45,28 +44,21 @@
   }
 </script>
 
-{#if env.isDebugMode}
-  <div class="download-book">
-    <Button
-      compact
-      {onclick}
-      disabled={downloading}
-      class="Download"
-      title="Download book"
-      variant="inert"
-    >
-      <Icon icon="material-symbols:download-sharp" />
-    </Button>
-  </div>
-{/if}
+<div class="download-book">
+  <Button
+    compact
+    {onclick}
+    disabled={downloading}
+    class="Download"
+    title="Download book"
+    variant="inert"
+  >
+    <Icon icon="material-symbols:download-sharp" />
+  </Button>
+</div>
 
 <style lang="scss">
   .download-book {
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    z-index: 1;
-
     :global(.Download) {
       width: 40px;
       height: 40px;

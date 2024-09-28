@@ -16,17 +16,6 @@ Make sure you are on suitable `node` and `pnpm` versions. I would recommend usin
 1. Install all dependancies with `pnpm install`
 2. Use `pnpm dev` or `npm run dev` to run the project
 
-### Debug mode
-
-#### Enable debug mode
-
-1. copy `.env.example` as `.env`
-2. set `VITE_APP_DEBUG_MODE` to `yes`
-
-#### Debug tools
-
-1. Download book button - Download books and the corrosponding phrases
-
 ### Check code
 
 use `pnpm check` or `npm run check` to check code for issues.

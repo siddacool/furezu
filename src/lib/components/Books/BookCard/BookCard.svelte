@@ -4,8 +4,8 @@
   import { Stack } from '../../ui-framework/Layout/Stack';
   import { goto } from '$app/navigation';
   import DisplayCard from '../../DisplayCard';
-  import DownloadButton from './DownloadButton.svelte';
   import Stats from './Stats';
+  import Advanced from './Advanced';
 
   interface BookCardProps {
     book: Book;
@@ -32,5 +32,5 @@
     <Stats {book} />
   </Stack>
 
-  <DownloadButton {book} />
+  <Advanced {book} />
 </DisplayCard>

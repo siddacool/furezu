@@ -49,8 +49,10 @@
 
   p {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.3rem;
     margin-left: 16px;
-    font-size: 1.45rem;
+    overflow: hidden;
+    white-space: pre;
+    text-overflow: ellipsis;
   }
 </style>

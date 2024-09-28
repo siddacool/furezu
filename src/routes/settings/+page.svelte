@@ -10,15 +10,21 @@
 <SettingsHeader />
 
 <Box>
+  <SettingRouteCard href="/settings/appearance" title="Appearance">
+    {#snippet icon()}
+      <Icon icon="mdi:theme-outline" />
+    {/snippet}
+  </SettingRouteCard>
+
   <SettingRouteCard href="/settings/sync" title="Sync">
     {#snippet icon()}
       <Icon icon="material-symbols:sync" />
     {/snippet}
   </SettingRouteCard>
 
-  <SettingRouteCard href="/settings/appearance" title="Appearance">
+  <SettingRouteCard href="/settings/advanced-config" title="Advanced Configurations">
     {#snippet icon()}
-      <Icon icon="mdi:theme-outline" />
+      <Icon icon="material-symbols:developer-mode-outline" />
     {/snippet}
   </SettingRouteCard>
 

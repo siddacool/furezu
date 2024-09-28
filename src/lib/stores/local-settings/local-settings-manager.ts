@@ -9,12 +9,14 @@ export type LocalSettings = {
   theme: number;
   lastOpenBook?: string;
   deviceName?: string;
+  developerMode: boolean;
 };
 
 const defaultLocalSettings: LocalSettings = {
   theme: Themes.SYSTEM,
   lastOpenBook: undefined,
   deviceName: undefined,
+  developerMode: false,
 };
 
 export function getLocalSettings() {

@@ -1,11 +1,19 @@
 <script lang="ts">
+  import { useDeveloperModeStore } from '$lib/stores/local-settings/developer-mode.svelte';
   import Box from './Box.svelte';
+  import Chip from './ui-framework/FormattedInfo/Chip.svelte';
 </script>
 
 <footer>
   <Box>
-    <a href="/">Home</a>
-    <a href="library">Library</a>
+    <section>
+      <a href="/">Home</a>
+      <a href="/library">Library</a>
+
+      {#if useDeveloperModeStore.developerMode}
+        <a href="/settings/advanced-config"><Chip size="small">Developer mode</Chip></a>
+      {/if}
+    </section>
   </Box>
 </footer>
 
@@ -14,6 +22,12 @@
     margin-top: auto;
     padding: 0 16px;
     padding-bottom: 32px;
+  }
+
+  section {
+    display: flex;
+    align-items: center;
+    min-height: 25px;
   }
 
   a {
