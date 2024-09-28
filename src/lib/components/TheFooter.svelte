@@ -4,6 +4,7 @@
 
 <footer>
   <Box>
+    <a href="/">Home</a>
     <a href="library">Library</a>
   </Box>
 </footer>
