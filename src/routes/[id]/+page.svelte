@@ -19,10 +19,6 @@
     useBooksStore.mounted && usePhrasesStore.mounted && useVoicesStore.mounted ? true : false,
   );
 
-  const fetching = $derived(
-    useBooksStore.fetching && usePhrasesStore.fetching && useVoicesStore.fetching ? true : false,
-  );
-
   const id = $page.params.id;
   const targetBook = $derived(useBooksStore.books.find((item) => item._id === id));
 
@@ -49,7 +45,7 @@
   <PhrasesToolbar />
 </Header>
 
-{#if mounted && !fetching}
+{#if mounted}
   {#if !targetBook?.name}
     <Box>
       <ThickPlaceholderText>Book not found. Go back <BackButton backTo="/" /></ThickPlaceholderText>

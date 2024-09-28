@@ -16,10 +16,6 @@
     useBooksStore.mounted && usePhrasesStore.mounted && useVoicesStore.mounted ? true : false,
   );
 
-  const fetching = $derived(
-    useBooksStore.fetching && usePhrasesStore.fetching && useVoicesStore.fetching ? true : false,
-  );
-
   $effect(() => {
     if (useLastOpenBookStore.lastOpenBook) {
       goto(`/${useLastOpenBookStore.lastOpenBook}`);
@@ -39,7 +35,7 @@
   <BooksToolbar />
 </Header>
 
-{#if mounted && !fetching}
+{#if mounted}
   <BooksPlaceholder />
   <Box>
     <BooksList />

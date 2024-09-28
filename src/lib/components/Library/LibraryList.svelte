@@ -7,7 +7,7 @@
 
 <div class="LibraryList">
   <Title>Add pre-made books from Library</Title>
-  {#if useLibraryStore.mounted && !useLibraryStore.fetching}
+  {#if useLibraryStore.mounted}
     <div>
       {#each useLibraryStore.data as book}
         <LibraryBookCard {book} />

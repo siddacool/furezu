@@ -12,10 +12,6 @@
     useBooksStore.mounted && usePhrasesStore.mounted && useVoicesStore.mounted ? true : false,
   );
 
-  const fetching = $derived(
-    useBooksStore.fetching && usePhrasesStore.fetching && useVoicesStore.fetching ? true : false,
-  );
-
   $effect(() => {
     async function fetchLibrary() {
       try {
@@ -33,7 +29,7 @@
 
 <LibraryHeader />
 
-{#if mounted && !fetching}
+{#if mounted}
   <Box>
     <LibraryList />
   </Box>

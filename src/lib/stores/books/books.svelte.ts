@@ -4,6 +4,7 @@ import type { Book } from './types';
 import { usePhrasesStore } from '../phrases/phrases.svelte';
 import { getMoment } from '$lib/helpers/time';
 import { useVoicesStore } from '../voices/voices.svelte';
+import type { Phrase } from '../phrases/types';
 
 async function getBook(idToFind: string) {
   try {
@@ -203,6 +204,51 @@ function createBooksStore() {
       } finally {
         fetching = false;
         importing = false;
+      }
+    },
+    async duplicate(id: string) {
+      try {
+        fetching = true;
+
+        const targetBook = books.find((item) => item._id === id);
+
+        if (!targetBook) {
+          return;
+        }
+
+        const clonedBook = {
+          ...targetBook,
+          id: undefined,
+          _id: nanoid(),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        };
+
+        await db.books.add(clonedBook);
+
+        books = await db.books?.toArray();
+
+        const phrases = usePhrasesStore.phrases.filter((item) => item.bookId === targetBook._id);
+
+        const clonePhrases: Phrase[] = phrases.map((item) =>
+          Object.assign(item, {
+            id: undefined,
+            _id: nanoid(),
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            bookId: clonedBook._id,
+          }),
+        );
+
+        await usePhrasesStore.importData(clonePhrases, new Date());
+
+        return Promise.resolve();
+      } catch (e) {
+        console.error(e);
+
+        return Promise.reject(e);
+      } finally {
+        fetching = false;
       }
     },
     updateSearchFilter(value: string | undefined) {

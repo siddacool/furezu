@@ -12,17 +12,13 @@
   const mounted = $derived(
     useBooksStore.mounted && usePhrasesStore.mounted && useVoicesStore.mounted ? true : false,
   );
-
-  const fetching = $derived(
-    useBooksStore.fetching && usePhrasesStore.fetching && useVoicesStore.fetching ? true : false,
-  );
 </script>
 
 <title>Sync</title>
 
 <SettingsHeader title="Sync" />
 
-{#if mounted && !fetching}
+{#if mounted}
   <Box>
     <DeviceNameSettings />
     <ExportSettings />
