@@ -48,7 +48,7 @@
     {
       "action": "/handle-file",
       "accept": {
-        "application/JSON": [".book.json"]
+        "application/JSON": [".book"]
       }
     }
   ]
