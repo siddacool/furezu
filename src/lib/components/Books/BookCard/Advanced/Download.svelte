@@ -35,7 +35,7 @@
 
       const simplifiedName = simplifyText(book.name, true).toLocaleLowerCase();
 
-      await downloadFile(`${simplifiedName}.book.json`, data);
+      await downloadFile(`${simplifiedName}.json.book`, data);
     } catch (e) {
       console.error(e);
     } finally {

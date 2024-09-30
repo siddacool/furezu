@@ -1,12 +1,11 @@
 <script lang="ts">
   $effect(() => {
     if ('launchQueue' in window) {
-      launchQueue.setConsumer(async (launchParams: { files: any }) => {
-        for (const file of launchParams.files) {
-          const url = URL.createObjectURL(await file.getFile());
+      window?.launchQueue?.setConsumer(async (launchParams: { files: any }) => {
+        const file = launchParams.files[0];
+        const data = await file.getFile();
 
-          console.log(url);
-        }
+        console.log(data);
       });
     }
   });

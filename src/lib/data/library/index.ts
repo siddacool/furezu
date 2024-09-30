@@ -7,7 +7,7 @@ export async function getLibrary() {
       return Promise.resolve([]);
     }
 
-    const importedBooks = import.meta.glob('./books/*.json');
+    const importedBooks = import.meta.glob('./books/*.json.book');
 
     const library: LibraryData[] = [];
 

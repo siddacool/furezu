@@ -96,7 +96,7 @@
     <h3>Import from other devices</h3>
 
     <input
-      accept="application/JSON"
+      accept=".book,.furezu,application/JSON"
       bind:files
       bind:this={fileUploadElement}
       id="upload"

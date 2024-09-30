@@ -28,7 +28,7 @@
 
       const deviceName = useDeviceNameStore.deviceName ? `${useDeviceNameStore.deviceName}_` : '';
 
-      const fileName = `furezu-export_${deviceName}${exportedAt.format('DD-MM-YYYY-HH-mm-ss')}.json`;
+      const fileName = `furezu-export_${deviceName}${exportedAt.format('DD-MM-YYYY-HH-mm-ss')}.json.furezu`;
 
       await downloadFile(fileName, data);
       await timeout(200);
