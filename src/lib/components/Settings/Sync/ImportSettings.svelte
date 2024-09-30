@@ -2,6 +2,7 @@
   import ToolCard from '$lib/components/Settings/ToolCard.svelte';
   import Button from '$lib/components/ui-framework/Form/Button.svelte';
   import { getMoment } from '$lib/helpers/time';
+  import { readUploadedTextFile } from '$lib/helpers/upload-file';
   import validateJson from '$lib/helpers/validators/vaidate-json';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import type { Book } from '$lib/stores/books/types';
@@ -14,41 +15,10 @@
   let files: FileList | undefined = $state(undefined);
   let importedAt: string | undefined = $state(undefined);
 
-  async function readFileAsync(files: FileList | undefined): Promise<string | null> {
-    return new Promise<string | null>((resolve, reject) => {
-      if (!files) {
-        resolve(null);
-
-        return;
-      }
-
-      if (files.length < 1) {
-        resolve(null);
-
-        return;
-      }
-
-      const file = files[0];
-
-      const reader = new FileReader();
-
-      reader.onload = (event) => {
-        const fileContents = event.target?.result as string;
-        resolve(fileContents);
-      };
-
-      reader.onerror = () => {
-        reject(new Error('An error occurred while reading the file.'));
-      };
-
-      reader.readAsText(file);
-    });
-  }
-
   async function onchange() {
     try {
       uploading = true;
-      const file = await readFileAsync(files);
+      const file = await readUploadedTextFile(files);
 
       if (!file) {
         throw 'No file found';
