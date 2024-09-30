@@ -22,7 +22,7 @@
     {/snippet}
   </SettingRouteCard>
 
-  <SettingRouteCard href="/settings/advanced-config" title="Advanced Configurations">
+  <SettingRouteCard href="/settings/developer-options" title="Developer Options">
     {#snippet icon()}
       <Icon icon="material-symbols:developer-mode-outline" />
     {/snippet}

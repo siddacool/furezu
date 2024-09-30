@@ -11,7 +11,7 @@
 <ToolCard>
   <div>
     <h3>Developer mode</h3>
-    <p>enable options like book download etc.</p>
+    <p>enable options like book download, duplicate etc.</p>
     <Button variant={useDeveloperModeStore.developerMode ? 'default' : 'primary'} {onclick}>
       {#if useDeveloperModeStore.developerMode}
         Disable

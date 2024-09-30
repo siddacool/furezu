@@ -11,7 +11,7 @@
       <a href="/library">Library</a>
 
       {#if useDeveloperModeStore.developerMode}
-        <a href="/settings/advanced-config"><Chip size="small">Developer mode</Chip></a>
+        <a href="/settings/developer-options"><Chip size="small">Developer mode</Chip></a>
       {/if}
     </section>
   </Box>

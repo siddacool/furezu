@@ -3,6 +3,7 @@
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import DisplayCard from '$lib/components/DisplayCard/DisplayCard.svelte';
   import Translation from './Translation.svelte';
+  import Advanced from './Advanced/Advanced.svelte';
 
   interface PhraseCardProps {
     phrase: Phrase;
@@ -23,6 +24,7 @@
   >
     <h3>{phrase.phrase}</h3>
     <Translation {phrase} />
+    <Advanced {phrase} />
   </DisplayCard>
 </div>
 

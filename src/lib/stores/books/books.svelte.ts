@@ -216,7 +216,7 @@ function createBooksStore() {
           return;
         }
 
-        const clonedBook = {
+        const clonedBook: Book = {
           ...targetBook,
           id: undefined,
           _id: nanoid(),

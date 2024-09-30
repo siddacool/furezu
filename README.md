@@ -9,6 +9,10 @@ Links:
 - [Web app](https://furezu.netlify.app/)
 - [Github](https://github.com/siddacool/furezu)
 
+## Developer mode
+
+Enable developer mode [Developer mode](https://furezu.netlify.app/settings/developer-options) to enable options like download and duplicate books.
+
 ## Development
 
 Make sure you are on suitable `node` and `pnpm` versions. I would recommend using [volta](https://volta.sh/).

@@ -220,6 +220,37 @@ function createPhrasesStore() {
         importing = false;
       }
     },
+    async duplicate(id: string) {
+      try {
+        fetching = true;
+
+        const targetPhrase = phrases.find((item) => item._id === id);
+
+        if (!targetPhrase) {
+          return;
+        }
+
+        const clonedPhrase: Phrase = {
+          ...targetPhrase,
+          id: undefined,
+          _id: nanoid(),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        };
+
+        await db.phrases.add(clonedPhrase);
+
+        phrases = await db.phrases?.toArray();
+
+        return Promise.resolve();
+      } catch (e) {
+        console.error(e);
+
+        return Promise.reject(e);
+      } finally {
+        fetching = false;
+      }
+    },
     updateSearchFilter(value: string | undefined) {
       searchFilter = value;
     },

@@ -1,20 +1,18 @@
 <script lang="ts">
-  import type { Book } from '$lib/stores/books/types';
   import { useDeveloperModeStore } from '$lib/stores/local-settings/developer-mode.svelte';
-  import Download from './Download.svelte';
+  import type { Phrase } from '$lib/stores/phrases/types';
   import Duplicate from './Duplicate.svelte';
 
   interface AdvancedProps {
-    book: Book;
+    phrase: Phrase;
   }
 
-  const { book }: AdvancedProps = $props();
+  const { phrase }: AdvancedProps = $props();
 </script>
 
 {#if useDeveloperModeStore.developerMode}
   <div class="advanced-options">
-    <Download {book} />
-    <Duplicate {book} />
+    <Duplicate {phrase} />
   </div>
 {/if}
 

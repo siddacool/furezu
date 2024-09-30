@@ -1,6 +1,7 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
   import Button from '../ui-framework/Form/Button.svelte';
+  import LightButton from '../LightButton.svelte';
 
   interface EditButtonProps {
     onclick: () => void;
@@ -12,9 +13,9 @@
 
 {#if !hideEditButton}
   <div>
-    <Button class="EditButton" compact {onclick} title="Edit" variant="inert">
+    <LightButton class="EditButton" compact {onclick} title="Edit">
       <Icon icon="tabler:edit" />
-    </Button>
+    </LightButton>
   </div>
 {/if}
 
@@ -22,16 +23,5 @@
   div {
     margin-top: -8px;
     margin-right: -8px;
-
-    :global(.EditButton.variant--inert) {
-      width: 40px;
-      height: 40px;
-      min-width: initial;
-      border-radius: 50%;
-    }
-
-    :global(.EditButton svg) {
-      font-size: 1.3rem;
-    }
   }
 </style>
