@@ -45,7 +45,7 @@
   div {
     display: inline-flex;
 
-    :global(.LightButton) {
+    :global(.LightButton.variant--inert) {
       width: 40px;
       height: 40px;
       min-width: initial;
