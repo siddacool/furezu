@@ -43,5 +43,13 @@
       "form_factor": "narrow",
       "label": "Home light mobile"
     }
+  ],
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "application/JSON": [".book.json"]
+      }
+    }
   ]
 }
