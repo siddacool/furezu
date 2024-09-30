@@ -46,7 +46,7 @@
   ],
   "file_handlers": [
     {
-      "action": "/",
+      "action": "/handle-file",
       "accept": {
         "application/JSON": [".book.json"]
       }
