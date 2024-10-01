@@ -1,4 +1,4 @@
-import { getLibrary } from '$lib/data/library';
+import { fetchApi } from '$lib/helpers/api';
 import type { LibraryData } from './types';
 
 function createLibraryStore() {
@@ -20,7 +20,7 @@ function createLibraryStore() {
       try {
         fetching = true;
 
-        data = await getLibrary();
+        data = await fetchApi<LibraryData[]>('GET', 'https://furezu-api.deno.dev/library');
 
         return Promise.resolve();
       } catch (e) {

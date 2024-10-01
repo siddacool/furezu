@@ -1,6 +1,5 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
-  import Button from '../ui-framework/Form/Button.svelte';
   import LightButton from '../LightButton.svelte';
 
   interface EditButtonProps {
