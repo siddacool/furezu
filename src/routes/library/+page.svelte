@@ -7,6 +7,7 @@
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
   import LibraryHeader from '$lib/components/Library/LibraryHeader.svelte';
+  import { fetchApi } from '$lib/helpers/api';
 
   const mounted = $derived(
     useBooksStore.mounted && usePhrasesStore.mounted && useVoicesStore.mounted ? true : false,
@@ -16,6 +17,10 @@
     async function fetchLibrary() {
       try {
         await useLibraryStore.init();
+
+        const res = await fetchApi('GET', 'https://furezu-api.netlify.app/api/library');
+
+        console.log(res);
       } catch (e) {
         console.log(e);
       }
