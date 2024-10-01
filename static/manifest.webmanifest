@@ -6,6 +6,7 @@
   "background_color": "#7259FF",
   "display": "standalone",
   "scope": ".",
+  "id": "/",
   "start_url": "/",
   "orientation": "portrait",
   "icons": [
@@ -42,6 +43,14 @@
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Home light mobile"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Library",
+      "short_name": "Library",
+      "description": "Add pre-made books from Library",
+      "url": "/library"
     }
   ]
 }
