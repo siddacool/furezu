@@ -1,6 +1,7 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
   import LightButton from '../LightButton.svelte';
+  import { useThemeStore } from '$lib/stores/local-settings/theme.svelte';
 
   interface EditButtonProps {
     onclick: () => void;
@@ -12,7 +13,12 @@
 
 {#if !hideEditButton}
   <div>
-    <LightButton class="EditButton" compact {onclick} title="Edit">
+    <LightButton
+      class={`EditButton theme theme--${useThemeStore.colorScheme}`}
+      compact
+      {onclick}
+      title="Edit"
+    >
       <Icon icon="tabler:edit" />
     </LightButton>
   </div>
@@ -22,5 +28,9 @@
   div {
     margin-top: -8px;
     margin-right: -8px;
+
+    :global(.EditButton.variant--inert.theme--dark) {
+      color: var(--color-primary-600);
+    }
   }
 </style>

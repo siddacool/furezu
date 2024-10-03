@@ -13,12 +13,7 @@
   }
 </script>
 
-<Search
-  {...props}
-  {onfocus}
-  {onblur}
-  class={`Searchbar ${useToolbarContextStore.isSearchActive ? 'isSearchActive' : ''}`}
-/>
+<Search {...props} {onfocus} {onblur} class={`Searchbar`} />
 
 <style lang="scss">
   @import '$lib/components/GlobalContainer/styles/mixins/media.scss';
@@ -30,9 +25,5 @@
     @include mediaLg {
       margin-right: 16px;
     }
-  }
-
-  :global(.Searchbar.isSearchActive) {
-    margin-right: 0;
   }
 </style>

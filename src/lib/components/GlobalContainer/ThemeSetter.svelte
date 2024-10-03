@@ -1,32 +1,18 @@
 <script lang="ts">
-  import { getSystemTheme, useThemeStore } from '$lib/stores/local-settings/theme.svelte';
-  import { AppColorSchemes, Themes } from '$lib/stores/local-settings/types';
-
-  const sytemTheme = getSystemTheme();
+  import { useThemeStore } from '$lib/stores/local-settings/theme.svelte';
+  import { AppColorSchemes } from '$lib/stores/local-settings/types';
 
   $effect(() => {
     const bodyContainer = document.querySelector('body');
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
 
     if (bodyContainer) {
-      if (useThemeStore.theme === Themes.SYSTEM) {
-        bodyContainer.dataset.theme = sytemTheme;
-      } else if (useThemeStore.theme === Themes.DARK) {
-        bodyContainer.dataset.theme = AppColorSchemes.DARK;
-      } else {
-        bodyContainer.dataset.theme = AppColorSchemes.LIGHT;
-      }
+      bodyContainer.dataset.theme = useThemeStore.colorScheme;
     }
 
     if (metaThemeColor) {
-      if (useThemeStore.theme === Themes.SYSTEM) {
-        if (sytemTheme === AppColorSchemes.LIGHT) {
-          metaThemeColor.setAttribute('content', '#fafafa');
-        } else {
-          metaThemeColor.setAttribute('content', '#0b0b21');
-        }
-      } else if (useThemeStore.theme === Themes.DARK) {
-        metaThemeColor.setAttribute('content', '#0b0b21');
+      if (useThemeStore.colorScheme === AppColorSchemes.DARK) {
+        metaThemeColor.setAttribute('content', '#0e1012');
       } else {
         metaThemeColor.setAttribute('content', '#fafafa');
       }

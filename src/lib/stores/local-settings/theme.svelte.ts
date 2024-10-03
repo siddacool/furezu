@@ -1,25 +1,6 @@
 import { getLocalSettings, updateLocalSettings } from './local-settings-manager';
-import { AppColorSchemes, type Themes } from './types';
+import { AppColorSchemes, Themes } from './types';
 import { browser } from '$app/environment';
-
-const localSettings = getLocalSettings();
-
-function createThemeStore() {
-  let theme: Themes = $state(localSettings.theme);
-
-  return {
-    get theme() {
-      return theme;
-    },
-    setTheme: (value: Themes) => {
-      theme = value;
-
-      updateLocalSettings({ theme: value });
-    },
-  };
-}
-
-export const useThemeStore = createThemeStore();
 
 export function getSystemTheme(): AppColorSchemes {
   if (!browser) {
@@ -34,3 +15,33 @@ export function getSystemTheme(): AppColorSchemes {
     return AppColorSchemes.LIGHT;
   }
 }
+
+const localSettings = getLocalSettings();
+
+function createThemeStore() {
+  let theme: Themes = $state(localSettings.theme);
+
+  return {
+    get theme() {
+      return theme;
+    },
+    get colorScheme() {
+      const sytemTheme = getSystemTheme();
+
+      if (this.theme === Themes.SYSTEM) {
+        return sytemTheme;
+      } else if (useThemeStore.theme === Themes.DARK) {
+        return AppColorSchemes.DARK;
+      } else {
+        return AppColorSchemes.LIGHT;
+      }
+    },
+    setTheme: (value: Themes) => {
+      theme = value;
+
+      updateLocalSettings({ theme: value });
+    },
+  };
+}
+
+export const useThemeStore = createThemeStore();

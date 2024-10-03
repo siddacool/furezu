@@ -1,7 +1,6 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
   import Button from '../ui-framework/Form/Button.svelte';
-  import { useToolbarContextStore } from './Toolbar.svelte';
 
   interface AddButtonProps {
     onAdd?: () => void;
@@ -12,7 +11,7 @@
   const { onAdd, disabled, label = '' }: AddButtonProps = $props();
 </script>
 
-{#if !useToolbarContextStore.isSearchActive && onAdd}
+{#if onAdd}
   <div>
     <Button compact title={`Add a ${label}`} {disabled} onclick={onAdd} variant="primary">
       <Icon icon="material-symbols:add" />
