@@ -7,14 +7,20 @@
   import Box from '$lib/components/Box.svelte';
   import Header from '$lib/components/Header.svelte';
   import Loading from '$lib/components/Loading/Loading.svelte';
+  import Button from '$lib/components/ui-framework/Form/Button.svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import { useLastOpenBookStore } from '$lib/stores/local-settings/last-open-book.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
+  import Icon from '@iconify/svelte';
 
   const mounted = $derived(
     useBooksStore.mounted && usePhrasesStore.mounted && useVoicesStore.mounted ? true : false,
   );
+
+  function onAdd() {
+    useBooksStore.startCreateMode();
+  }
 
   $effect(() => {
     if (useLastOpenBookStore.lastOpenBook) {
@@ -39,6 +45,16 @@
   <BooksPlaceholder />
   <Box>
     <BooksList />
+
+    <div>
+      <Button
+        disabled={useBooksStore.curruntlyEditing || useBooksStore.createMode ? true : false}
+        onclick={onAdd}
+        variant="primary"
+      >
+        Add Book
+      </Button>
+    </div>
     <CreateABook />
   </Box>
 {:else}
@@ -46,3 +62,11 @@
     <Loading />
   </Box>
 {/if}
+
+<style lang="scss">
+  div {
+    text-align: center;
+    padding: 16px 0;
+    padding-bottom: 24px;
+  }
+</style>

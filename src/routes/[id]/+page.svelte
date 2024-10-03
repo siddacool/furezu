@@ -10,6 +10,7 @@
   import PhrasesPlaceholder from '$lib/components/Phrases/PhrasesPlaceholder.svelte';
   import PhrasesToolbar from '$lib/components/Phrases/PhrasesToolbar.svelte';
   import ThickPlaceholderText from '$lib/components/ThickPlaceholderText.svelte';
+  import Button from '$lib/components/ui-framework/Form/Button.svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import { useLastOpenBookStore } from '$lib/stores/local-settings/last-open-book.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
@@ -21,6 +22,10 @@
 
   const id = $page.params.id;
   const targetBook = $derived(useBooksStore.books.find((item) => item._id === id));
+
+  function onAdd() {
+    usePhrasesStore.startCreateMode();
+  }
 
   $effect(() => {
     useLastOpenBookStore.update(targetBook?._id);
@@ -56,6 +61,15 @@
     <Box>
       <PhrasesPlaceholder />
       <PhraseList />
+      <div>
+        <Button
+          disabled={usePhrasesStore.curruntlyEditing || usePhrasesStore.createMode ? true : false}
+          onclick={onAdd}
+          variant="primary"
+        >
+          Add Phrase
+        </Button>
+      </div>
       <CreateAPhrase />
     </Box>
   {/if}
@@ -64,3 +78,11 @@
     <Loading />
   </Box>
 {/if}
+
+<style lang="scss">
+  div {
+    text-align: center;
+    padding: 16px 0;
+    padding-bottom: 24px;
+  }
+</style>
