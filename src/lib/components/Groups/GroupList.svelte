@@ -4,6 +4,7 @@
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import type { Phrase } from '$lib/stores/phrases/types';
   import Title from '../Title.svelte';
+  import GroupCardEdit from './GroupCardEdit.svelte';
   import PhraseGroup from './PhraseGroup.svelte';
 
   let filteredPhrases: Phrase[] = $state([]);
@@ -36,7 +37,11 @@
   <div>
     {#if filteredPhrases.length}
       {#each groups as group}
-        <PhraseGroup phrases={filteredPhrases} id={group._id} name={group.name} />
+        {#if useGroupsStore.curruntlyEditing === group._id}
+          <GroupCardEdit {group} {bookId} />
+        {:else}
+          <PhraseGroup phrases={filteredPhrases} id={group._id} name={group.name} />
+        {/if}
       {/each}
 
       {#if isUnGroupedPhrases}

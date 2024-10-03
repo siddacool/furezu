@@ -25,7 +25,12 @@
 <div class={`Accordian ${className}`}>
   <div class="title">
     <Button {onclick} variant="inert" compact>
-      <Icon icon="material-symbols:arrow-drop-down-rounded" />
+      {#if open}
+        <Icon icon="material-symbols:arrow-drop-up-rounded" />
+      {:else}
+        <Icon icon="material-symbols:arrow-drop-down-rounded" />
+      {/if}
+
       {title}
     </Button>
     {#if headerContent}

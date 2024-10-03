@@ -3,6 +3,7 @@ export interface CreatePhrase {
   phrase: string;
   pronounciation?: string;
   translation?: string;
+  groupId?: string;
 }
 
 export interface Phrase extends CreatePhrase {
@@ -13,5 +14,4 @@ export interface Phrase extends CreatePhrase {
   updatedAt: Date;
   hidden?: boolean;
   importedAt?: Date;
-  groupId?: string;
 }

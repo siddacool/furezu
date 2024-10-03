@@ -11,9 +11,10 @@
   interface PhraseCardFormProps {
     phrase?: Phrase;
     bookId: string;
+    groupId?: string;
   }
 
-  const { phrase, bookId }: PhraseCardFormProps = $props();
+  const { phrase, bookId, groupId }: PhraseCardFormProps = $props();
 
   let phraseName: string = $state(phrase?.phrase || '');
   let meaning: string = $state(phrase?.meaning || '');
@@ -64,12 +65,14 @@
         phrase: phraseName,
         meaning,
         translation,
+        groupId: group,
       });
     } else {
       await usePhrasesStore.add(bookId, {
         phrase: phraseName,
         meaning,
         translation,
+        groupId: group,
       });
     }
 
@@ -98,6 +101,12 @@
         },
       ),
     );
+  });
+
+  $effect(() => {
+    if (groupId) {
+      group = groupId;
+    }
   });
 
   $effect(() => {

@@ -18,6 +18,7 @@ function createPhrasesStore() {
   let fetching: boolean = $state(false);
   let mounted: boolean = $state(false);
   let curruntlyEditing: string | undefined = $state(undefined);
+  let activeGroup: string | undefined = $state(undefined);
   let createMode: boolean = $state(false);
   let searchFilter: string | undefined = $state(undefined);
   let importing: boolean = $state(false);
@@ -44,6 +45,9 @@ function createPhrasesStore() {
     get importing() {
       return importing;
     },
+    get activeGroup() {
+      return activeGroup;
+    },
     async init() {
       try {
         fetching = true;
@@ -60,8 +64,9 @@ function createPhrasesStore() {
         mounted = true;
       }
     },
-    startCreateMode() {
+    startCreateMode(groupId?: string) {
       createMode = true;
+      activeGroup = groupId;
     },
     startEditing(id: string) {
       curruntlyEditing = id;
@@ -69,6 +74,7 @@ function createPhrasesStore() {
     clearEditing() {
       curruntlyEditing = undefined;
       createMode = false;
+      activeGroup = undefined;
     },
     async add(bookId: string, data: CreatePhrase) {
       try {

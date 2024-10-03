@@ -3,16 +3,16 @@
   import { page } from '$app/stores';
   import BackButton from '$lib/components/BackButton.svelte';
   import Box from '$lib/components/Box.svelte';
+  import CreateAGroup from '$lib/components/Groups/CreateAGroup.svelte';
+  import GroupList from '$lib/components/Groups/GroupList.svelte';
   import Header from '$lib/components/Header.svelte';
   import Loading from '$lib/components/Loading/Loading.svelte';
-  import CreateAPhrase from '$lib/components/Phrases/CreateAPhrase.svelte';
-  import GroupList from '$lib/components/Phrases/GroupList.svelte';
-  import PhraseList from '$lib/components/Phrases/PhraseList.svelte';
   import PhrasesPlaceholder from '$lib/components/Phrases/PhrasesPlaceholder.svelte';
   import PhrasesToolbar from '$lib/components/Phrases/PhrasesToolbar.svelte';
   import ThickPlaceholderText from '$lib/components/ThickPlaceholderText.svelte';
   import Button from '$lib/components/ui-framework/Form/Button.svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
+  import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
   import { useLastOpenBookStore } from '$lib/stores/local-settings/last-open-book.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
@@ -25,7 +25,7 @@
   const targetBook = $derived(useBooksStore.books.find((item) => item._id === id));
 
   function onAdd() {
-    usePhrasesStore.startCreateMode();
+    useGroupsStore.startCreateMode();
   }
 
   $effect(() => {
@@ -64,14 +64,14 @@
       <GroupList />
       <div>
         <Button
-          disabled={usePhrasesStore.curruntlyEditing || usePhrasesStore.createMode ? true : false}
+          disabled={useGroupsStore.curruntlyEditing || useGroupsStore.createMode ? true : false}
           onclick={onAdd}
           variant="primary"
         >
-          Add Phrase
+          Add Group
         </Button>
       </div>
-      <CreateAPhrase />
+      <CreateAGroup />
     </Box>
   {/if}
 {:else}
