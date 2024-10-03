@@ -31,5 +31,4 @@
   {onSearchInput}
   {onSearchClear}
   searchValue={usePhrasesStore.searchFilter || ''}
-  backTo="/"
 />

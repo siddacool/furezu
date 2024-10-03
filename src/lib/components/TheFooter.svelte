@@ -9,6 +9,7 @@
     <section>
       <a href="/">Home</a>
       <a href="/library">Library</a>
+      <a href="/settings">Settings</a>
 
       {#if useDeveloperModeStore.developerMode}
         <a href="/settings/developer-options"><Chip size="small">Developer mode</Chip></a>
@@ -34,11 +35,11 @@
     font-size: 1.1rem;
     font-weight: 500;
     text-decoration: none;
-    color: var(--color-primary-700);
+    color: var(--color-primary-600);
     margin: 0 8px;
 
     &:hover {
-      color: var(--color-primary-800);
+      color: var(--color-primary-700);
     }
 
     &:first-child {

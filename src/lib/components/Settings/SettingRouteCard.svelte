@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import Card from '../ui-framework/Layout/Card.svelte';
+  import { useThemeStore } from '$lib/stores/local-settings/theme.svelte';
 
   interface SettingRouteCardProps {
     href: string;
@@ -14,7 +15,7 @@
 <a {href}>
   <Card>
     {#if icon}
-      <div class="Icon">
+      <div class={`Icon theme theme--${useThemeStore.colorScheme}`}>
         {@render icon()}
       </div>
     {/if}
@@ -58,5 +59,11 @@
     align-items: center;
     color: var(--color-primary-700);
     justify-content: flex-start;
+
+    &.theme {
+      &--dark {
+        color: inherit;
+      }
+    }
   }
 </style>

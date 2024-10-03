@@ -86,7 +86,7 @@
     onkeydown={handleKeyPress}
   />
   {#if value && !disabled}
-    <button class="close-icon" onclick={onclear} class:active>
+    <button class="close-icon" onclick={onclear}>
       <Icon icon="material-symbols:close-rounded" />
     </button>
   {/if}
@@ -206,10 +206,6 @@
 
     &:active {
       background-color: var(--color-primary-300);
-    }
-
-    &.active {
-      display: none;
     }
   }
 </style>
