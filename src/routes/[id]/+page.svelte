@@ -6,6 +6,7 @@
   import Header from '$lib/components/Header.svelte';
   import Loading from '$lib/components/Loading/Loading.svelte';
   import CreateAPhrase from '$lib/components/Phrases/CreateAPhrase.svelte';
+  import GroupList from '$lib/components/Phrases/GroupList.svelte';
   import PhraseList from '$lib/components/Phrases/PhraseList.svelte';
   import PhrasesPlaceholder from '$lib/components/Phrases/PhrasesPlaceholder.svelte';
   import PhrasesToolbar from '$lib/components/Phrases/PhrasesToolbar.svelte';
@@ -60,7 +61,7 @@
   {#if targetBook?._id}
     <Box>
       <PhrasesPlaceholder />
-      <PhraseList />
+      <GroupList />
       <div>
         <Button
           disabled={usePhrasesStore.curruntlyEditing || usePhrasesStore.createMode ? true : false}

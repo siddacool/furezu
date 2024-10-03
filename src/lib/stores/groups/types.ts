@@ -6,4 +6,5 @@ export interface Group {
   createdAt: Date;
   updatedAt: Date;
   importedAt?: Date;
+  open?: boolean;
 }

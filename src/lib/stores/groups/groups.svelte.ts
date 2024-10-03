@@ -220,6 +220,32 @@ function createGroupsStore() {
         fetching = false;
       }
     },
+    async updateOpenState(idToUpdate: string, open: boolean) {
+      try {
+        fetching = true;
+
+        const targetGroup = await getGroup(idToUpdate);
+
+        if (!targetGroup) {
+          throw Error('GroupStore:update: Group is missing');
+        }
+
+        await db.groups.update(targetGroup.id, {
+          open,
+          updatedAt: new Date(),
+        });
+
+        groups = await db.groups?.toArray();
+
+        return Promise.resolve();
+      } catch (e) {
+        console.error(e);
+
+        return Promise.reject(e);
+      } finally {
+        fetching = false;
+      }
+    },
   };
 }
 
