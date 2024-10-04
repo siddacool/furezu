@@ -20,7 +20,6 @@ function createGroupsStore() {
   let curruntlyEditing: string | undefined = $state(undefined);
   let createMode: boolean = $state(false);
   let importing: boolean = $state(false);
-  let ungroupedOpen: boolean = $state(true);
 
   return {
     get groups() {
@@ -40,9 +39,6 @@ function createGroupsStore() {
     },
     get importing() {
       return importing;
-    },
-    get ungroupedOpen() {
-      return ungroupedOpen;
     },
     async init() {
       try {
@@ -142,6 +138,26 @@ function createGroupsStore() {
         fetching = false;
       }
     },
+    async deleteAllGroupsFromBook(bookId: string) {
+      try {
+        fetching = true;
+
+        const relatedGroups = await db.groups?.where({ bookId }).toArray();
+        const relatedGroupsKeys = relatedGroups.map((item) => item.id);
+
+        await db.groups.bulkDelete(relatedGroupsKeys);
+
+        groups = await db.groups?.toArray();
+
+        return Promise.resolve();
+      } catch (e) {
+        console.error(e);
+
+        return Promise.reject(e);
+      } finally {
+        fetching = false;
+      }
+    },
     async updateOpenState(idToUpdate: string, open: boolean) {
       try {
         fetching = true;
@@ -167,9 +183,6 @@ function createGroupsStore() {
       } finally {
         fetching = false;
       }
-    },
-    async updateUngroupedOpenState(open: boolean) {
-      ungroupedOpen = open;
     },
     async importData(groupsToUpdate: Group[], importedAt: Date) {
       try {

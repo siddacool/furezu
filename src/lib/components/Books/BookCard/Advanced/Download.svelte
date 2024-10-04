@@ -7,6 +7,7 @@
   import { simplifyText } from '$lib/helpers/text-manipulations/simplify-text';
   import type { LibraryData } from '$lib/stores/library/types';
   import LightButton from '$lib/components/LightButton.svelte';
+  import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
 
   interface DownloadProps {
     book: Book;
@@ -23,11 +24,13 @@
       const exportedAt = getMoment();
 
       const phrases = usePhrasesStore.phrases.filter((item) => item.bookId === book._id);
+      const groups = useGroupsStore.groups.filter((item) => item.bookId === book._id);
 
       const exportData: LibraryData = {
         _id: book._id,
         book,
         phrases,
+        groups,
         exportedAt: exportedAt.toDate(),
       };
 

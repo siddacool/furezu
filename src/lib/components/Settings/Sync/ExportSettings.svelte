@@ -4,6 +4,7 @@
   import { downloadFile } from '$lib/helpers/download-file';
   import { getMoment, timeout } from '$lib/helpers/time';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
+  import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
   import { useDeviceNameStore } from '$lib/stores/local-settings/device-name.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import type { SyncData } from '$lib/types/sync';
@@ -15,12 +16,14 @@
       downloading = true;
       const books = useBooksStore.books;
       const phrases = usePhrasesStore.phrases;
+      const groups = useGroupsStore.groups;
 
       const exportedAt = getMoment();
 
       const exportData: SyncData = {
         books,
         phrases,
+        groups,
         exportedAt: exportedAt.toDate(),
       };
 

@@ -11,6 +11,7 @@
   import Accordian from '../ui-framework/Layout/Accordian.svelte';
   import { useThemeStore } from '$lib/stores/local-settings/theme.svelte';
   import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
+  import { useUngroupOpenStore } from '$lib/stores/local-settings/ungroup-open.svelte';
 
   interface PhraseGroupProps {
     phrases: Phrase[];
@@ -22,7 +23,7 @@
 
   const { id, name = 'Ungrouped', phrases }: PhraseGroupProps = $props();
   const openGroup = $derived(useGroupsStore.groups.find((item) => item._id === id)?.open || false);
-  const openUnGroup = $derived(useGroupsStore.ungroupedOpen);
+  const openUnGroup = $derived(useUngroupOpenStore.ungroupOpen);
   const open = $derived(id ? openGroup : openUnGroup);
   let filteredPhrases: Phrase[] = $state([]);
   let isGroupActive = $state(false);
@@ -31,7 +32,7 @@
     if (id) {
       useGroupsStore.updateOpenState(id, !open);
     } else {
-      useGroupsStore.updateUngroupedOpenState(!open);
+      useUngroupOpenStore.updateUngroupOpen(!open);
     }
   }
 

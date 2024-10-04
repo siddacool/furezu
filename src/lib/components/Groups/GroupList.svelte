@@ -23,8 +23,12 @@
         item.meaning.trim().toLocaleLowerCase().includes(searchFilter),
     );
 
+    const groupIds = groups.map((item) => item._id);
+
     filteredPhrases = phrases;
-    ungroupedPhrases = phrases.filter((item) => !item.groupId);
+    ungroupedPhrases = phrases.filter(
+      (item) => !item.groupId || (item.groupId && !groupIds.includes(item.groupId)),
+    );
   });
 </script>
 

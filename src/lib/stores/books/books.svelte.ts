@@ -5,6 +5,7 @@ import { usePhrasesStore } from '../phrases/phrases.svelte';
 import { getMoment } from '$lib/helpers/time';
 import { useVoicesStore } from '../voices/voices.svelte';
 import type { Phrase } from '../phrases/types';
+import { useGroupsStore } from '../groups/groups.svelte';
 
 async function getBook(idToFind: string) {
   try {
@@ -138,6 +139,7 @@ function createBooksStore() {
         books = await db.books?.toArray();
 
         await usePhrasesStore.deleteAllPharsesFromBook(idToDelete);
+        await useGroupsStore.deleteAllGroupsFromBook(idToDelete);
 
         return Promise.resolve();
       } catch (e) {

@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { SvelteComponentProps } from '$lib/types/svelte-component';
   import type { Snippet } from 'svelte';
-  import Button from '../Form/Button.svelte';
   import Icon from '@iconify/svelte';
 
   interface AccordianProps extends SvelteComponentProps {
