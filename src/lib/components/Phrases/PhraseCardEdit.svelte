@@ -19,7 +19,7 @@
   let phraseName: string = $state(phrase?.phrase || '');
   let meaning: string = $state(phrase?.meaning || '');
   let translation: string = $state(phrase?.translation || '');
-  let group: string | undefined = $state(phrase?.groupId || undefined);
+  let group: string | undefined = $state(groupId);
 
   const groups = $derived(useGroupsStore.groups.filter((item) => item.bookId === bookId));
 
@@ -101,12 +101,6 @@
         },
       ),
     );
-  });
-
-  $effect(() => {
-    if (groupId) {
-      group = groupId;
-    }
   });
 
   $effect(() => {

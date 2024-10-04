@@ -7,7 +7,6 @@
   import GroupList from '$lib/components/Groups/GroupList.svelte';
   import Header from '$lib/components/Header.svelte';
   import Loading from '$lib/components/Loading/Loading.svelte';
-  import PhrasesPlaceholder from '$lib/components/Phrases/PhrasesPlaceholder.svelte';
   import PhrasesToolbar from '$lib/components/Phrases/PhrasesToolbar.svelte';
   import ThickPlaceholderText from '$lib/components/ThickPlaceholderText.svelte';
   import Button from '$lib/components/ui-framework/Form/Button.svelte';
@@ -60,17 +59,18 @@
 
   {#if targetBook?._id}
     <Box>
-      <PhrasesPlaceholder />
       <GroupList />
+
       <div>
         <Button
           disabled={useGroupsStore.curruntlyEditing || useGroupsStore.createMode ? true : false}
           onclick={onAdd}
           variant="primary"
         >
-          Add Group
+          Create New Group
         </Button>
       </div>
+
       <CreateAGroup />
     </Box>
   {/if}

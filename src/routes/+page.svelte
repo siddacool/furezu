@@ -12,7 +12,6 @@
   import { useLastOpenBookStore } from '$lib/stores/local-settings/last-open-book.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
-  import Icon from '@iconify/svelte';
 
   const mounted = $derived(
     useBooksStore.mounted && usePhrasesStore.mounted && useVoicesStore.mounted ? true : false,
@@ -46,15 +45,18 @@
   <Box>
     <BooksList />
 
-    <div>
-      <Button
-        disabled={useBooksStore.curruntlyEditing || useBooksStore.createMode ? true : false}
-        onclick={onAdd}
-        variant="primary"
-      >
-        Add Book
-      </Button>
-    </div>
+    {#if useBooksStore.books.length}
+      <div>
+        <Button
+          disabled={useBooksStore.curruntlyEditing || useBooksStore.createMode ? true : false}
+          onclick={onAdd}
+          variant="primary"
+        >
+          Create New Book
+        </Button>
+      </div>
+    {/if}
+
     <CreateABook />
   </Box>
 {:else}

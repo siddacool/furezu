@@ -3,24 +3,22 @@
   import Icon from '@iconify/svelte';
   import ThickPlaceholderText from '../ThickPlaceholderText.svelte';
   import Button from '../ui-framework/Form/Button.svelte';
-  import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
+  import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
 
   const bookId = $page.params.id;
 
   const targetBook = $derived(useBooksStore.books.find((item) => item._id === bookId));
 
-  const phrases = $derived(
-    usePhrasesStore.phrases.filter((item) => item.bookId === targetBook?._id && !item.hidden),
-  );
+  const groups = $derived(useGroupsStore.groups.filter((item) => item.bookId === targetBook?._id));
 </script>
 
-{#if !phrases.length && !usePhrasesStore.createMode}
+{#if !groups.length && !useGroupsStore.createMode}
   <ThickPlaceholderText>
     Click
-    <Button compact variant="primary" onclick={() => usePhrasesStore.startCreateMode()}>
+    <Button compact variant="primary" onclick={() => useGroupsStore.startCreateMode()}>
       <Icon icon="material-symbols:add" />
     </Button>
-    to add a Phrase to <b>{targetBook?.name}</b>.
+    to create a new group.
   </ThickPlaceholderText>
 {/if}

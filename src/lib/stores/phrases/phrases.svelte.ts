@@ -87,6 +87,7 @@ function createPhrasesStore() {
           phrase: data.phrase,
           pronounciation: data.pronounciation,
           translation: data.translation,
+          groupId: data.groupId,
           createdAt: new Date(),
           updatedAt: new Date(),
         });

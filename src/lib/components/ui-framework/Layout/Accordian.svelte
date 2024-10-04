@@ -24,7 +24,7 @@
 
 <div class={`Accordian ${className}`}>
   <div class="title">
-    <Button {onclick} variant="inert" compact>
+    <button {onclick}>
       {#if open}
         <Icon icon="material-symbols:arrow-drop-up-rounded" />
       {:else}
@@ -32,7 +32,7 @@
       {/if}
 
       {title}
-    </Button>
+    </button>
     {#if headerContent}
       <div class="headerContent">
         {#if headerContent}
@@ -55,7 +55,7 @@
   }
 
   .headerContent {
-    padding-right: 8px;
+    padding-left: 8px;
     &:empty {
       display: none;
     }
@@ -64,5 +64,37 @@
   .content {
     padding-top: 8px;
     padding-bottom: 8px;
+  }
+
+  .title {
+    display: flex;
+  }
+
+  button {
+    cursor: pointer;
+    flex: 1;
+    overflow: hidden;
+    white-space: pre;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    color: inherit;
+    font-family: inherit;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+    color: var(--color-grey-font-700);
+
+    &:hover {
+      color: var(--color-primary-600);
+    }
+
+    :global(svg) {
+      font-size: 1.8rem;
+    }
   }
 </style>

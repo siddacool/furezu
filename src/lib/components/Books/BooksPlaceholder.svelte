@@ -14,7 +14,7 @@
       <Button compact variant="primary" onclick={() => useBooksStore.startCreateMode()}>
         <Icon icon="material-symbols:add" />
       </Button>
-      to add your first book.
+      to create your first book.
       <br /> or browse the
       <AnchorButton variant="primary" href="library">Library</AnchorButton>
     </ThickPlaceholderText>

@@ -20,6 +20,7 @@ function createGroupsStore() {
   let curruntlyEditing: string | undefined = $state(undefined);
   let createMode: boolean = $state(false);
   let importing: boolean = $state(false);
+  let ungroupedOpen: boolean = $state(true);
 
   return {
     get groups() {
@@ -39,6 +40,9 @@ function createGroupsStore() {
     },
     get importing() {
       return importing;
+    },
+    get ungroupedOpen() {
+      return ungroupedOpen;
     },
     async init() {
       try {
@@ -137,6 +141,35 @@ function createGroupsStore() {
       } finally {
         fetching = false;
       }
+    },
+    async updateOpenState(idToUpdate: string, open: boolean) {
+      try {
+        fetching = true;
+
+        const targetGroup = await getGroup(idToUpdate);
+
+        if (!targetGroup) {
+          throw Error('GroupStore:update: Group is missing');
+        }
+
+        await db.groups.update(targetGroup.id, {
+          open,
+          updatedAt: new Date(),
+        });
+
+        groups = await db.groups?.toArray();
+
+        return Promise.resolve();
+      } catch (e) {
+        console.error(e);
+
+        return Promise.reject(e);
+      } finally {
+        fetching = false;
+      }
+    },
+    async updateUngroupedOpenState(open: boolean) {
+      ungroupedOpen = open;
     },
     async importData(groupsToUpdate: Group[], importedAt: Date) {
       try {

@@ -52,15 +52,11 @@
 
   async function onDelete() {
     if (group?._id) {
-      await useBooksStore.delete(group._id);
+      await useGroupsStore.delete(group._id);
     }
 
     useGroupsStore.clearEditing();
   }
-
-  $effect(() => {
-    document.getElementById('group-card')?.scrollIntoView({ behavior: 'instant', block: 'start' });
-  });
 </script>
 
 <EditCard

@@ -3,18 +3,13 @@
   import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import type { Phrase } from '$lib/stores/phrases/types';
-  import Title from '../Title.svelte';
   import GroupCardEdit from './GroupCardEdit.svelte';
   import PhraseGroup from './PhraseGroup.svelte';
 
   let filteredPhrases: Phrase[] = $state([]);
-  let isUnGroupedPhrases: boolean = $state(false);
+  let ungroupedPhrases: Phrase[] = $state([]);
 
   const bookId = $page.params.id;
-
-  const bookPhrases = $derived(
-    usePhrasesStore.phrases.filter((item) => !item.hidden && item.bookId === bookId),
-  );
 
   const groups = $derived(useGroupsStore.groups.filter((item) => item.bookId === bookId));
 
@@ -29,29 +24,23 @@
     );
 
     filteredPhrases = phrases;
-    isUnGroupedPhrases = phrases.some((item) => !item.groupId);
+    ungroupedPhrases = phrases.filter((item) => !item.groupId);
   });
 </script>
 
-{#if bookPhrases.length}
-  <div>
-    {#if filteredPhrases.length}
-      {#each groups as group}
-        {#if useGroupsStore.curruntlyEditing === group._id}
-          <GroupCardEdit {group} {bookId} />
-        {:else}
-          <PhraseGroup phrases={filteredPhrases} id={group._id} name={group.name} />
-        {/if}
-      {/each}
-
-      {#if isUnGroupedPhrases}
-        <PhraseGroup phrases={filteredPhrases} />
-      {/if}
+<div>
+  {#each groups as group}
+    {#if useGroupsStore.curruntlyEditing === group._id}
+      <GroupCardEdit {group} {bookId} />
     {:else}
-      <Title>No results found</Title>
+      <PhraseGroup phrases={filteredPhrases} id={group._id} name={group.name} />
     {/if}
-  </div>
-{/if}
+  {/each}
+
+  {#if ungroupedPhrases.length}
+    <PhraseGroup phrases={ungroupedPhrases} />
+  {/if}
+</div>
 
 <style lang="scss">
   div {
