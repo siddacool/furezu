@@ -10,6 +10,7 @@ export type LocalSettings = {
   lastOpenBook?: string;
   deviceName?: string;
   developerMode: boolean;
+  ungroupOpen: boolean;
 };
 
 const defaultLocalSettings: LocalSettings = {
@@ -17,6 +18,7 @@ const defaultLocalSettings: LocalSettings = {
   lastOpenBook: undefined,
   deviceName: undefined,
   developerMode: false,
+  ungroupOpen: true,
 };
 
 export function getLocalSettings() {

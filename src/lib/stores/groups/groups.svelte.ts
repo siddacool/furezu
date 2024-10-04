@@ -1,31 +1,29 @@
 import { nanoid } from 'nanoid';
 import { db } from '../db';
-import type { CreatePhrase, Phrase } from './types';
+import type { Group } from './types';
 import { getMoment } from '$lib/helpers/time';
 
-export async function getPharse(idToFind: string) {
+export async function getGroup(idToFind: string) {
   try {
-    const phrase = await db.phrases.where({ _id: idToFind }).first();
+    const group = await db.groups.where({ _id: idToFind }).first();
 
-    return Promise.resolve(phrase);
+    return Promise.resolve(group);
   } catch (error) {
     return Promise.reject(error);
   }
 }
 
-function createPhrasesStore() {
-  let phrases: Phrase[] = $state([]);
+function createGroupsStore() {
+  let groups: Group[] = $state([]);
   let fetching: boolean = $state(false);
   let mounted: boolean = $state(false);
   let curruntlyEditing: string | undefined = $state(undefined);
-  let activeGroup: string | undefined = $state(undefined);
   let createMode: boolean = $state(false);
-  let searchFilter: string | undefined = $state(undefined);
   let importing: boolean = $state(false);
 
   return {
-    get phrases() {
-      return phrases;
+    get groups() {
+      return groups;
     },
     get fetching() {
       return fetching;
@@ -39,20 +37,14 @@ function createPhrasesStore() {
     get createMode() {
       return createMode;
     },
-    get searchFilter() {
-      return searchFilter;
-    },
     get importing() {
       return importing;
-    },
-    get activeGroup() {
-      return activeGroup;
     },
     async init() {
       try {
         fetching = true;
 
-        phrases = await db.phrases?.toArray();
+        groups = await db.groups?.toArray();
 
         return Promise.resolve();
       } catch (e) {
@@ -64,9 +56,8 @@ function createPhrasesStore() {
         mounted = true;
       }
     },
-    startCreateMode(groupId?: string) {
+    startCreateMode() {
       createMode = true;
-      activeGroup = groupId;
     },
     startEditing(id: string) {
       curruntlyEditing = id;
@@ -74,25 +65,20 @@ function createPhrasesStore() {
     clearEditing() {
       curruntlyEditing = undefined;
       createMode = false;
-      activeGroup = undefined;
     },
-    async add(bookId: string, data: CreatePhrase) {
+    async add(bookId: string, name: string) {
       try {
         fetching = true;
 
-        await db.phrases.add({
+        await db.groups.add({
           _id: nanoid(),
           bookId: bookId,
-          meaning: data.meaning,
-          phrase: data.phrase,
-          pronounciation: data.pronounciation,
-          translation: data.translation,
-          groupId: data.groupId,
+          name,
           createdAt: new Date(),
           updatedAt: new Date(),
         });
 
-        phrases = await db.phrases?.toArray();
+        groups = await db.groups?.toArray();
 
         return Promise.resolve();
       } catch (e) {
@@ -103,22 +89,22 @@ function createPhrasesStore() {
         fetching = false;
       }
     },
-    async update(idToUpdate: string, data: Partial<CreatePhrase>) {
+    async update(idToUpdate: string, name: string) {
       try {
         fetching = true;
 
-        const targetPharse = await getPharse(idToUpdate);
+        const targetGroup = await getGroup(idToUpdate);
 
-        if (!targetPharse) {
-          throw Error('PharseStore:update: Pharse is missing');
+        if (!targetGroup) {
+          throw Error('GroupStore:update: Group is missing');
         }
 
-        await db.phrases.update(targetPharse.id, {
-          ...data,
+        await db.groups.update(targetGroup.id, {
+          name,
           updatedAt: new Date(),
         });
 
-        phrases = await db.phrases?.toArray();
+        groups = await db.groups?.toArray();
 
         return Promise.resolve();
       } catch (e) {
@@ -133,19 +119,15 @@ function createPhrasesStore() {
       try {
         fetching = true;
 
-        const targetPharse = await getPharse(idToDelete);
+        const targetGroup = await getGroup(idToDelete);
 
-        if (!targetPharse) {
-          throw Error('PharseStore:delete: Book is missing');
+        if (!targetGroup) {
+          throw Error('GroupStore:delete: Book is missing');
         }
 
-        // It's not removed but hidden
-        await db.phrases.update(targetPharse.id, {
-          hidden: true,
-          updatedAt: new Date(),
-        });
+        await db.groups.delete(targetGroup.id);
 
-        phrases = await db.phrases?.toArray();
+        groups = await db.groups?.toArray();
 
         return Promise.resolve();
       } catch (e) {
@@ -156,16 +138,16 @@ function createPhrasesStore() {
         fetching = false;
       }
     },
-    async deleteAllPharsesFromBook(bookId: string) {
+    async deleteAllGroupsFromBook(bookId: string) {
       try {
         fetching = true;
 
-        const relatedPharses = await db.phrases?.where({ bookId }).toArray();
-        const relatedPharsesKeys = relatedPharses.map((pharse) => pharse.id);
+        const relatedGroups = await db.groups?.where({ bookId }).toArray();
+        const relatedGroupsKeys = relatedGroups.map((item) => item.id);
 
-        await db.phrases.bulkDelete(relatedPharsesKeys);
+        await db.groups.bulkDelete(relatedGroupsKeys);
 
-        phrases = await db.phrases?.toArray();
+        groups = await db.groups?.toArray();
 
         return Promise.resolve();
       } catch (e) {
@@ -176,46 +158,72 @@ function createPhrasesStore() {
         fetching = false;
       }
     },
-    async importData(phrasesToUpdate: Phrase[], importedAt: Date) {
+    async updateOpenState(idToUpdate: string, open: boolean) {
+      try {
+        fetching = true;
+
+        const targetGroup = await getGroup(idToUpdate);
+
+        if (!targetGroup) {
+          throw Error('GroupStore:update: Group is missing');
+        }
+
+        await db.groups.update(targetGroup.id, {
+          open,
+          updatedAt: new Date(),
+        });
+
+        groups = await db.groups?.toArray();
+
+        return Promise.resolve();
+      } catch (e) {
+        console.error(e);
+
+        return Promise.reject(e);
+      } finally {
+        fetching = false;
+      }
+    },
+    async importData(groupsToUpdate: Group[], importedAt: Date) {
       try {
         fetching = true;
         importing = true;
 
-        const newPhrases: Phrase[] = [];
+        const newGroups: Group[] = [];
 
-        phrasesToUpdate.forEach((itemToUpdate) => {
+        groupsToUpdate.forEach((itemToUpdate) => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const { id, ...restItemProps } = itemToUpdate;
 
-          const decoratedItem: Phrase = { ...restItemProps, importedAt };
+          const decoratedItem: Group = { ...restItemProps, importedAt };
 
-          // Update phrase data
-          const targetIndex = phrases.findIndex((item) => item._id === itemToUpdate._id);
+          // Update group data
+          const targetIndex = groups.findIndex((item) => item._id === itemToUpdate._id);
 
           if (targetIndex < 0) {
             // New
-            newPhrases.push(decoratedItem);
+            newGroups.push(decoratedItem);
             return;
           }
 
           // update
           const updatedAt = getMoment(itemToUpdate.updatedAt);
-          const updatedAtPrevious = getMoment(phrases[targetIndex].updatedAt);
+          const updatedAtPrevious = getMoment(groups[targetIndex].updatedAt);
 
           if (updatedAt.isBefore(updatedAtPrevious)) {
             return;
           }
 
           // Update approved
-          newPhrases.push({
-            ...phrases[targetIndex],
+          newGroups.push({
+            ...groups[targetIndex],
             ...decoratedItem,
           });
         });
 
-        await db.phrases.bulkPut(newPhrases);
+        await db.groups.bulkPut(newGroups);
 
-        phrases = await db.phrases?.toArray();
+        groups = await db.groups?.toArray();
 
         return Promise.resolve();
       } catch (e) {
@@ -231,23 +239,23 @@ function createPhrasesStore() {
       try {
         fetching = true;
 
-        const targetPhrase = phrases.find((item) => item._id === id);
+        const targetGroup = groups.find((item) => item._id === id);
 
-        if (!targetPhrase) {
+        if (!targetGroup) {
           return;
         }
 
-        const clonedPhrase: Phrase = {
-          ...targetPhrase,
+        const clonedGroup: Group = {
+          ...targetGroup,
           id: undefined,
           _id: nanoid(),
           createdAt: new Date(),
           updatedAt: new Date(),
         };
 
-        await db.phrases.add(clonedPhrase);
+        await db.groups.add(clonedGroup);
 
-        phrases = await db.phrases?.toArray();
+        groups = await db.groups?.toArray();
 
         return Promise.resolve();
       } catch (e) {
@@ -258,10 +266,7 @@ function createPhrasesStore() {
         fetching = false;
       }
     },
-    updateSearchFilter(value: string | undefined) {
-      searchFilter = value;
-    },
   };
 }
 
-export const usePhrasesStore = createPhrasesStore();
+export const useGroupsStore = createGroupsStore();

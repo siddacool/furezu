@@ -6,7 +6,6 @@
 
 <script lang="ts">
   import Searchbar from './Searchbar.svelte';
-  import AddButton from './AddButton.svelte';
 
   interface ToolbarProps {
     class?: string;
@@ -15,7 +14,6 @@
     onSearch?: () => void;
     onSearchClear?: () => void;
     placeholder?: string;
-    onAdd?: () => void;
     disabled?: boolean;
     label?: string;
     searchValue?: string;
@@ -28,9 +26,7 @@
     onSearch,
     onSearchClear,
     placeholder = 'Search',
-    onAdd,
     disabled,
-    label,
     searchValue,
   }: ToolbarProps = $props();
 </script>
@@ -45,7 +41,6 @@
     {placeholder}
     {disabled}
   />
-  <AddButton {onAdd} {disabled} {label} />
 </div>
 
 <style lang="scss">

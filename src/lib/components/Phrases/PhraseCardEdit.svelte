@@ -5,17 +5,25 @@
   import { Stack, StackItem } from '$lib/components/ui-framework/Layout/Stack';
   import { limitTextLength } from '$lib/helpers/text-manipulations/limit-text-length';
   import EditCard from '../EditCard.svelte/EditCard.svelte';
+  import Select, { type SelectOption } from '../ui-framework/Form/Select.svelte';
+  import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
 
   interface PhraseCardFormProps {
     phrase?: Phrase;
     bookId: string;
+    groupId?: string;
   }
 
-  const { phrase, bookId }: PhraseCardFormProps = $props();
+  const { phrase, bookId, groupId }: PhraseCardFormProps = $props();
 
   let phraseName: string = $state(phrase?.phrase || '');
   let meaning: string = $state(phrase?.meaning || '');
   let translation: string = $state(phrase?.translation || '');
+  let group: string | undefined = $state(groupId);
+
+  const groups = $derived(useGroupsStore.groups.filter((item) => item.bookId === bookId));
+
+  let groupsSelectOptions: SelectOption[] = $state([]);
 
   function oninput(e: Event) {
     const target = e.target as HTMLInputElement;
@@ -35,6 +43,14 @@
     }
   }
 
+  function onChangeGroup(e: CustomEvent<SelectOption>) {
+    group = e.detail.value as string | undefined;
+  }
+
+  function onClearGroup() {
+    group = undefined;
+  }
+
   async function onsubmit(e: SubmitEvent) {
     e.preventDefault();
 
@@ -49,12 +65,14 @@
         phrase: phraseName,
         meaning,
         translation,
+        groupId: group,
       });
     } else {
       await usePhrasesStore.add(bookId, {
         phrase: phraseName,
         meaning,
         translation,
+        groupId: group,
       });
     }
 
@@ -72,6 +90,18 @@
 
     usePhrasesStore.clearEditing();
   }
+
+  $effect(() => {
+    groupsSelectOptions = groups.map((item) =>
+      Object.assign(
+        {},
+        {
+          value: item._id,
+          label: item.name,
+        },
+      ),
+    );
+  });
 
   $effect(() => {
     document.getElementById('phrase-card')?.scrollIntoView(true);
@@ -116,6 +146,16 @@
         {oninput}
         value={translation}
         name="translation"
+      />
+    </StackItem>
+    <StackItem>
+      <Select
+        label="Group"
+        options={groupsSelectOptions}
+        onchange={onChangeGroup}
+        onclear={onClearGroup}
+        value={group}
+        placeholder="Ungrouped"
       />
     </StackItem>
   </Stack>

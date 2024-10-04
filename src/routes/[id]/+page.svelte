@@ -3,14 +3,15 @@
   import { page } from '$app/stores';
   import BackButton from '$lib/components/BackButton.svelte';
   import Box from '$lib/components/Box.svelte';
+  import CreateAGroup from '$lib/components/Groups/CreateAGroup.svelte';
+  import GroupList from '$lib/components/Groups/GroupList.svelte';
   import Header from '$lib/components/Header.svelte';
   import Loading from '$lib/components/Loading/Loading.svelte';
-  import CreateAPhrase from '$lib/components/Phrases/CreateAPhrase.svelte';
-  import PhraseList from '$lib/components/Phrases/PhraseList.svelte';
-  import PhrasesPlaceholder from '$lib/components/Phrases/PhrasesPlaceholder.svelte';
   import PhrasesToolbar from '$lib/components/Phrases/PhrasesToolbar.svelte';
   import ThickPlaceholderText from '$lib/components/ThickPlaceholderText.svelte';
+  import Button from '$lib/components/ui-framework/Form/Button.svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
+  import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
   import { useLastOpenBookStore } from '$lib/stores/local-settings/last-open-book.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
@@ -21,6 +22,10 @@
 
   const id = $page.params.id;
   const targetBook = $derived(useBooksStore.books.find((item) => item._id === id));
+
+  function onAdd() {
+    useGroupsStore.startCreateMode();
+  }
 
   $effect(() => {
     useLastOpenBookStore.update(targetBook?._id);
@@ -54,9 +59,19 @@
 
   {#if targetBook?._id}
     <Box>
-      <PhrasesPlaceholder />
-      <PhraseList />
-      <CreateAPhrase />
+      <GroupList />
+
+      <div>
+        <Button
+          disabled={useGroupsStore.curruntlyEditing || useGroupsStore.createMode ? true : false}
+          onclick={onAdd}
+          variant="primary"
+        >
+          Create New Group
+        </Button>
+      </div>
+
+      <CreateAGroup />
     </Box>
   {/if}
 {:else}
@@ -64,3 +79,11 @@
     <Loading />
   </Box>
 {/if}
+
+<style lang="scss">
+  div {
+    text-align: center;
+    padding: 16px 0;
+    padding-bottom: 24px;
+  }
+</style>

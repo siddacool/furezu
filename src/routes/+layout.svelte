@@ -6,6 +6,7 @@
   import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
   import type { SvelteComponentProps } from '$lib/types/svelte-component';
   import TheFooter from '$lib/components/TheFooter.svelte';
+  import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
 
   const { children }: SvelteComponentProps = $props();
 
@@ -15,6 +16,7 @@
         await useVoicesStore.init();
         await useBooksStore.init();
         await usePhrasesStore.init();
+        await useGroupsStore.init();
       } catch (e) {
         console.log(e);
       }

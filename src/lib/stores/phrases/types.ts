@@ -3,6 +3,7 @@ export interface CreatePhrase {
   phrase: string;
   pronounciation?: string;
   translation?: string;
+  groupId?: string;
 }
 
 export interface Phrase extends CreatePhrase {

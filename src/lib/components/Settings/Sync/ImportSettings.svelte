@@ -5,6 +5,7 @@
   import validateJson from '$lib/helpers/validators/vaidate-json';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import type { Book } from '$lib/stores/books/types';
+  import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
   import type { LibraryData } from '$lib/stores/library/types';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import type { SyncData } from '$lib/types/sync';
@@ -75,6 +76,7 @@
 
       await useBooksStore.importData(books, importedData.exportedAt);
       await usePhrasesStore.importData(importedData.phrases, importedData.exportedAt);
+      await useGroupsStore.importData(importedData.groups, importedData.exportedAt);
 
       files = undefined;
       importedAt = getMoment().format('DD/MM/YYYY hh:mm:ss A');
