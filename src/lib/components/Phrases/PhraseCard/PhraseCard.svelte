@@ -21,13 +21,24 @@
 <div class={`PhraseCard`}>
   <DisplayCard
     {onedit}
-    hideEditButton={usePhrasesStore.curruntlyEditing || usePhrasesStore.createMode ? true : false}
+    hideEditButton={usePhrasesStore.sortingMode ||
+    usePhrasesStore.curruntlyEditing ||
+    usePhrasesStore.createMode
+      ? true
+      : false}
     title={phrase.meaning}
   >
-    <h3>{phrase.phrase}</h3>
-    <Translation {phrase} />
-    <DragHandle />
-    <Advanced {phrase} />
+    <article>
+      <section>
+        <h3>{phrase.phrase}</h3>
+        <Translation {phrase} />
+        <Advanced {phrase} />
+      </section>
+
+      <section>
+        <DragHandle />
+      </section>
+    </article>
   </DisplayCard>
 </div>
 
@@ -53,9 +64,15 @@
     :global(.Card) {
       min-height: 100px;
     }
+  }
 
-    :global(button) {
-      pointer-events: all;
+  article {
+    display: flex;
+
+    section {
+      &:first-child {
+        flex: 1;
+      }
     }
   }
 </style>

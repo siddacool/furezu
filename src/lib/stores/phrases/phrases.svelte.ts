@@ -22,6 +22,8 @@ function createPhrasesStore() {
   let createMode: boolean = $state(false);
   let searchFilter: string | undefined = $state(undefined);
   let importing: boolean = $state(false);
+  let sortingMode: boolean = $state(false);
+  let dragging: boolean = $state(false);
 
   return {
     get phrases() {
@@ -47,6 +49,12 @@ function createPhrasesStore() {
     },
     get activeGroup() {
       return activeGroup;
+    },
+    get sortingMode() {
+      return sortingMode;
+    },
+    get dragging() {
+      return dragging;
     },
     async init() {
       try {
@@ -307,6 +315,12 @@ function createPhrasesStore() {
       } finally {
         fetching = false;
       }
+    },
+    updateSortingMode(value: boolean) {
+      sortingMode = value;
+    },
+    updateDragging(value: boolean) {
+      dragging = value;
     },
     updateSearchFilter(value: string | undefined) {
       searchFilter = value;

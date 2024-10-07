@@ -83,9 +83,7 @@
       <div animate:flip={{ duration: 100 }}>
         {#if usePhrasesStore.curruntlyEditing === phrase._id}
           <PhraseCardEdit {phrase} {bookId} groupId={id} />
-        {:else if usePhrasesStore.curruntlyEditing}
-          <PhraseCard {phrase} />
-        {:else}
+        {:else if usePhrasesStore.sortingMode}
           <SortableItem
             propItemNumber={numberCounter}
             bind:propData={filteredPhrases as unknown[]}
@@ -93,6 +91,8 @@
           >
             <PhraseCard {phrase} />
           </SortableItem>
+        {:else}
+          <PhraseCard {phrase} />
         {/if}
       </div>
     {/each}
