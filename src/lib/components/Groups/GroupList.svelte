@@ -33,16 +33,21 @@
 </script>
 
 <div>
-  {#each groups as group}
+  {#each groups as group, numberCounter}
     {#if useGroupsStore.curruntlyEditing === group._id}
       <GroupCardEdit {group} {bookId} />
     {:else}
-      <PhraseGroup phrases={filteredPhrases} id={group._id} name={group.name} />
+      <PhraseGroup
+        phrases={filteredPhrases}
+        id={group._id}
+        name={group.name}
+        index={numberCounter + 1}
+      />
     {/if}
   {/each}
 
   {#if ungroupedPhrases.length}
-    <PhraseGroup phrases={ungroupedPhrases} />
+    <PhraseGroup phrases={ungroupedPhrases} index={0} />
   {/if}
 </div>
 

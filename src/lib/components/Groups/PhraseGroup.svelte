@@ -19,11 +19,12 @@
     phrases: Phrase[];
     id?: string;
     name?: string;
+    index: number;
   }
 
   const bookId = $page.params.id;
 
-  const { id, name = 'Ungrouped', phrases }: PhraseGroupProps = $props();
+  const { id, name = 'Ungrouped', phrases, index }: PhraseGroupProps = $props();
   const openGroup = $derived(useGroupsStore.groups.find((item) => item._id === id)?.open || false);
   const openUnGroup = $derived(useUngroupOpenStore.ungroupOpen);
   const open = $derived(id ? openGroup : openUnGroup);
@@ -66,6 +67,14 @@
       isGroupActive = usePhrasesStore.activeGroup === 'ungrouped' ? true : false;
     }
   });
+
+  $effect(() => {
+    console.log(stateHoveredItem);
+
+    if (filteredPhrases.length) {
+      usePhrasesStore.order(filteredPhrases, index);
+    }
+  });
 </script>
 
 <Accordian class="PhraseGroup" title={name} {onclick} {open}>
@@ -74,10 +83,12 @@
       <div animate:flip={{ duration: 100 }}>
         {#if usePhrasesStore.curruntlyEditing === phrase._id}
           <PhraseCardEdit {phrase} {bookId} groupId={id} />
+        {:else if usePhrasesStore.curruntlyEditing}
+          <PhraseCard {phrase} dragging={false} />
         {:else}
           <SortableItem
             propItemNumber={numberCounter}
-            bind:propData={filteredPhrases}
+            bind:propData={filteredPhrases as unknown[]}
             bind:propHoveredItemNumber={stateHoveredItem}
           >
             <PhraseCard {phrase} dragging={stateHoveredItem === numberCounter ? true : false} />
