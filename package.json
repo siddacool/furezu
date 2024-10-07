@@ -49,6 +49,7 @@
   "type": "module",
   "dependencies": {
     "@iconify/svelte": "^4.0.2",
+    "@neodrag/svelte": "^2.0.6",
     "@storybook/addon-docs": "^8.3.1",
     "@storybook/preview-api": "^8.3.1",
     "@storybook/types": "^8.3.1",
@@ -57,7 +58,8 @@
     "dayjs": "^1.11.13",
     "dexie": "^4.0.8",
     "nanoid": "^5.0.7",
-    "svelte-select": "^5.8.3"
+    "svelte-select": "^5.8.3",
+    "svelte-sortable-items": "^1.0.1"
   },
   "packageManager": "pnpm@9.12.0",
   "volta": {

@@ -11,6 +11,9 @@ importers:
       '@iconify/svelte':
         specifier: ^4.0.2
         version: 4.0.2(svelte@5.0.0-next.246)
+      '@neodrag/svelte':
+        specifier: ^2.0.6
+        version: 2.0.6
       '@storybook/addon-docs':
         specifier: ^8.3.1
         version: 8.3.1(storybook@8.3.1)
@@ -38,6 +41,9 @@ importers:
       svelte-select:
         specifier: ^5.8.3
         version: 5.8.3
+      svelte-sortable-items:
+        specifier: ^1.0.1
+        version: 1.0.1(svelte@5.0.0-next.246)
     devDependencies:
       '@chromatic-com/storybook':
         specifier: 1.9.0
@@ -453,6 +459,9 @@ packages:
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
+
+  '@neodrag/svelte@2.0.6':
+    resolution: {integrity: sha512-jjmTjRTMJaer2IyEIoS5xbccmFmOpkeoTKpBORkMItCPjHWE19eW3kvH9SuTvZJAKnKERVNGdW3VBuDxZif9Dg==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2420,6 +2429,11 @@ packages:
   svelte-select@5.8.3:
     resolution: {integrity: sha512-nQsvflWmTCOZjssdrNptzfD1Ok45hHVMTL5IHay5DINk7dfu5Er+8KsVJnZMJdSircqtR0YlT4YkCFlxOUhVPA==}
 
+  svelte-sortable-items@1.0.1:
+    resolution: {integrity: sha512-ZZn7EBKii/ChbJNnw/y4ZTFDmU5GaGB6ahsmGdPVlBy3OS5TCMUg3AZq2d07QW9uAifTg2f976kQxBdgb//Z+Q==}
+    peerDependencies:
+      svelte: ^5.0.0-next.1
+
   svelte@5.0.0-next.246:
     resolution: {integrity: sha512-FRfq6W17mOHiSbY9nen6/skCV7AHQJdB9yaS9DA4x4mKXR/RIGMDLlxxU3jhQsMiLoqmUFHXJc6Rqe1o6HWlow==}
     engines: {node: '>=18'}
@@ -3006,6 +3020,8 @@ snapshots:
       '@types/mdx': 2.0.13
       '@types/react': 18.3.6
       react: 18.3.1
+
+  '@neodrag/svelte@2.0.6': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -5168,6 +5184,10 @@ snapshots:
   svelte-select@5.8.3:
     dependencies:
       svelte-floating-ui: 1.5.8
+
+  svelte-sortable-items@1.0.1(svelte@5.0.0-next.246):
+    dependencies:
+      svelte: 5.0.0-next.246
 
   svelte@5.0.0-next.246:
     dependencies:

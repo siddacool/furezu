@@ -3,6 +3,7 @@
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import type { Phrase } from '$lib/stores/phrases/types';
   import Icon from '@iconify/svelte';
+  import { SortableItem } from 'svelte-sortable-items';
   import LightButton from '../LightButton.svelte';
   import CreateAPhrase from '../Phrases/CreateAPhrase.svelte';
   import PhraseCard from '../Phrases/PhraseCard/PhraseCard.svelte';
@@ -12,6 +13,7 @@
   import { useThemeStore } from '$lib/stores/local-settings/theme.svelte';
   import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
   import { useUngroupOpenStore } from '$lib/stores/local-settings/ungroup-open.svelte';
+  import { flip } from 'svelte/animate';
 
   interface PhraseGroupProps {
     phrases: Phrase[];
@@ -27,6 +29,7 @@
   const open = $derived(id ? openGroup : openUnGroup);
   let filteredPhrases: Phrase[] = $state([]);
   let isGroupActive = $state(false);
+  let stateHoveredItem = $state<number>(-1);
 
   function onclick() {
     if (id) {
@@ -67,12 +70,20 @@
 
 <Accordian class="PhraseGroup" title={name} {onclick} {open}>
   <section>
-    {#each filteredPhrases as phrase}
-      {#if usePhrasesStore.curruntlyEditing === phrase._id}
-        <PhraseCardEdit {phrase} {bookId} groupId={id} />
-      {:else}
-        <PhraseCard {phrase} />
-      {/if}
+    {#each filteredPhrases as phrase, numberCounter (phrase._id)}
+      <div animate:flip={{ duration: 100 }}>
+        {#if usePhrasesStore.curruntlyEditing === phrase._id}
+          <PhraseCardEdit {phrase} {bookId} groupId={id} />
+        {:else}
+          <SortableItem
+            propItemNumber={numberCounter}
+            bind:propData={filteredPhrases}
+            bind:propHoveredItemNumber={stateHoveredItem}
+          >
+            <PhraseCard {phrase} dragging={stateHoveredItem === numberCounter ? true : false} />
+          </SortableItem>
+        {/if}
+      </div>
     {/each}
 
     {#if !usePhrasesStore.curruntlyEditing && !usePhrasesStore.createMode}
