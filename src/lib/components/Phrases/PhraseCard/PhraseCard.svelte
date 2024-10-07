@@ -4,20 +4,21 @@
   import DisplayCard from '$lib/components/DisplayCard/DisplayCard.svelte';
   import Translation from './Translation.svelte';
   import Advanced from './Advanced/Advanced.svelte';
+  import DragHandle from './DragHandle.svelte';
 
   interface PhraseCardProps {
     phrase: Phrase;
-    dragging: boolean;
   }
 
-  const { phrase, dragging = false }: PhraseCardProps = $props();
+  const { phrase }: PhraseCardProps = $props();
 
-  function onedit() {
+  function onedit(e: MouseEvent) {
+    e.preventDefault();
     usePhrasesStore.startEditing(phrase._id);
   }
 </script>
 
-<div class={`PhraseCard ${dragging ? 'dragging' : ''}`}>
+<div class={`PhraseCard`}>
   <DisplayCard
     {onedit}
     hideEditButton={usePhrasesStore.curruntlyEditing || usePhrasesStore.createMode ? true : false}
@@ -25,6 +26,7 @@
   >
     <h3>{phrase.phrase}</h3>
     <Translation {phrase} />
+    <DragHandle />
     <Advanced {phrase} />
   </DisplayCard>
 </div>
@@ -48,10 +50,12 @@
   }
 
   .PhraseCard {
-    &.dragging {
-      :global(.Card) {
-        background-color: var(--color-primary-100);
-      }
+    :global(.Card) {
+      min-height: 100px;
+    }
+
+    :global(button) {
+      pointer-events: all;
     }
   }
 </style>

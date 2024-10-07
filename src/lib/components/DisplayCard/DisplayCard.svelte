@@ -6,7 +6,7 @@
   interface DisplayCardProps extends SvelteComponentProps {
     data?: string;
     hideEditButton?: boolean;
-    onedit: () => void;
+    onedit: (e: MouseEvent) => void;
     onclick?: () => void;
     title?: string;
   }

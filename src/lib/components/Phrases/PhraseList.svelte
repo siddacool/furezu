@@ -32,7 +32,7 @@
       {#if usePhrasesStore.curruntlyEditing === phrase._id}
         <PhraseCardEdit {phrase} {bookId} />
       {:else}
-        <PhraseCard {phrase} dragging={false} />
+        <PhraseCard {phrase} />
       {/if}
     {/each}
 

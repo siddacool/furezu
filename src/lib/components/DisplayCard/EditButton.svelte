@@ -4,7 +4,7 @@
   import { useThemeStore } from '$lib/stores/local-settings/theme.svelte';
 
   interface EditButtonProps {
-    onclick: () => void;
+    onclick: (e: MouseEvent) => void;
     hideEditButton?: boolean;
   }
 

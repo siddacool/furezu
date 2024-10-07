@@ -84,14 +84,14 @@
         {#if usePhrasesStore.curruntlyEditing === phrase._id}
           <PhraseCardEdit {phrase} {bookId} groupId={id} />
         {:else if usePhrasesStore.curruntlyEditing}
-          <PhraseCard {phrase} dragging={false} />
+          <PhraseCard {phrase} />
         {:else}
           <SortableItem
             propItemNumber={numberCounter}
             bind:propData={filteredPhrases as unknown[]}
             bind:propHoveredItemNumber={stateHoveredItem}
           >
-            <PhraseCard {phrase} dragging={stateHoveredItem === numberCounter ? true : false} />
+            <PhraseCard {phrase} />
           </SortableItem>
         {/if}
       </div>
