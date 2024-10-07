@@ -7,16 +7,17 @@
 
   interface PhraseCardProps {
     phrase: Phrase;
+    dragging: boolean;
   }
 
-  const { phrase }: PhraseCardProps = $props();
+  const { phrase, dragging = false }: PhraseCardProps = $props();
 
   function onedit() {
     usePhrasesStore.startEditing(phrase._id);
   }
 </script>
 
-<div>
+<div class={`PhraseCard ${dragging ? 'dragging' : ''}`}>
   <DisplayCard
     {onedit}
     hideEditButton={usePhrasesStore.curruntlyEditing || usePhrasesStore.createMode ? true : false}
@@ -43,6 +44,14 @@
     :global(svg) {
       font-style: normal;
       margin-right: 4px;
+    }
+  }
+
+  .PhraseCard {
+    &.dragging {
+      :global(.Card) {
+        background-color: var(--color-primary-100);
+      }
     }
   }
 </style>

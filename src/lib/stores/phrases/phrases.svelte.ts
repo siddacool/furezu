@@ -52,7 +52,31 @@ function createPhrasesStore() {
       try {
         fetching = true;
 
-        phrases = await db.phrases?.toArray();
+        const pureData = await db.phrases?.toArray();
+        const unordered = pureData.filter((item) => !item.order);
+        const ordered = pureData
+          .filter((item) => item.order)
+          .sort((a, b) => {
+            // Handle missing order properties
+            const aOrder = a.order || '9999_9999';
+            const bOrder = b.order || '9999_9999';
+
+            // Split the order strings into groupNo and itemIndexInGroup
+            const [aGroupNo, aItemIndexInGroup] = aOrder.split('_');
+            const [bGroupNo, bItemIndexInGroup] = bOrder.split('_');
+
+            // Compare group numbers first
+            if (aGroupNo !== bGroupNo) {
+              return (aGroupNo as unknown as number) - (bGroupNo as unknown as number);
+            }
+
+            // If group numbers are equal, compare item indexes within the group
+            return (
+              (aItemIndexInGroup as unknown as number) - (bItemIndexInGroup as unknown as number)
+            );
+          });
+
+        phrases = [...ordered, ...unordered];
 
         return Promise.resolve();
       } catch (e) {
@@ -248,6 +272,32 @@ function createPhrasesStore() {
         await db.phrases.add(clonedPhrase);
 
         phrases = await db.phrases?.toArray();
+
+        return Promise.resolve();
+      } catch (e) {
+        console.error(e);
+
+        return Promise.reject(e);
+      } finally {
+        fetching = false;
+      }
+    },
+    async order(phrasesToUpdateRaw: Phrase[], groupIndexNumber: number) {
+      try {
+        const phrasesToUpdate = JSON.parse(JSON.stringify(phrasesToUpdateRaw));
+        fetching = true;
+
+        const newPhrases: Phrase[] = [];
+
+        for (let index = 0; index < phrasesToUpdate.length; index++) {
+          const phrase = phrasesToUpdate[index];
+
+          phrase.order = `${groupIndexNumber}_${index}`;
+
+          newPhrases.push(phrase);
+        }
+
+        await db.phrases.bulkPut(newPhrases);
 
         return Promise.resolve();
       } catch (e) {

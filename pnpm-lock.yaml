@@ -38,6 +38,9 @@ importers:
       svelte-select:
         specifier: ^5.8.3
         version: 5.8.3
+      svelte-sortable-items:
+        specifier: ^1.0.1
+        version: 1.0.1(svelte@5.0.0-next.246)
     devDependencies:
       '@chromatic-com/storybook':
         specifier: 1.9.0
@@ -2419,6 +2422,11 @@ packages:
 
   svelte-select@5.8.3:
     resolution: {integrity: sha512-nQsvflWmTCOZjssdrNptzfD1Ok45hHVMTL5IHay5DINk7dfu5Er+8KsVJnZMJdSircqtR0YlT4YkCFlxOUhVPA==}
+
+  svelte-sortable-items@1.0.1:
+    resolution: {integrity: sha512-ZZn7EBKii/ChbJNnw/y4ZTFDmU5GaGB6ahsmGdPVlBy3OS5TCMUg3AZq2d07QW9uAifTg2f976kQxBdgb//Z+Q==}
+    peerDependencies:
+      svelte: ^5.0.0-next.1
 
   svelte@5.0.0-next.246:
     resolution: {integrity: sha512-FRfq6W17mOHiSbY9nen6/skCV7AHQJdB9yaS9DA4x4mKXR/RIGMDLlxxU3jhQsMiLoqmUFHXJc6Rqe1o6HWlow==}
@@ -5168,6 +5176,10 @@ snapshots:
   svelte-select@5.8.3:
     dependencies:
       svelte-floating-ui: 1.5.8
+
+  svelte-sortable-items@1.0.1(svelte@5.0.0-next.246):
+    dependencies:
+      svelte: 5.0.0-next.246
 
   svelte@5.0.0-next.246:
     dependencies:

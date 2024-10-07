@@ -44,6 +44,12 @@
   });
 </script>
 
+<svelte:head>
+  <!-- MAKE IT WORK ON MOBILE DEVICES -->
+  <script src="https://unpkg.com/svelte-drag-drop-touch"></script>
+  <!---->
+</svelte:head>
+
 <title>{targetBook?.name}</title>
 
 <Header>

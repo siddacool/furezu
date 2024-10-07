@@ -57,7 +57,8 @@
     "dayjs": "^1.11.13",
     "dexie": "^4.0.8",
     "nanoid": "^5.0.7",
-    "svelte-select": "^5.8.3"
+    "svelte-select": "^5.8.3",
+    "svelte-sortable-items": "^1.0.1"
   },
   "packageManager": "pnpm@9.12.0",
   "volta": {
