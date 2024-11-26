@@ -12,7 +12,7 @@
       <a href="/settings">Settings</a>
 
       {#if useDeveloperModeStore.developerMode}
-        <a href="/settings/developer-options"><Chip size="small">Developer mode</Chip></a>
+        <a href="/settings/developer-options"><Chip size="small">Developer</Chip></a>
       {/if}
     </section>
   </Box>
