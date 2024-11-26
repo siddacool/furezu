@@ -3,7 +3,6 @@
   import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import type { Phrase } from '$lib/stores/phrases/types';
-  import { usePhrasesDragStore } from '$lib/stores/system/phrases-drag.svelte';
   import GroupCardEdit from './GroupCardEdit.svelte';
   import PhraseGroup from './PhraseGroup.svelte';
 
@@ -33,7 +32,7 @@
   });
 </script>
 
-<div class={`${usePhrasesDragStore.dragHandleActive ? 'dragHandleActive' : 'dragHandleInActive'}`}>
+<div class={`${usePhrasesStore.dragging ? '' : 'notDragging'}`}>
   {#each groups as group, numberCounter}
     {#if useGroupsStore.curruntlyEditing === group._id}
       <GroupCardEdit {group} {bookId} />
@@ -56,7 +55,7 @@
   div {
     width: 100%;
 
-    &.dragHandleInActive {
+    &.notDragging {
       :global([draggable='true']) {
         pointer-events: none;
       }

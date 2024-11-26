@@ -1,61 +1,67 @@
 <script lang="ts">
   import { useThemeStore } from '$lib/stores/local-settings/theme.svelte';
   import { AppColorSchemes } from '$lib/stores/local-settings/types';
-  import { usePhrasesDragStore } from '$lib/stores/system/phrases-drag.svelte';
+  import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import Icon from '@iconify/svelte';
 
   // Start hold detection
   function onmousedown() {
-    usePhrasesDragStore.updateDragHandleActive(true);
+    usePhrasesStore.updateDragging(true);
   }
 
   // Cancel hold detection when mouse is released
   function onmouseup() {
-    usePhrasesDragStore.updateDragHandleActive(false);
+    usePhrasesStore.updateDragging(false);
   }
 
   // Cancel hold detection when mouse leaves the box
   function onmouseleave() {
-    usePhrasesDragStore.updateDragHandleActive(false);
+    usePhrasesStore.updateDragging(false);
   }
 </script>
 
-<button
-  class={`DragHandle ${usePhrasesDragStore.dragHandleActive ? 'active' : ''} ${useThemeStore.colorScheme === AppColorSchemes.DARK ? 'dark' : ''}`}
-  {onmousedown}
-  {onmouseup}
-  {onmouseleave}
->
-  <Icon icon="material-symbols:drag-indicator" />
-</button>
+{#if usePhrasesStore.sortingMode}
+  <button
+    class={`DragHandle ${usePhrasesStore.dragging ? 'active' : ''} ${useThemeStore.colorScheme === AppColorSchemes.DARK ? 'dark' : ''}`}
+    {onmousedown}
+    {onmouseup}
+    {onmouseleave}
+  >
+    <Icon icon="material-symbols:drag-indicator" />
+  </button>
+{/if}
 
 <style lang="scss">
   .DragHandle {
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     font-size: 1.3rem;
     background-color: transparent;
     border: 0;
     color: var(--color-grey-600);
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
     align-items: center;
     justify-content: center;
     display: flex;
     padding: 0;
     cursor: pointer;
     pointer-events: all;
+    transition: all 100ms;
 
     &.dark {
       color: var(--color-grey-400);
     }
 
     &:hover {
+      background-color: var(--color-primary-200);
+
       &.active {
         color: var(--color-primary-700);
       }
+    }
+
+    &:active {
+      background-color: var(--color-primary-300);
     }
   }
 </style>

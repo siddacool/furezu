@@ -1,4 +1,5 @@
 <script lang="ts" module>
+  import type { Snippet } from 'svelte';
   import { createToolbarContextStore } from './context.svelte';
 
   export const useToolbarContextStore = createToolbarContextStore();
@@ -17,6 +18,7 @@
     disabled?: boolean;
     label?: string;
     searchValue?: string;
+    endContainer?: Snippet;
   }
 
   const {
@@ -28,6 +30,7 @@
     placeholder = 'Search',
     disabled,
     searchValue,
+    endContainer,
   }: ToolbarProps = $props();
 </script>
 
@@ -41,6 +44,12 @@
     {placeholder}
     {disabled}
   />
+
+  {#if endContainer}
+    <div class="endContainer">
+      {@render endContainer()}
+    </div>
+  {/if}
 </div>
 
 <style lang="scss">

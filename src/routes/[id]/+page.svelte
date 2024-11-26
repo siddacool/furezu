@@ -34,6 +34,7 @@
   $effect(() => {
     return () => {
       usePhrasesStore.clearEditing();
+      usePhrasesStore.updateSortingMode(false);
     };
   });
 
