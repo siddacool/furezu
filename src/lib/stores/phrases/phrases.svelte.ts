@@ -171,11 +171,7 @@ function createPhrasesStore() {
           throw Error('PharseStore:delete: Book is missing');
         }
 
-        // It's not removed but hidden
-        await db.phrases.update(targetPharse.id, {
-          hidden: true,
-          updatedAt: new Date(),
-        });
+        await db.phrases.delete(targetPharse.id);
 
         phrases = await db.phrases?.toArray();
 
