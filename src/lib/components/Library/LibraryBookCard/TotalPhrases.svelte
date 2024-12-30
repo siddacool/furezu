@@ -8,7 +8,7 @@
 
   const { book }: TotalPhrasesProps = $props();
 
-  const totalPhrases = $derived(book.phrases.length);
+  const totalPhrases = $derived(book.phrases.filter((item) => !item.hidden).length);
 </script>
 
 <Paragraph>
