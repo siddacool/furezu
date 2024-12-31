@@ -168,38 +168,36 @@
         </Button>
       </StackItem>
 
-      {#if useDeveloperModeStore.developerMode}
-        <StackItem></StackItem>
-        <StackItem>
-          <TextArea
-            disabled={uploading || useBooksStore.importing || usePhrasesStore.importing
-              ? true
-              : false}
-            {oninput}
-            value={importText}
-            error={importTextError}
-          ></TextArea>
-        </StackItem>
+      <StackItem></StackItem>
+      <StackItem>
+        <TextArea
+          disabled={uploading || useBooksStore.importing || usePhrasesStore.importing
+            ? true
+            : false}
+          {oninput}
+          value={importText}
+          error={importTextError}
+        ></TextArea>
+      </StackItem>
 
-        <StackItem>
-          <Button
-            variant="primary"
-            disabled={uploading ||
-            useBooksStore.importing ||
-            usePhrasesStore.importing ||
-            !importText.trim()
-              ? true
-              : false}
-            onclick={importFromText}
-          >
-            {#if uploading}
-              Importing books...
-            {:else}
-              Import books from text
-            {/if}
-          </Button>
-        </StackItem>
-      {/if}
+      <StackItem>
+        <Button
+          variant="primary"
+          disabled={uploading ||
+          useBooksStore.importing ||
+          usePhrasesStore.importing ||
+          !importText.trim()
+            ? true
+            : false}
+          onclick={importFromText}
+        >
+          {#if uploading}
+            Importing books...
+          {:else}
+            Import books from text
+          {/if}
+        </Button>
+      </StackItem>
     </Stack>
 
     {#if importedAt}
