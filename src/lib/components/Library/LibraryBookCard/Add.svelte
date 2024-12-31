@@ -1,6 +1,7 @@
 <script lang="ts">
   import Button from '$lib/components/ui-framework/Form/Button.svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
+  import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
   import type { LibraryData } from '$lib/stores/library/types';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
 
@@ -16,6 +17,7 @@
     try {
       await useBooksStore.importData([book.book], book.exportedAt);
       await usePhrasesStore.importData(book.phrases, book.exportedAt);
+      await useGroupsStore.importData(book.groups, book.exportedAt);
     } catch (e) {
       console.log(e);
     }
