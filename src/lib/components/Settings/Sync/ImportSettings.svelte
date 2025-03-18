@@ -10,7 +10,6 @@
   import type { Book } from '$lib/stores/books/types';
   import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
   import type { LibraryData } from '$lib/stores/library/types';
-  import { useDeveloperModeStore } from '$lib/stores/local-settings/developer-mode.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
   import type { SyncData } from '$lib/types/sync';
 

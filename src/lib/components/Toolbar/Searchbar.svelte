@@ -13,7 +13,7 @@
   }
 </script>
 
-<Search {...props} {onfocus} {onblur} class={`Searchbar`} />
+<Search {...props} {onfocus} {onblur} class="Searchbar" />
 
 <style lang="scss">
   @import '$lib/components/GlobalContainer/styles/mixins/media.scss';

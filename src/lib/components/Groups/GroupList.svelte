@@ -33,7 +33,7 @@
 </script>
 
 <div class={`${usePhrasesStore.dragging ? '' : 'notDragging'}`}>
-  {#each groups as group, numberCounter}
+  {#each groups as group, numberCounter (group._id)}
     {#if useGroupsStore.curruntlyEditing === group._id}
       <GroupCardEdit {group} {bookId} />
     {:else}

@@ -18,7 +18,7 @@
   }
 </script>
 
-<div class={`PhraseCard`}>
+<div class="PhraseCard">
   <DisplayCard
     {onedit}
     hideEditButton={usePhrasesStore.sortingMode ||
