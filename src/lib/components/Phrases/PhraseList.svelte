@@ -28,7 +28,7 @@
 
 {#if bookPhrases.length}
   <div>
-    {#each filteredPhrases as phrase}
+    {#each filteredPhrases as phrase (phrase._id)}
       {#if usePhrasesStore.curruntlyEditing === phrase._id}
         <PhraseCardEdit {phrase} {bookId} />
       {:else}

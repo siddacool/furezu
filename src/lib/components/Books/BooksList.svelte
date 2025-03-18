@@ -18,7 +18,7 @@
 
 {#if useBooksStore.books.length}
   <div>
-    {#each filteredBooks as book}
+    {#each filteredBooks as book (book._id)}
       {#if useBooksStore.curruntlyEditing === book._id}
         <BookCardEdit {book} />
       {:else}

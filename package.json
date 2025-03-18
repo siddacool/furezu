@@ -2,6 +2,7 @@
   "name": "furezu",
   "version": "2.7.6",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite dev",
     "dev:remote": "vite dev --host",
@@ -11,63 +12,51 @@
     "lint": "prettier --check .",
     "format": "prettier --write .",
     "check": "npm run svelte-check && eslint . && npm run lint",
-    "check:fix": "npm run svelte-check && eslint . && npm run format",
-    "storybook": "storybook dev -p 6006"
+    "check:fix": "npm run svelte-check && eslint . && npm run format"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "1.9.0",
-    "@storybook/addon-essentials": "^8.3.1",
-    "@storybook/addon-interactions": "^8.3.1",
-    "@storybook/addon-links": "^8.3.1",
-    "@storybook/addon-svelte-csf": "4.1.7",
-    "@storybook/blocks": "^8.3.1",
-    "@storybook/svelte": "^8.3.1",
-    "@storybook/sveltekit": "^8.3.1",
-    "@storybook/test": "^8.3.1",
-    "@storybook/theming": "^8.3.1",
-    "@sveltejs/kit": "^2.0.0",
-    "@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
+    "@sveltejs/kit": "^2.20.0",
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "@types/eslint": "^9.6.0",
-    "eslint": "^9.0.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-storybook": "^0.8.0",
-    "eslint-plugin-svelte": "^2.36.0",
-    "globals": "^15.0.0",
-    "postcss": "^8.4.47",
-    "prettier": "^3.1.1",
-    "prettier-plugin-svelte": "^3.1.2",
-    "sass": "^1.78.0",
-    "storybook": "^8.3.1",
-    "storybook-dark-mode": "^4.0.2",
-    "svelte": "^5.0.0-next.1",
-    "svelte-check": "^4.0.0",
-    "typescript": "^5.0.0",
-    "typescript-eslint": "^8.0.0",
-    "vite": "^5.0.3",
-    "workbox-window": "^7.1.0"
+    "eslint": "^9.22.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-svelte": "^3.3.1",
+    "globals": "^16.0.0",
+    "postcss": "^8.5.3",
+    "prettier": "^3.5.3",
+    "prettier-plugin-svelte": "^3.3.3",
+    "sass": "^1.86.0",
+    "svelte": "^5.23.1",
+    "svelte-check": "^4.1.5",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.1",
+    "vite": "^6.2.2",
+    "workbox-window": "^7.3.0",
+    "@eslint/compat": "^1.2.5",
+    "@eslint/js": "^9.22.0",
+    "@sveltejs/adapter-netlify": "^4.4.2"
   },
-  "type": "module",
   "dependencies": {
-    "@iconify/svelte": "^4.0.2",
-    "@storybook/addon-docs": "^8.3.1",
-    "@storybook/preview-api": "^8.3.1",
-    "@storybook/types": "^8.3.1",
-    "@sveltejs/adapter-netlify": "^4.3.3",
+    "@iconify/svelte": "^4.2.0",
+    "@sveltejs/adapter-netlify": "^4.4.2",
     "country-flag-emoji-polyfill": "^0.1.8",
     "dayjs": "^1.11.13",
-    "dexie": "^4.0.8",
-    "nanoid": "^5.0.7",
+    "dexie": "^4.0.11",
+    "nanoid": "^5.1.4",
     "svelte-select": "^5.8.3",
     "svelte-sortable-items": "^1.0.1"
   },
-  "packageManager": "pnpm@9.15.2",
+  "packageManager": "pnpm@10.6.4",
   "volta": {
-    "node": "22.12.0",
-    "pnpm": "9.15.2"
+    "node": "22.14.0",
+    "pnpm": "10.6.4"
   },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ],
+    "ignoredBuiltDependencies": [
+      "@parcel/watcher"
     ]
   }
 }

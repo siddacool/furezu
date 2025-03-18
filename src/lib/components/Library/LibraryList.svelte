@@ -9,7 +9,7 @@
   <Title>Add pre-made books from Library</Title>
   {#if useLibraryStore.mounted}
     <div>
-      {#each useLibraryStore.data as book}
+      {#each useLibraryStore.data as book (book._id)}
         <LibraryBookCard {book} />
       {/each}
     </div>
