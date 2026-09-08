@@ -17,18 +17,18 @@ export async function getBookById(bookId: string) {
 }
 
 export async function createBook(data: BookCreateData) {
-  const newExpenseId = nanoid();
+  const newId = nanoid();
 
   const now = new Date();
 
   await db.books.add({
-    _id: newExpenseId,
+    _id: newId,
     ...data,
     createdAt: now,
     updatedAt: now,
   });
 
-  return newExpenseId;
+  return newId;
 }
 
 export async function updateBook(data: Book) {

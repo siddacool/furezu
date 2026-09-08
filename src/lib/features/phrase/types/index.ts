@@ -11,3 +11,5 @@ export interface Phrase {
   pronounciation?: string;
   groupId?: string;
 }
+
+export type PhraseCreateData = Omit<Phrase, 'id' | '_id' | 'createdAt' | 'updatedAt'>;

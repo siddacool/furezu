@@ -7,3 +7,5 @@ export interface Group {
   updatedAt: Date;
   open?: boolean;
 }
+
+export type GroupCreateData = Omit<Group, 'id' | '_id' | 'createdAt' | 'updatedAt'>;
