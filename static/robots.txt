@@ -1,5 +1,3 @@
-# robots.txt for your SvelteKit app
-
-# Allow crawling of the entire site
+# allow crawling everything by default
 User-agent: *
-Allow: /
+Disallow:

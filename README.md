@@ -1,17 +1,8 @@
 # Furezu
 
-A simple Phrasebook for travel. Checkout [Web app](https://furezu.netlify.app/).
+A simple Phrasebook for travel.
 
 ---
-
-Links:
-
-- [Web app](https://furezu.netlify.app/)
-- [Github](https://github.com/siddacool/furezu)
-
-## Developer mode
-
-Enable developer mode [Developer mode](https://furezu.netlify.app/settings/developer-options) to enable options like download and duplicate books.
 
 ## Development
 

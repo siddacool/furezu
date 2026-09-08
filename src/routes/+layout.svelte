@@ -1,39 +1,57 @@
 <script lang="ts">
-  import GlobalContainer from '$lib/components/GlobalContainer';
-  import MainLayout from '$lib/components/ui-framework/Layout/MainLayout.svelte';
-  import { useBooksStore } from '$lib/stores/books/books.svelte';
-  import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
-  import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
-  import type { SvelteComponentProps } from '$lib/types/svelte-component';
-  import TheFooter from '$lib/components/TheFooter.svelte';
-  import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
+  import '@flightlesslabs/dodo-ui/styles/global/index.scss';
+  import '@flightlesslabs/dodo-ui/styles/components.scss';
+  // Addon (dodo-ui-bits)
+  import '@flightlesslabs/dodo-ui-bits/styles/main.scss';
 
-  const { children }: SvelteComponentProps = $props();
+  import { ModalManager, ToastManager } from '@flightlesslabs/dodo-ui-bits';
+  import { Theme } from '@flightlesslabs/dodo-ui';
+  import ThemeSetter from '$lib/components/ThemeSetter.svelte';
 
-  $effect(() => {
-    async function fetchBookData() {
-      try {
-        await useVoicesStore.init();
-        await useBooksStore.init();
-        await usePhrasesStore.init();
-        await useGroupsStore.init();
-      } catch (e) {
-        console.log(e);
-      }
-    }
-
-    fetchBookData();
-  });
+  let { children } = $props();
 </script>
 
-<GlobalContainer />
-
-<MainLayout>
-  <div>
-    {#if children}
-      {@render children()}
-    {/if}
+<ThemeSetter />
+<Theme global class="Theme" type="auto">
+  <div class="App">
+    {@render children()}
   </div>
 
-  <TheFooter />
-</MainLayout>
+  <ToastManager clearAfterDuration={3000} alignmentY="bottom" alignmentX="center" limit={3} />
+  <ModalManager />
+</Theme>
+
+<style lang="scss">
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html) {
+    font-family:
+      'Twemoji Country Flags', 'Montserrat', 'Roboto', 'Segoe UI', 'San Francisco', sans-serif;
+    font-optical-sizing: auto;
+    font-size: 16px;
+  }
+
+  :global(body) {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  :global(.Theme) {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .App {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  :global(.dodo-theme--dark) {
+    color-scheme: dark;
+  }
+</style>
