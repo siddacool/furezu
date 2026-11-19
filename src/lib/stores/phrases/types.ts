@@ -1,8 +1,9 @@
 export interface CreatePhrase {
   meaning: string;
   phrase: string;
+  pronunciation?: string;
+  /** Legacy field retained for backward-compatible imports. */
   pronounciation?: string;
-  translation?: string;
   groupId?: string;
 }
 

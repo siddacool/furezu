@@ -1,6 +1,6 @@
 {
   "name": "furezu",
-  "version": "2.8.0",
+  "version": "3.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,55 +8,44 @@
     "dev:remote": "vite dev --host",
     "build": "vite build",
     "preview": "vite preview",
+    "prepare": "svelte-kit sync || echo ''",
     "svelte-check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "lint": "prettier --check .",
+    "lint": "prettier --check . && eslint .",
     "format": "prettier --write .",
-    "check": "npm run svelte-check && eslint . && npm run lint",
-    "check:fix": "npm run svelte-check && eslint . && npm run format"
+    "check": "pnpm run svelte-check && eslint . && pnpm run lint",
+    "check:fix": "pnpm run svelte-check && eslint . && pnpm run format"
   },
   "devDependencies": {
-    "@sveltejs/kit": "^2.20.0",
-    "@sveltejs/vite-plugin-svelte": "^5.0.3",
-    "@types/eslint": "^9.6.0",
-    "eslint": "^9.22.0",
-    "eslint-config-prettier": "^10.1.1",
-    "eslint-plugin-svelte": "^3.3.1",
-    "globals": "^16.0.0",
-    "postcss": "^8.5.3",
-    "prettier": "^3.5.3",
-    "prettier-plugin-svelte": "^3.3.3",
-    "sass": "^1.86.0",
-    "svelte": "^5.23.1",
-    "svelte-check": "^4.1.5",
-    "typescript": "^5.8.2",
-    "typescript-eslint": "^8.26.1",
-    "vite": "^6.2.2",
+    "@eslint/js": "^10.11.0",
+    "@sveltejs/kit": "^2.70.3",
+    "@sveltejs/vite-plugin-svelte": "^7.3.1",
+    "@types/node": "^24.19.0",
+    "eslint": "^10.11.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-svelte": "^3.23.0",
+    "globals": "^17.12.0",
+    "prettier": "^3.9.9",
+    "prettier-plugin-svelte": "^4.1.1",
+    "sass-embedded": "^1.105.0",
+    "svelte": "^5.57.1",
+    "svelte-check": "^4.7.6",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.70.1",
+    "vite": "^8.3.1",
     "workbox-window": "^7.3.0",
-    "@eslint/compat": "^1.2.5",
-    "@eslint/js": "^9.22.0",
-    "@sveltejs/adapter-netlify": "^4.4.2"
+    "@eslint/compat": "^2.0.0",
+    "@sveltejs/adapter-netlify": "^5.2.4"
   },
   "dependencies": {
-    "@iconify/svelte": "^4.2.0",
-    "@sveltejs/adapter-netlify": "^4.4.2",
+    "@iconify/svelte": "^5.2.2",
+    "@sveltejs/adapter-netlify": "^5.2.4",
     "country-flag-emoji-polyfill": "^0.1.8",
-    "dayjs": "^1.11.13",
-    "dexie": "^4.0.11",
-    "nanoid": "^5.1.4",
+    "dayjs": "^1.11.23",
+    "dexie": "^4.4.6",
+    "nanoid": "^6.0.1",
     "svelte-select": "^5.8.3",
     "svelte-sortable-items": "^1.0.1"
   },
   "packageManager": "pnpm@10.6.4",
-  "volta": {
-    "node": "22.14.0",
-    "pnpm": "10.6.4"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ],
-    "ignoredBuiltDependencies": [
-      "@parcel/watcher"
-    ]
-  }
+  "volta": { "node": "22.14.0", "pnpm": "10.6.4" }
 }

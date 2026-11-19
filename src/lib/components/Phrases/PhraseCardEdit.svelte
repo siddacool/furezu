@@ -8,155 +8,42 @@
   import Select, { type SelectOption } from '../ui-framework/Form/Select.svelte';
   import { useGroupsStore } from '$lib/stores/groups/groups.svelte';
 
-  interface PhraseCardFormProps {
-    phrase?: Phrase;
-    bookId: string;
-    groupId?: string;
-  }
-
+  interface PhraseCardFormProps { phrase?: Phrase; bookId: string; groupId?: string; }
   const { phrase, bookId, groupId }: PhraseCardFormProps = $props();
-
-  let phraseName: string = $state(phrase?.phrase || '');
-  let meaning: string = $state(phrase?.meaning || '');
-  let translation: string = $state(phrase?.translation || '');
+  let phraseName = $state(phrase?.phrase || '');
+  let meaning = $state(phrase?.meaning || '');
+  let pronunciation = $state(phrase?.pronunciation || phrase?.pronounciation || '');
   let group: string | undefined = $state(groupId);
-
   const groups = $derived(useGroupsStore.groups.filter((item) => item.bookId === bookId));
-
   let groupsSelectOptions: SelectOption[] = $state([]);
 
   function oninput(e: Event) {
     const target = e.target as HTMLInputElement;
-
-    switch (target.name) {
-      case 'phrase':
-        phraseName = target.value;
-        break;
-      case 'meaning':
-        meaning = target.value;
-        break;
-      case 'translation':
-        translation = target.value;
-        break;
-      default:
-        break;
-    }
+    if (target.name === 'phrase') phraseName = target.value;
+    if (target.name === 'meaning') meaning = target.value;
+    if (target.name === 'pronunciation') pronunciation = target.value;
   }
-
-  function onChangeGroup(e: CustomEvent<SelectOption>) {
-    group = e.detail.value as string | undefined;
-  }
-
-  function onClearGroup() {
-    group = undefined;
-  }
-
+  function onChangeGroup(e: CustomEvent<SelectOption>) { group = e.detail.value as string | undefined; }
+  function onClearGroup() { group = undefined; }
   async function onsubmit(e: SubmitEvent) {
     e.preventDefault();
-
-    const submitterName = e.submitter?.getAttribute('name');
-
-    if (submitterName !== 'save') {
-      return;
-    }
-
-    if (phrase?._id) {
-      await usePhrasesStore.update(phrase._id, {
-        phrase: phraseName,
-        meaning,
-        translation,
-        groupId: group,
-      });
-    } else {
-      await usePhrasesStore.add(bookId, {
-        phrase: phraseName,
-        meaning,
-        translation,
-        groupId: group,
-      });
-    }
-
+    if (e.submitter?.getAttribute('name') !== 'save') return;
+    const data = { phrase: phraseName, meaning, pronunciation: pronunciation.trim() || undefined, groupId: group };
+    if (phrase?._id) await usePhrasesStore.update(phrase._id, data);
+    else await usePhrasesStore.add(bookId, data);
     usePhrasesStore.clearEditing();
   }
-
-  function onCancel() {
-    usePhrasesStore.clearEditing();
-  }
-
-  async function onDelete() {
-    if (phrase?._id) {
-      await usePhrasesStore.delete(phrase._id);
-    }
-
-    usePhrasesStore.clearEditing();
-  }
-
-  $effect(() => {
-    groupsSelectOptions = groups.map((item) =>
-      Object.assign(
-        {},
-        {
-          value: item._id,
-          label: item.name,
-        },
-      ),
-    );
-  });
-
-  $effect(() => {
-    document.getElementById('phrase-card')?.scrollIntoView(true);
-  });
+  function onCancel() { usePhrasesStore.clearEditing(); }
+  async function onDelete() { if (phrase?._id) await usePhrasesStore.delete(phrase._id); usePhrasesStore.clearEditing(); }
+  $effect(() => { groupsSelectOptions = groups.map((item) => ({ value: item._id, label: item.name })); });
+  $effect(() => { document.getElementById('phrase-card')?.scrollIntoView(true); });
 </script>
 
-<EditCard
-  {onsubmit}
-  {onCancel}
-  {onDelete}
-  title={phrase?.phrase ? `Edit: ${limitTextLength(phrase.meaning)}` : 'Create: Phrase'}
-  disableSubmit={!phraseName?.trim() || !meaning?.trim() ? true : false}
-  hideDeleteButton={!phrase?._id}
-  id="phrase-card"
->
+<EditCard {onsubmit} {onCancel} {onDelete} title={phrase?.phrase ? `Edit: ${limitTextLength(phrase.meaning)}` : 'Create: Phrase'} disableSubmit={!phraseName?.trim() || !meaning?.trim()} hideDeleteButton={!phrase?._id} id="phrase-card">
   <Stack space={2}>
-    <StackItem>
-      <TextInput
-        disabled={usePhrasesStore.fetching}
-        label="Phrase"
-        placeholder="e.g. Hello (Required)"
-        {oninput}
-        value={meaning}
-        name="meaning"
-      />
-    </StackItem>
-    <StackItem>
-      <TextInput
-        disabled={usePhrasesStore.fetching}
-        label="Local version"
-        placeholder="e.g. Koni chi wa (Required)"
-        {oninput}
-        value={phraseName}
-        name="phrase"
-      />
-    </StackItem>
-    <StackItem>
-      <TextInput
-        disabled={usePhrasesStore.fetching}
-        label="Translation (Text to Speech)"
-        placeholder="e.g. こんにちは、元気ですか"
-        {oninput}
-        value={translation}
-        name="translation"
-      />
-    </StackItem>
-    <StackItem>
-      <Select
-        label="Group"
-        options={groupsSelectOptions}
-        onchange={onChangeGroup}
-        onclear={onClearGroup}
-        value={group}
-        placeholder="Ungrouped"
-      />
-    </StackItem>
+    <StackItem><TextInput disabled={usePhrasesStore.fetching} label="Phrase" placeholder="e.g. Hello (Required)" {oninput} value={meaning} name="meaning" /></StackItem>
+    <StackItem><TextInput disabled={usePhrasesStore.fetching} label="Local version" placeholder="e.g. Kon'nichiwa (Required)" {oninput} value={phraseName} name="phrase" /></StackItem>
+    <StackItem><TextInput disabled={usePhrasesStore.fetching} label="Phonetic pronunciation" placeholder="e.g. koh-nee-chee-wah" {oninput} value={pronunciation} name="pronunciation" /></StackItem>
+    <StackItem><Select label="Group" options={groupsSelectOptions} onchange={onChangeGroup} onclear={onClearGroup} value={group} placeholder="Ungrouped" /></StackItem>
   </Stack>
 </EditCard>

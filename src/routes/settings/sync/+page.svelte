@@ -7,25 +7,7 @@
   import ImportSettings from '$lib/components/Settings/Sync/ImportSettings.svelte';
   import { useBooksStore } from '$lib/stores/books/books.svelte';
   import { usePhrasesStore } from '$lib/stores/phrases/phrases.svelte';
-  import { useVoicesStore } from '$lib/stores/voices/voices.svelte';
-
-  const mounted = $derived(
-    useBooksStore.mounted && usePhrasesStore.mounted && useVoicesStore.mounted ? true : false,
-  );
+  const mounted = $derived(useBooksStore.mounted && usePhrasesStore.mounted);
 </script>
-
-<title>Sync</title>
-
-<SettingsHeader title="Sync" />
-
-{#if mounted}
-  <Box>
-    <DeviceNameSettings />
-    <ExportSettings />
-    <ImportSettings />
-  </Box>
-{:else}
-  <Box>
-    <Loading />
-  </Box>
-{/if}
+<title>Sync</title><SettingsHeader title="Sync" />
+{#if mounted}<Box><DeviceNameSettings /><ExportSettings /><ImportSettings /></Box>{:else}<Box><Loading /></Box>{/if}
